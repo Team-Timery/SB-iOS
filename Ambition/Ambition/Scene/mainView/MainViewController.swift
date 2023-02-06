@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     private let label = UILabel().then {
         $0.text = "MainView"
         $0.textColor = .black
+        $0.font = UIFont(name: "Pretendard-Black", size: 50)
     }
 
     override func viewDidLoad() {
