@@ -27,6 +27,10 @@
 		4BDA207D2991478A0032161C /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4BDA20742991478A0032161C /* Pretendard-Regular.otf */; };
 		4BDA207E2991478A0032161C /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4BDA20752991478A0032161C /* Pretendard-Light.otf */; };
 		4BDA207F2991478A0032161C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4BDA20762991478A0032161C /* Pretendard-Bold.otf */; };
+		4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20842994EC2A0032161C /* AuthTextField.swift */; };
+		4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20862994EECD0032161C /* AuthNextButton.swift */; };
+		4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20892994EF2D0032161C /* UIColor+Colors.swift */; };
+		4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		4BDA20742991478A0032161C /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		4BDA20752991478A0032161C /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		4BDA20762991478A0032161C /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		4BDA20842994EC2A0032161C /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		4BDA20862994EECD0032161C /* AuthNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNextButton.swift; sourceTree = "<group>"; };
+		4BDA20892994EF2D0032161C /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
+		4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+Fonts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				4BDA206D2991477B0032161C /* Fonts */,
+				4BDA20812994EA5D0032161C /* Souce */,
 				4BDA2069299141F20032161C /* Application */,
-				4BDA2068299141BB0032161C /* Scene */,
 				4BDA204D29913E8E0032161C /* Assets.xcassets */,
 				4BDA204F29913E8E0032161C /* LaunchScreen.storyboard */,
 				4BDA205229913E8E0032161C /* Info.plist */,
@@ -133,6 +141,42 @@
 				4BDA20702991478A0032161C /* Pretendard-Thin.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4BDA20812994EA5D0032161C /* Souce */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA20882994EEF90032161C /* Extension */,
+				4BDA20822994EA6E0032161C /* Component */,
+				4BDA2068299141BB0032161C /* Scene */,
+			);
+			path = Souce;
+			sourceTree = "<group>";
+		};
+		4BDA20822994EA6E0032161C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA20832994EBFE0032161C /* Auth */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4BDA20832994EBFE0032161C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA20842994EC2A0032161C /* AuthTextField.swift */,
+				4BDA20862994EECD0032161C /* AuthNextButton.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4BDA20882994EEF90032161C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA20892994EF2D0032161C /* UIColor+Colors.swift */,
+				4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */,
+				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
+				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
+				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
+				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
