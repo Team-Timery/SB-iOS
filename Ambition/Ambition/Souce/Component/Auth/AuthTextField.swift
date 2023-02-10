@@ -15,7 +15,7 @@ import RxCocoa
 class AuthTextField: UITextField {
     let disposedBag = DisposeBag()
     
-    var isError = BehaviorRelay(value: false)
+    var isErrorRelay = BehaviorRelay(value: false)
     
     private let titleLabel = UILabel().then {
         $0.textColor = .whiteElevated4
@@ -56,7 +56,7 @@ class AuthTextField: UITextField {
 
 extension AuthTextField {
     private func bind() {
-        isError.asObservable()
+        isErrorRelay.asObservable()
             .bind { [self] status in
                 layer.borderColor = status ? UIColor.error?.cgColor : UIColor.whiteElevated4?.cgColor
                 errorLabel.layer.opacity = status ? 1 : 0
