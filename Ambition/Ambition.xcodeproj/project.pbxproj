@@ -31,6 +31,7 @@
 		4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20862994EECD0032161C /* AuthNextButton.swift */; };
 		4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20892994EF2D0032161C /* UIColor+Colors.swift */; };
 		4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */; };
+		4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA208E299674550032161C /* AuthStartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		4BDA20862994EECD0032161C /* AuthNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNextButton.swift; sourceTree = "<group>"; };
 		4BDA20892994EF2D0032161C /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+Fonts.swift"; sourceTree = "<group>"; };
+		4BDA208E299674550032161C /* AuthStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4BDA208D2996743C0032161C /* Auth */,
 				4BDA206A299142150032161C /* mainView */,
 			);
 			path = Scene;
@@ -177,6 +180,14 @@
 				4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4BDA208D2996743C0032161C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA208E299674550032161C /* AuthStartViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +290,7 @@
 				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
+				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
