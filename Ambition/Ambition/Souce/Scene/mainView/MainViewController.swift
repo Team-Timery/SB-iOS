@@ -69,6 +69,8 @@ class MainViewController: UIViewController {
         $0.clearButtonMode = .always
     }
     
+    private let testButton = AuthNextButton(label: "다음")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -88,7 +90,8 @@ extension MainViewController {
             timerButton,
             graphMarkLabel,
             graphButton,
-            testTextField
+            testTextField,
+            testButton
         ].forEach({ view.addSubview($0) })
         
         [
@@ -162,13 +165,19 @@ extension MainViewController {
             $0.height.equalTo(60)
             $0.centerY.equalToSuperview().offset(300)
         }
+        
+        testButton.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(19)
+            $0.height.equalTo(60)
+            $0.centerY.equalToSuperview().offset(200)
+        }
     }
     
     private func bind() {
         timerButton.rx.tap
             .bind { [self] in
-                var value: Bool = testTextField.isError.value
-                testTextField.isError.accept(value ? false : true)
+                let value: Bool = testTextField.isErrorRelay.value
+                testTextField.isErrorRelay.accept(value ? false : true)
             }
             .disposed(by: disposedBag)
     }
