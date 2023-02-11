@@ -69,7 +69,7 @@ class MainViewController: UIViewController {
         $0.clearButtonMode = .always
     }
     
-    private let testButton = AuthNextButton(label: "다음")
+    private let testButton = AuthNextButton(title: "다음")
     
     override func viewDidLoad() {
         super.viewDidLoad()

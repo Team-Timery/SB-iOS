@@ -12,10 +12,10 @@ import Then
 
 class AuthNextButton: UIButton {
     
-    init(label: String) {
+    init(title: String) {
         super.init(frame: .zero)
         backgroundColor = .mainElevated
-        setTitle(label, for: .normal)
+        setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.title2Bold
         layer.cornerRadius = 30
