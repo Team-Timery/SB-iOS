@@ -23,6 +23,7 @@ class OauthButton: UIButton {
         backgroundColor = backColor
         layer.borderWidth = 1
         layer.cornerRadius = 30
+        layer.borderColor = UIColor.whiteElevated3?.cgColor
         logoImageView.image = logoImage
         titleTextLabel.text = title
         titleTextLabel.textColor = titleColor
