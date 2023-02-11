@@ -32,6 +32,7 @@
 		4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20892994EF2D0032161C /* UIColor+Colors.swift */; };
 		4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */; };
 		4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA208E299674550032161C /* AuthStartViewController.swift */; };
+		4BDA20912997816D0032161C /* OauthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20902997816D0032161C /* OauthButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		4BDA20892994EF2D0032161C /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+Fonts.swift"; sourceTree = "<group>"; };
 		4BDA208E299674550032161C /* AuthStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartViewController.swift; sourceTree = "<group>"; };
+		4BDA20902997816D0032161C /* OauthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				4BDA20842994EC2A0032161C /* AuthTextField.swift */,
 				4BDA20862994EECD0032161C /* AuthNextButton.swift */,
+				4BDA20902997816D0032161C /* OauthButton.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
 				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
+				4BDA20912997816D0032161C /* OauthButton.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
 				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
