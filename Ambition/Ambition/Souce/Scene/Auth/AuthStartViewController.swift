@@ -8,8 +8,16 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class AuthStartViewController: UIViewController {
+    
+    let disposedBag = DisposeBag()
+    
+    private let backButton = UIBarButtonItem().then {
+        $0.tintColor = .whiteElevated4
+    }
     
     private let titleMainLabel = UILabel().then {
         $0.text = "끝가지 가는 열정,"
@@ -43,6 +51,8 @@ class AuthStartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.backBarButtonItem = backButton
+        bind()
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,6 +62,15 @@ class AuthStartViewController: UIViewController {
 }
 
 extension AuthStartViewController {
+    private func bind() {
+        oauthGoogleButton.rx.tap
+            .bind { [self] in
+                let view = AuthInfoViewController()
+                navigationController?.pushViewController(view, animated: true)
+            }
+            .disposed(by: disposedBag)
+    }
+    
     private func addSubviews() {
         [
             titleMainLabel,
