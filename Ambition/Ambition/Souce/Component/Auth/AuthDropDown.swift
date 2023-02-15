@@ -38,7 +38,7 @@ class AuthDropDown: UIView {
         
         backgroundColor = .white
         layer.cornerRadius = 10
-        layer.borderWidth = 1
+        layer.borderWidth = 0.5
         layer.borderColor = UIColor.whiteElevated4?.cgColor
         
         DropDown.startListeningToKeyboard()
@@ -49,7 +49,7 @@ class AuthDropDown: UIView {
         DropDown.appearance().selectionBackgroundColor = UIColor.whiteElevated2!
         DropDown.appearance().setupCornerRadius(10)
         DropDown.appearance().cellHeight = 60
-        dropDown.dismissMode = .automatic
+        dropDown.dismissMode = .onTap
         setDropDown()
     }
     
@@ -95,13 +95,13 @@ extension AuthDropDown {
     
     private func makeconstraints() {
         valueLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(28)
+            $0.leftMargin.equalTo(20)
             $0.centerY.equalToSuperview()
         }
         
         arrowImageView.snp.makeConstraints {
             $0.width.height.equalTo(36)
-            $0.right.equalToSuperview().inset(19)
+            $0.right.equalToSuperview().inset(5)
             $0.centerY.equalToSuperview()
         }
         

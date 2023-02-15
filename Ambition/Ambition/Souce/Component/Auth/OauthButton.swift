@@ -44,7 +44,7 @@ extension OauthButton {
         [
             titleTextLabel,
             logoImageView
-        ].forEach({ self.addSubview($0) })
+        ].forEach({ addSubview($0) })
     }
     
     private func makeConstraints() {
