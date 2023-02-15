@@ -36,6 +36,10 @@
 		4BDA20912997816D0032161C /* OauthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA20902997816D0032161C /* OauthButton.swift */; };
 		4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA2092299791440032161C /* AuthInfoViewController.swift */; };
 		4BDA20982997B3910032161C /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDA20972997B3910032161C /* DropDown */; };
+		4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE02943299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift */; };
+		4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE02949299CDB0D00788B37 /* AuthTermsViewController.swift */; };
+		4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0294B299CDD7600788B37 /* AuthToggleButton.swift */; };
+		4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0294D299D1BD300788B37 /* AuthTermsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,10 @@
 		4BDA208E299674550032161C /* AuthStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartViewController.swift; sourceTree = "<group>"; };
 		4BDA20902997816D0032161C /* OauthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthButton.swift; sourceTree = "<group>"; };
 		4BDA2092299791440032161C /* AuthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfoViewController.swift; sourceTree = "<group>"; };
+		4BE02943299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+hideKeyboardWhenTappedAround.swift"; sourceTree = "<group>"; };
+		4BE02949299CDB0D00788B37 /* AuthTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTermsViewController.swift; sourceTree = "<group>"; };
+		4BE0294B299CDD7600788B37 /* AuthToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToggleButton.swift; sourceTree = "<group>"; };
+		4BE0294D299D1BD300788B37 /* AuthTermsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTermsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +187,8 @@
 				4BDA20842994EC2A0032161C /* AuthTextField.swift */,
 				4BDA20862994EECD0032161C /* AuthNextButton.swift */,
 				4BDA20902997816D0032161C /* OauthButton.swift */,
+				4BE0294B299CDD7600788B37 /* AuthToggleButton.swift */,
+				4BE0294D299D1BD300788B37 /* AuthTermsList.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -188,6 +198,7 @@
 			children = (
 				4BDA20892994EF2D0032161C /* UIColor+Colors.swift */,
 				4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */,
+				4BE02943299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 			children = (
 				4BDA208E299674550032161C /* AuthStartViewController.swift */,
 				4BDA2092299791440032161C /* AuthInfoViewController.swift */,
+				4BE02949299CDB0D00788B37 /* AuthTermsViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -297,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */,
+				4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */,
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
@@ -305,7 +318,10 @@
 				4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
+				4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */,
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
+				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
+				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
 				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
