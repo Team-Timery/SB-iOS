@@ -29,6 +29,7 @@ class AuthStartViewController: UIViewController {
         $0.text = "Ambition"
         $0.textColor = .mainElevated
         $0.font = .typograpy
+        $0.layer.opacity = 0.8
     }
     
     private let titleindicatorLabel = UILabel().then {
