@@ -46,5 +46,6 @@ extension UIFont {
     
     //indicator
     static let indicator = UIFont(name: "Pretendard-Bold", size: 14)
+    static let indicatorMedium = UIFont(name: "Pretendard-Medium", size: 14)
 }
 
