@@ -40,6 +40,8 @@
 		4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE02949299CDB0D00788B37 /* AuthTermsViewController.swift */; };
 		4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0294B299CDD7600788B37 /* AuthToggleButton.swift */; };
 		4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0294D299D1BD300788B37 /* AuthTermsList.swift */; };
+		4BE0296129A11E1700788B37 /* AuthStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296029A11E1700788B37 /* AuthStartViewModel.swift */; };
+		4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296329A11E5000788B37 /* ViewModelType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		4BE02949299CDB0D00788B37 /* AuthTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTermsViewController.swift; sourceTree = "<group>"; };
 		4BE0294B299CDD7600788B37 /* AuthToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToggleButton.swift; sourceTree = "<group>"; };
 		4BE0294D299D1BD300788B37 /* AuthTermsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTermsList.swift; sourceTree = "<group>"; };
+		4BE0296029A11E1700788B37 /* AuthStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartViewModel.swift; sourceTree = "<group>"; };
+		4BE0296329A11E5000788B37 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 		4BDA20812994EA5D0032161C /* Souce */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0296229A11E3200788B37 /* Protocol */,
 				4BDA20882994EEF90032161C /* Extension */,
 				4BDA20822994EA6E0032161C /* Component */,
 				4BDA2068299141BB0032161C /* Scene */,
@@ -206,11 +211,36 @@
 		4BDA208D2996743C0032161C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0295F29A11DEC00788B37 /* ViewController */,
+				4BE0295E29A11DE600788B37 /* ViewModel */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4BE0295E29A11DE600788B37 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0296029A11E1700788B37 /* AuthStartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4BE0295F29A11DEC00788B37 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				4BDA208E299674550032161C /* AuthStartViewController.swift */,
 				4BDA2092299791440032161C /* AuthInfoViewController.swift */,
 				4BE02949299CDB0D00788B37 /* AuthTermsViewController.swift */,
 			);
-			path = Auth;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4BE0296229A11E3200788B37 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0296329A11E5000788B37 /* ViewModelType.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +348,13 @@
 				4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
+				4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */,
 				4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */,
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
 				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
+				4BE0296129A11E1700788B37 /* AuthStartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

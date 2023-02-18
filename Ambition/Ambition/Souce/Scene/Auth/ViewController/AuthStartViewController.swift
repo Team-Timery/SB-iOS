@@ -38,6 +38,13 @@ class AuthStartViewController: UIViewController {
         $0.font = .main2Medium
     }
     
+    private lazy var input = AuthStartViewModel.Input(
+        googleOauthSignal: oauthGoogleButton.rx.tap.asSignal(),
+        appleOauthSignal: oauthAppleButton.rx.tap.asSignal()
+    )
+    private lazy var output = viewModel.transform(input: input)
+    let viewModel = AuthStartViewModel()
+    
     private let oauthGoogleButton = OauthButton(title: "구글로 계속하기", logoImage: UIImage(named: "google_logo"), titleColor: .black, backColor: .white)
     
     private let oauthAppleButton = OauthButton(title: "APPLE로 계속하기", logoImage: UIImage(named: "apple_logo"), titleColor: .white, backColor: .black)
@@ -64,11 +71,19 @@ class AuthStartViewController: UIViewController {
 
 extension AuthStartViewController {
     private func bind() {
-        oauthGoogleButton.rx.tap
-            .bind { [self] in
+        output.googleOauthAction.asObservable()
+            .filter { $0 == true }
+            .subscribe(onNext: { [unowned self] _ in
                 let view = AuthInfoViewController()
                 navigationController?.pushViewController(view, animated: true)
-            }
+            })
+            .disposed(by: disposedBag)
+        
+        output.appleOauthAction.asObservable()
+            .subscribe(onNext: { [unowned self] _ in
+                let view = AuthTermsViewController()
+                navigationController?.pushViewController(view, animated: true)
+            })
             .disposed(by: disposedBag)
     }
     
