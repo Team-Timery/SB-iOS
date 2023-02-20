@@ -42,6 +42,9 @@
 		4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0294D299D1BD300788B37 /* AuthTermsList.swift */; };
 		4BE0296129A11E1700788B37 /* AuthStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296029A11E1700788B37 /* AuthStartViewModel.swift */; };
 		4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296329A11E5000788B37 /* ViewModelType.swift */; };
+		4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296B29A3648900788B37 /* TimerViewController.swift */; };
+		4BE0296E29A3689E00788B37 /* UIView+roundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */; };
+		4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +78,9 @@
 		4BE0294D299D1BD300788B37 /* AuthTermsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTermsList.swift; sourceTree = "<group>"; };
 		4BE0296029A11E1700788B37 /* AuthStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartViewModel.swift; sourceTree = "<group>"; };
 		4BE0296329A11E5000788B37 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		4BE0296B29A3648900788B37 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+roundCorners.swift"; sourceTree = "<group>"; };
+		4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBackgroundLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0296829A3643C00788B37 /* Timer */,
 				4BDA208D2996743C0032161C /* Auth */,
 				4BDA206A299142150032161C /* mainView */,
 			);
@@ -181,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				4BDA20832994EBFE0032161C /* Auth */,
+				4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 				4BDA20892994EF2D0032161C /* UIColor+Colors.swift */,
 				4BDA208B2994F03D0032161C /* UIfont+Fonts.swift */,
 				4BE02943299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift */,
+				4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -241,6 +250,30 @@
 				4BE0296329A11E5000788B37 /* ViewModelType.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		4BE0296829A3643C00788B37 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0296A29A3645900788B37 /* ViewModel */,
+				4BE0296929A3645000788B37 /* ViewController */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		4BE0296929A3645000788B37 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0296B29A3648900788B37 /* TimerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4BE0296A29A3645900788B37 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,17 +376,20 @@
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
+				4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */,
 				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
 				4BDA20912997816D0032161C /* OauthButton.swift in Sources */,
 				4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
+				4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */,
 				4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */,
 				4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */,
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
 				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
+				4BE0296E29A3689E00788B37 /* UIView+roundCorners.swift in Sources */,
 				4BE0296129A11E1700788B37 /* AuthStartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
