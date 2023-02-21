@@ -45,6 +45,7 @@
 		4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296B29A3648900788B37 /* TimerViewController.swift */; };
 		4BE0296E29A3689E00788B37 /* UIView+roundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */; };
 		4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */; };
+		4BFB656D29A48C4600FE9118 /* TapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB656C29A48C4600FE9118 /* TapBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		4BE0296B29A3648900788B37 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+roundCorners.swift"; sourceTree = "<group>"; };
 		4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBackgroundLabelView.swift; sourceTree = "<group>"; };
+		4BFB656C29A48C4600FE9118 /* TapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		4BDA20822994EA6E0032161C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				4BFB656B29A48C0100FE9118 /* TapBar */,
 				4BDA20832994EBFE0032161C /* Auth */,
 				4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */,
 			);
@@ -274,6 +277,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4BFB656B29A48C0100FE9118 /* TapBar */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB656C29A48C4600FE9118 /* TapBarController.swift */,
+			);
+			path = TapBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */,
+				4BFB656D29A48C4600FE9118 /* TapBarController.swift in Sources */,
 				4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */,
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
