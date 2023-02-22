@@ -46,6 +46,7 @@
 		4BE0296E29A3689E00788B37 /* UIView+roundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */; };
 		4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */; };
 		4BFB656D29A48C4600FE9118 /* CustomTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB656C29A48C4600FE9118 /* CustomTapBarController.swift */; };
+		4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		4BE0296D29A3689E00788B37 /* UIView+roundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+roundCorners.swift"; sourceTree = "<group>"; };
 		4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBackgroundLabelView.swift; sourceTree = "<group>"; };
 		4BFB656C29A48C4600FE9118 /* CustomTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapBarController.swift; sourceTree = "<group>"; };
+		4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 		4BDA20822994EA6E0032161C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				4BFB656F29A6658D00FE9118 /* TableViewCells */,
 				4BFB656B29A48C0100FE9118 /* TapBar */,
 				4BDA20832994EBFE0032161C /* Auth */,
 				4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */,
@@ -285,6 +288,22 @@
 				4BFB656C29A48C4600FE9118 /* CustomTapBarController.swift */,
 			);
 			path = TapBar;
+			sourceTree = "<group>";
+		};
+		4BFB656F29A6658D00FE9118 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB657029A665A000FE9118 /* SubjectCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		4BFB657029A665A000FE9118 /* SubjectCell */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */,
+			);
+			path = SubjectCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +407,7 @@
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
+				4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */,
 				4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */,
 				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
 				4BDA20912997816D0032161C /* OauthButton.swift in Sources */,
