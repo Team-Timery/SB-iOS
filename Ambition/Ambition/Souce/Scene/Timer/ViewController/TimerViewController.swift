@@ -44,6 +44,10 @@ class TimerViewController: UIViewController {
         $0.font = UIFont(name: "Pretendard-Medium", size: 64)
     }
     
+    private let subjectTableView = UITableView().then {
+        $0.backgroundColor = .clear
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .whiteElevated1
@@ -65,7 +69,8 @@ extension TimerViewController {
             timerTitleLabel,
             timerTimeLabel,
             timerSubtitleLabel,
-            dateLabel
+            dateLabel,
+            subjectTableView
         ].forEach({ timerBackground.addSubview($0) })
     }
     
