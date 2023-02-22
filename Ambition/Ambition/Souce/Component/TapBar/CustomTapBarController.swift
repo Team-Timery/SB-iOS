@@ -8,6 +8,7 @@
 import UIKit
 
 class CustomTapBarController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabBar()
