@@ -47,6 +47,8 @@
 		4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */; };
 		4BFB656D29A48C4600FE9118 /* CustomTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB656C29A48C4600FE9118 /* CustomTapBarController.swift */; };
 		4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */; };
+		4BFB657829A778E900FE9118 /* TimerActivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657729A778E900FE9118 /* TimerActivateViewController.swift */; };
+		4BFB657C29A7903C00FE9118 /* SimpleAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBackgroundLabelView.swift; sourceTree = "<group>"; };
 		4BFB656C29A48C4600FE9118 /* CustomTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapBarController.swift; sourceTree = "<group>"; };
 		4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewCell.swift; sourceTree = "<group>"; };
+		4BFB657729A778E900FE9118 /* TimerActivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewController.swift; sourceTree = "<group>"; };
+		4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4BFB657529A7787100FE9118 /* TimerActivate */,
 				4BE0296829A3643C00788B37 /* Timer */,
 				4BDA208D2996743C0032161C /* Auth */,
 				4BDA206A299142150032161C /* mainView */,
@@ -191,6 +196,7 @@
 		4BDA20822994EA6E0032161C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				4BFB657A29A78F2500FE9118 /* Alert */,
 				4BFB656F29A6658D00FE9118 /* TableViewCells */,
 				4BFB656B29A48C0100FE9118 /* TapBar */,
 				4BDA20832994EBFE0032161C /* Auth */,
@@ -304,6 +310,38 @@
 				4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */,
 			);
 			path = SubjectCell;
+			sourceTree = "<group>";
+		};
+		4BFB657529A7787100FE9118 /* TimerActivate */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB657929A778FC00FE9118 /* ViewModel */,
+				4BFB657629A778C100FE9118 /* ViewController */,
+			);
+			path = TimerActivate;
+			sourceTree = "<group>";
+		};
+		4BFB657629A778C100FE9118 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB657729A778E900FE9118 /* TimerActivateViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4BFB657929A778FC00FE9118 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4BFB657A29A78F2500FE9118 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +458,8 @@
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
+				4BFB657C29A7903C00FE9118 /* SimpleAlertViewController.swift in Sources */,
+				4BFB657829A778E900FE9118 /* TimerActivateViewController.swift in Sources */,
 				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
 				4BE0296E29A3689E00788B37 /* UIView+roundCorners.swift in Sources */,
 				4BE0296129A11E1700788B37 /* AuthStartViewModel.swift in Sources */,
