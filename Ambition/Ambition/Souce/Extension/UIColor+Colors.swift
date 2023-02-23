@@ -23,4 +23,8 @@ extension UIColor {
     
     //red
     static let error = UIColor(named: "error")
+    
+    //gray
+    static let grayDarken1 = UIColor(named: "gray-Darken1")
+    static let grayDarken2 = UIColor(named: "gray-Darken2")
 }
