@@ -17,7 +17,7 @@ class CustomTapBarController: UITabBarController {
         timerVC.tabBarItem.title = "홈"
         timerVC.tabBarItem.image = UIImage(named: "tabbar_home")
         
-        let testVC = AuthStartViewController()
+        let testVC = TimerActivateViewController()
         testVC.tabBarItem.title = "타이머"
         testVC.tabBarItem.image = UIImage(named: "tabbar_timer")
         
