@@ -20,17 +20,17 @@ class SubjectsTableViewCell: UITableViewCell {
         $0.layer.cornerRadius = 20
     }
     
-    let emojiLable = UILabel().then {
+    let emojiLabel = UILabel().then {
         $0.text = "🔥"
         $0.font = UIFont(name: "Pretendard-Medium", size: 40)
     }
     
-    let subjectLable = UILabel().then {
+    let subjectLabel = UILabel().then {
         $0.textColor = .black
         $0.font = .title2Medium
     }
     
-    let timerLable = UILabel().then {
+    let timerLabel = UILabel().then {
         $0.text = "00:00:00"
         $0.textColor = .black
         $0.font = .title2Medium
@@ -53,7 +53,6 @@ class SubjectsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
@@ -64,9 +63,9 @@ extension SubjectsTableViewCell {
         addSubview(cellBackgroundView)
         
         [
-            emojiLable,
-            subjectLable,
-            timerLable,
+            emojiLabel,
+            subjectLabel,
+            timerLabel,
             deleteButton
         ].forEach({ cellBackgroundView.addSubview($0) })
     }
@@ -76,15 +75,15 @@ extension SubjectsTableViewCell {
             $0.left.right.equalToSuperview().inset(15)
             $0.height.equalTo(85)
         }
-        emojiLable.snp.makeConstraints {
+        emojiLabel.snp.makeConstraints {
             $0.leftMargin.equalTo(24)
             $0.centerY.equalToSuperview()
         }
-        subjectLable.snp.makeConstraints {
-            $0.left.equalTo(emojiLable.snp.right).offset(26)
+        subjectLabel.snp.makeConstraints {
+            $0.left.equalTo(emojiLabel.snp.right).offset(26)
             $0.centerY.equalToSuperview()
         }
-        timerLable.snp.makeConstraints {
+        timerLabel.snp.makeConstraints {
             $0.right.equalTo(deleteButton.snp.left).offset(-17)
             $0.centerY.equalToSuperview()
         }

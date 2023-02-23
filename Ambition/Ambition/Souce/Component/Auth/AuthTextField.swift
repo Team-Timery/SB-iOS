@@ -20,7 +20,7 @@ class AuthTextField: UITextField {
     private var textRegex: String?
 
     private let cancelButton = UIButton(type: .custom).then {
-        $0.setImage(UIImage(named: "x_gray"), for: .normal)
+        $0.setImage(UIImage(named: "fill_x_gray"), for: .normal)
         $0.contentMode = .scaleAspectFit
     }
     
@@ -35,7 +35,12 @@ class AuthTextField: UITextField {
         $0.layer.opacity = 0
     }
     
-    init(lable: String, errorMessage: String? = nil, regex: String? = nil, keyboardType: UIKeyboardType = .default) {
+    init(
+        label: String,
+        errorMessage: String? = nil,
+        regex: String? = nil,
+        keyboardType: UIKeyboardType = .default
+    ) {
         super.init(frame: .zero)
         self.keyboardType = keyboardType
         autocorrectionType = .no
@@ -43,7 +48,7 @@ class AuthTextField: UITextField {
         backgroundColor = .white
         textColor = .black
         font = UIFont.title3Medium
-        titleLabel.text = lable
+        titleLabel.text = label
         errorLabel.text = errorMessage
         textRegex = regex
         layer.cornerRadius = 10
