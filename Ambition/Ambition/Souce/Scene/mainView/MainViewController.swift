@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
         $0.font = UIFont(name: "Pretendard-Bold", size: 20)
     }
     
-    private let testTextField = AuthTextField(lable: "이름", errorMessage: "한글, 영문 또는 숫자 1~20자를 입력해 주세요").then {
+    private let testTextField = AuthTextField(label: "이름", errorMessage: "한글, 영문 또는 숫자 1~20자를 입력해 주세요").then {
         $0.clearButtonMode = .always
     }
     

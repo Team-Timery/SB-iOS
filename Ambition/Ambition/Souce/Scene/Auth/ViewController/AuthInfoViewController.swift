@@ -13,9 +13,9 @@ import RxCocoa
 
 class AuthInfoViewController: UIViewController {
     
-    private let nameTextField = AuthTextField(lable: "이름", errorMessage: "한글, 영문 또는 숫자 1~20자를 입력해 주세요", regex: "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{1,20}$")
+    private let nameTextField = AuthTextField(label: "이름", errorMessage: "한글, 영문 또는 숫자 1~20자를 입력해 주세요", regex: "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{1,20}$")
     
-    private let ageTextField = AuthTextField(lable: "나이", errorMessage: "숫자를 입력해주세요", regex: "^[0-9]*$", keyboardType: .numberPad)
+    private let ageTextField = AuthTextField(label: "나이", errorMessage: "숫자를 입력해주세요", regex: "^[0-9]*$", keyboardType: .numberPad)
     
     private let sexDropdownView = AuthDropDown(label: "성별", items: ["남자", "여자", "표시안함"])
     

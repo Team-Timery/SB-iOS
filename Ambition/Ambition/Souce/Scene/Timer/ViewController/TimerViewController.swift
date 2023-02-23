@@ -30,11 +30,8 @@ class TimerViewController: UIViewController {
     }
     
     private let timerBackground = UIView().then {
-        $0.layer.shadowColor = UIColor.gray.cgColor
-        $0.layer.shadowOpacity = 1
-        $0.layer.shadowRadius = 4
-        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
-        $0.roundCorners(cornerRadius: 18, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+        $0.layer.borderWidth = 0.5
+        $0.layer.borderColor = UIColor.whiteElevated4?.cgColor
         $0.backgroundColor = .white
     }
     
@@ -85,13 +82,13 @@ extension TimerViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = subjectTableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as? SubjectsTableViewCell else { return UITableViewCell() }
-        cell.subjectLable.text = "수학"
+        cell.subjectLabel.text = "수학 \(indexPath.row)"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 95
     }
 }
 
@@ -115,7 +112,7 @@ extension TimerViewController {
         timerBackground.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.right.equalToSuperview()
-            $0.height.equalTo(view.frame.height / 2.7)
+            $0.height.equalTo(view.frame.height / 2.9)
         }
         
         timerTitleLabel.snp.makeConstraints {
@@ -137,12 +134,12 @@ extension TimerViewController {
         
         timerTimeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(timerSubtitleLabel.snp.bottom).offset(27)
+            $0.top.equalTo(timerSubtitleLabel.snp.bottom).offset((view.frame.height / 2.8) / 10.3)
         }
         
         subjectTableView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(timerBackground.snp.bottom).offset(1)
+            $0.top.equalTo(timerBackground.snp.bottom)
             $0.bottom.equalToSuperview()
         }
         

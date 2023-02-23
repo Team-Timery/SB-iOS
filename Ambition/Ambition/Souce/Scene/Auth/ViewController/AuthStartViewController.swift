@@ -75,7 +75,7 @@ extension AuthStartViewController {
             .filter { $0 == true }
             .subscribe(onNext: { [unowned self] _ in
                 let view = AuthInfoViewController()
-                navigationController?.pushViewController(view, animated: true)
+               navigationController?.pushViewController(view, animated: true)
             })
             .disposed(by: disposedBag)
         
