@@ -19,30 +19,8 @@ class TimerViewController: UIViewController {
         $0.font = .title2Bold
     }
     
-    private let timerSubtitleLabel = UILabel().then {
-        $0.text = "시간측정"
-        $0.textColor = .whiteElevated4
-        $0.font = .title3Bold
-    }
-    
-    private let dateLabel = RoundBackgroundLabelView(title: "오늘").then {
-        $0.layer.cornerRadius = 18
-    }
-    
-    private let timerBackground = UIView().then {
-        $0.layer.borderWidth = 0.5
-        $0.layer.borderColor = UIColor.whiteElevated4?.cgColor
-        $0.backgroundColor = .white
-    }
-    
-    private let timerTimeLabel = UILabel().then {
-        $0.text = "00:00:00"
-        $0.textColor = .black
-        $0.font = UIFont(name: "Pretendard-Medium", size: 64)
-    }
-    
     private let subjectTableView = UITableView().then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .whiteElevated1
     }
     
     private let addSubjetcButton = UIButton(type: .system).then {
@@ -61,21 +39,31 @@ class TimerViewController: UIViewController {
         subjectTableView.delegate = self
         subjectTableView.dataSource = self
         subjectTableView.separatorStyle = .none
+        subjectTableView.sectionHeaderTopPadding = 0
+        subjectTableView.showsVerticalScrollIndicator = false
         let insetView = UIView()
-        insetView.frame.size.height = 15
-        subjectTableView.tableHeaderView = insetView
+        insetView.backgroundColor = .clear
+        insetView.frame.size.height = 20
         subjectTableView.tableFooterView = insetView
         subjectTableView.register(SubjectsTableViewCell.self, forCellReuseIdentifier: "subjectCell")
-        view.backgroundColor = .whiteElevated1
+        view.backgroundColor = .white
     }
     
     override func viewDidLayoutSubviews() {
         addSubViews()
         makeConstraints()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let timerHeaderView = TimerHeaderView(timerText: "01:10:23")
+        timerHeaderView.frame.size.height = view.frame.height / 4.5
+        subjectTableView.tableHeaderView = timerHeaderView
+        self.subjectTableView.contentOffset.y = 0
+    }
 }
 
 extension TimerViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -83,63 +71,53 @@ extension TimerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = subjectTableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as? SubjectsTableViewCell else { return UITableViewCell() }
         cell.subjectLabel.text = "수학 \(indexPath.row)"
-        
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(indexPath.row == 0) {
+            return 110
+        }
         return 95
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let lineView = UIView()
+        lineView.backgroundColor = .whiteElevated4
+        return lineView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.5
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(scrollView.contentOffset.y < 0) {
+            scrollView.contentOffset.y = 0
+        }
     }
 }
 
 extension TimerViewController {
     private func addSubViews() {
         [
-            timerBackground,
+            timerTitleLabel,
             subjectTableView,
             addSubjetcButton
         ].forEach({ view.addSubview($0) })
-        
-        [
-            timerTitleLabel,
-            timerTimeLabel,
-            timerSubtitleLabel,
-            dateLabel
-        ].forEach({ timerBackground.addSubview($0) })
     }
     
     private func makeConstraints() {
-        timerBackground.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.height.equalTo(view.frame.height / 2.9)
-        }
         
         timerTitleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset((view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + 12)
-        }
-        
-        timerSubtitleLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(20)
-            $0.top.equalTo(timerTitleLabel.snp.bottom).offset(27)
-        }
-        
-        dateLabel.snp.makeConstraints {
-            $0.height.equalTo(36)
-            $0.width.equalTo(60)
-            $0.left.equalTo(timerSubtitleLabel.snp.right).offset(10)
-            $0.centerY.equalTo(timerSubtitleLabel)
-        }
-        
-        timerTimeLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(timerSubtitleLabel.snp.bottom).offset((view.frame.height / 2.8) / 10.3)
+            $0.top.equalToSuperview().inset((view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + 7)
         }
         
         subjectTableView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(timerBackground.snp.bottom)
+            $0.top.equalToSuperview().inset(view.safeAreaInsets.top + 13)
             $0.bottom.equalToSuperview()
         }
         

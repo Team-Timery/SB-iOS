@@ -115,8 +115,24 @@ extension TimerActivateViewController {
     private func bind() {
         gaugeInfoButton.rx.tap
             .bind {
-                let alertVC = SimpleAlertViewController(titleText: "집중 게이지란?", messageText: "집중 게이지는 10분을 넘기면 불타게 돼요. 처음부터 목표를 크게 잡기보다단 10분만이라도 열심히 하다보면 더 오래 집중할 수 있을 거에요!")
-                self.present(alertVC, animated: false)
+                let alertVC = SimpleAlertViewController(
+                    titleText: "집중 게이지란?",
+                    messageText: "집중 게이지는 10분을 넘기면 불타게 돼요. 처음부터 목표를 크게 잡기보다 단 10분만이라도 열심히 하다보면 더 오래 집중할 수 있을 거에요!",
+                    alertStyle: .dark
+                )
+                let deleteAlertVC = DeleteSubjectAlertViewController(
+                    subjectName: "수학",
+                    deleteAction: {
+                        print("삭제")
+                    },
+                    alertStyle: .light
+                )
+                let addAlertVC = AddSubjectAlertViewController(
+                    addAction: {
+                        print("확인")
+                    }
+                )
+                self.present(addAlertVC, animated: false)
             }
             .disposed(by: disposedBag)
     }
