@@ -49,6 +49,10 @@
 		4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */; };
 		4BFB657829A778E900FE9118 /* TimerActivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657729A778E900FE9118 /* TimerActivateViewController.swift */; };
 		4BFB657C29A7903C00FE9118 /* SimpleAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */; };
+		4BFB657E29AA384200FE9118 /* TimerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB657D29AA384200FE9118 /* TimerHeaderView.swift */; };
+		4BFB658129AB123000FE9118 /* AlertStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658029AB123000FE9118 /* AlertStyle.swift */; };
+		4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */; };
+		4BFB658829AB5CE800FE9118 /* AddSubjectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +93,10 @@
 		4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewCell.swift; sourceTree = "<group>"; };
 		4BFB657729A778E900FE9118 /* TimerActivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewController.swift; sourceTree = "<group>"; };
 		4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlertViewController.swift; sourceTree = "<group>"; };
+		4BFB657D29AA384200FE9118 /* TimerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHeaderView.swift; sourceTree = "<group>"; };
+		4BFB658029AB123000FE9118 /* AlertStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStyle.swift; sourceTree = "<group>"; };
+		4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSubjectAlertViewController.swift; sourceTree = "<group>"; };
+		4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE0296B29A3648900788B37 /* TimerViewController.swift */,
+				4BFB657D29AA384200FE9118 /* TimerHeaderView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -339,9 +348,20 @@
 		4BFB657A29A78F2500FE9118 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				4BFB658229AB149C00FE9118 /* Enum */,
 				4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */,
+				4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */,
+				4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		4BFB658229AB149C00FE9118 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB658029AB123000FE9118 /* AlertStyle.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,9 +469,12 @@
 				4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */,
 				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
 				4BDA20912997816D0032161C /* OauthButton.swift in Sources */,
+				4BFB657E29AA384200FE9118 /* TimerHeaderView.swift in Sources */,
 				4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
+				4BFB658829AB5CE800FE9118 /* AddSubjectAlertViewController.swift in Sources */,
+				4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */,
 				4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */,
 				4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */,
 				4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */,
@@ -460,6 +483,7 @@
 				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
 				4BFB657C29A7903C00FE9118 /* SimpleAlertViewController.swift in Sources */,
 				4BFB657829A778E900FE9118 /* TimerActivateViewController.swift in Sources */,
+				4BFB658129AB123000FE9118 /* AlertStyle.swift in Sources */,
 				4BDA208F299674550032161C /* AuthStartViewController.swift in Sources */,
 				4BE0296E29A3689E00788B37 /* UIView+roundCorners.swift in Sources */,
 				4BE0296129A11E1700788B37 /* AuthStartViewModel.swift in Sources */,
