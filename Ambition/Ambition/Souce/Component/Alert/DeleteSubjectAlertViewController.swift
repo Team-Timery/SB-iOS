@@ -16,7 +16,7 @@ class DeleteSubjectAlertViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private let alertBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken1
+        $0.backgroundColor = .grayDarken2
         $0.layer.cornerRadius = 30
     }
 
@@ -58,7 +58,8 @@ class DeleteSubjectAlertViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         titleLabel.text = (subjectName ?? "알수없음") + "을(를) 삭제하시겠습니까?"
         titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken1
+        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken2
+        alertDeleteButton.backgroundColor = alertStyle == .light ? .main : .grayDarken1
         modalPresentationStyle = .overFullScreen
         bind(deleteAction: deleteAction)
     }
@@ -122,7 +123,7 @@ extension DeleteSubjectAlertViewController {
         alertDeleteButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.leftMargin.equalTo(13)
-            $0.right.equalTo(view.snp.centerX).inset(4)
+            $0.right.equalTo(view.snp.centerX).offset(-4)
             $0.top.equalTo(messageLabel.snp.bottom).offset(33)
         }
         

@@ -16,7 +16,7 @@ class AddSubjectAlertViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private let alertBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken1
+        $0.backgroundColor = .grayDarken2
         $0.layer.cornerRadius = 30
     }
 
@@ -67,7 +67,8 @@ class AddSubjectAlertViewController: UIViewController {
     ) {
         super.init(nibName: nil, bundle: nil)
         titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken1
+        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken2
+        alertCancelButton.backgroundColor = alertStyle == .light ? .main : .grayDarken1
         modalPresentationStyle = .overFullScreen
         bind(addAction: addAction)
     }
@@ -149,7 +150,7 @@ extension AddSubjectAlertViewController {
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.leftMargin.equalTo(13)
-            $0.right.equalTo(view.snp.centerX).inset(4)
+            $0.right.equalTo(view.snp.centerX).offset(-4)
             $0.top.equalTo(emojiButton.snp.bottom).offset(33)
         }
     }
