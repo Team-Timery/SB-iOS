@@ -13,6 +13,8 @@ import RxCocoa
 
 class TimerViewController: UIViewController {
     
+    let disposeBag = DisposeBag()
+    
     private let timerTitleLabel = UILabel().then {
         $0.text = "타이머"
         $0.textColor = .black
@@ -43,7 +45,7 @@ class TimerViewController: UIViewController {
         subjectTableView.showsVerticalScrollIndicator = false
         let insetView = UIView()
         insetView.backgroundColor = .clear
-        insetView.frame.size.height = 20
+        insetView.frame.size.height = 120
         subjectTableView.tableFooterView = insetView
         subjectTableView.register(SubjectsTableViewCell.self, forCellReuseIdentifier: "subjectCell")
         view.backgroundColor = .white
