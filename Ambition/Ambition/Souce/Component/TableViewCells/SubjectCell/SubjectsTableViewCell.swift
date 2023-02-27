@@ -11,8 +11,6 @@ import Then
 
 class SubjectsTableViewCell: UITableViewCell {
     
-    let deleteAction: (() -> Void)?
-    
     private let cellBackgroundView = UIView().then {
         $0.layer.shadowColor = UIColor.gray.cgColor
         $0.layer.shadowOpacity = 0.8
@@ -43,15 +41,6 @@ class SubjectsTableViewCell: UITableViewCell {
         $0.tintColor = .whiteElevated3
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been impl")
-    }
-    
     override func layoutSubviews() {
         addSubviews()
         makeConstraints()
@@ -65,12 +54,6 @@ class SubjectsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
-    @objc
-    func cellT() {
-        print("TT")
-    }
-
 }
 
 extension SubjectsTableViewCell {
