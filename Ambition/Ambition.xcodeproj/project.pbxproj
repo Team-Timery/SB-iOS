@@ -53,6 +53,7 @@
 		4BFB658129AB123000FE9118 /* AlertStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658029AB123000FE9118 /* AlertStyle.swift */; };
 		4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */; };
 		4BFB658829AB5CE800FE9118 /* AddSubjectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */; };
+		4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658929ACBE7500FE9118 /* StopTimerAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		4BFB658029AB123000FE9118 /* AlertStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStyle.swift; sourceTree = "<group>"; };
 		4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSubjectAlertViewController.swift; sourceTree = "<group>"; };
 		4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectAlertViewController.swift; sourceTree = "<group>"; };
+		4BFB658929ACBE7500FE9118 /* StopTimerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTimerAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 				4BFB657B29A7903C00FE9118 /* SimpleAlertViewController.swift */,
 				4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */,
 				4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */,
+				4BFB658929ACBE7500FE9118 /* StopTimerAlertViewController.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */,
 				4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */,
 				4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */,
+				4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */,
 				4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */,
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
