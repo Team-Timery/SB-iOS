@@ -27,4 +27,5 @@ extension UIColor {
     //gray
     static let grayDarken1 = UIColor(named: "gray-Darken1")
     static let grayDarken2 = UIColor(named: "gray-Darken2")
+    static let grayDarken3 = UIColor(named: "gray-Darken3")
 }
