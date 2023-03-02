@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B16D3F32997B4E700F325C4 /* AuthDropDown.swift */; };
+		4B96114C29B015CB00019C50 /* SubjectStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */; };
+		4B96114F29B02E0700019C50 /* subjectTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96114E29B02E0700019C50 /* subjectTimeModel.swift */; };
+		4B96115529B0B95300019C50 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4B96115429B0B95300019C50 /* Charts */; };
 		4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA204429913E8D0032161C /* AppDelegate.swift */; };
 		4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA204629913E8D0032161C /* SceneDelegate.swift */; };
 		4BDA204E29913E8E0032161C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BDA204D29913E8E0032161C /* Assets.xcassets */; };
@@ -54,10 +57,15 @@
 		4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */; };
 		4BFB658829AB5CE800FE9118 /* AddSubjectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */; };
 		4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658929ACBE7500FE9118 /* StopTimerAlertViewController.swift */; };
+		4BFB659029ADF84700FE9118 /* AnalyzeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB658F29ADF84700FE9118 /* AnalyzeViewController.swift */; };
+		4BFB659329AE2AA000FE9118 /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFB659229AE2AA000FE9118 /* EmojiPicker */; };
+		4BFB659629AE2ACB00FE9118 /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFB659529AE2ACB00FE9118 /* MultiProgressView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B16D3F32997B4E700F325C4 /* AuthDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDropDown.swift; sourceTree = "<group>"; };
+		4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectStackViewCell.swift; sourceTree = "<group>"; };
+		4B96114E29B02E0700019C50 /* subjectTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subjectTimeModel.swift; sourceTree = "<group>"; };
 		4BDA204129913E8D0032161C /* Ambition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ambition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BDA204429913E8D0032161C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BDA204629913E8D0032161C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 		4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSubjectAlertViewController.swift; sourceTree = "<group>"; };
 		4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectAlertViewController.swift; sourceTree = "<group>"; };
 		4BFB658929ACBE7500FE9118 /* StopTimerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTimerAlertViewController.swift; sourceTree = "<group>"; };
+		4BFB658F29ADF84700FE9118 /* AnalyzeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,11 +115,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BFB659629AE2ACB00FE9118 /* MultiProgressView in Frameworks */,
 				4BDA205F299141880032161C /* RxCocoa in Frameworks */,
 				4BDA2067299141A30032161C /* Then in Frameworks */,
 				4BDA205C299141740032161C /* RxMoya in Frameworks */,
 				4BDA2061299141880032161C /* RxSwift in Frameworks */,
+				4B96115529B0B95300019C50 /* Charts in Frameworks */,
 				4BDA20982997B3910032161C /* DropDown in Frameworks */,
+				4BFB659329AE2AA000FE9118 /* EmojiPicker in Frameworks */,
 				4BDA205A299141740032161C /* Moya in Frameworks */,
 				4BDA2064299141980032161C /* SnapKit in Frameworks */,
 			);
@@ -119,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B96114D29B02DC400019C50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B96114E29B02E0700019C50 /* subjectTimeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4BDA203829913E8D0032161C = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +171,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4BFB658C29ADF7A100FE9118 /* Analyze */,
 				4BFB657529A7787100FE9118 /* TimerActivate */,
 				4BE0296829A3643C00788B37 /* Timer */,
 				4BDA208D2996743C0032161C /* Auth */,
@@ -367,6 +388,32 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		4BFB658C29ADF7A100FE9118 /* Analyze */ = {
+			isa = PBXGroup;
+			children = (
+				4B96114D29B02DC400019C50 /* Model */,
+				4BFB658D29ADF7E200FE9118 /* ViewModel */,
+				4BFB658E29ADF7E700FE9118 /* ViewController */,
+			);
+			path = Analyze;
+			sourceTree = "<group>";
+		};
+		4BFB658D29ADF7E200FE9118 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4BFB658E29ADF7E700FE9118 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB658F29ADF84700FE9118 /* AnalyzeViewController.swift */,
+				4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -391,6 +438,9 @@
 				4BDA2063299141980032161C /* SnapKit */,
 				4BDA2066299141A30032161C /* Then */,
 				4BDA20972997B3910032161C /* DropDown */,
+				4BFB659229AE2AA000FE9118 /* EmojiPicker */,
+				4BFB659529AE2ACB00FE9118 /* MultiProgressView */,
+				4B96115429B0B95300019C50 /* Charts */,
 			);
 			productName = Ambition;
 			productReference = 4BDA204129913E8D0032161C /* Ambition.app */;
@@ -426,6 +476,9 @@
 				4BDA2062299141980032161C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4BDA2065299141A30032161C /* XCRemoteSwiftPackageReference "Then" */,
 				4BDA20962997B3910032161C /* XCRemoteSwiftPackageReference "DropDown" */,
+				4BFB659129AE2AA000FE9118 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
+				4BFB659429AE2ACB00FE9118 /* XCRemoteSwiftPackageReference "MultiProgressView" */,
+				4B96115329B0B95300019C50 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 4BDA204229913E8D0032161C /* Products */;
 			projectDirPath = "";
@@ -463,9 +516,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */,
+				4B96114F29B02E0700019C50 /* subjectTimeModel.swift in Sources */,
 				4BFB656D29A48C4600FE9118 /* CustomTapBarController.swift in Sources */,
 				4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */,
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
+				4B96114C29B015CB00019C50 /* SubjectStackViewCell.swift in Sources */,
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
 				4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */,
@@ -485,6 +540,7 @@
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
+				4BFB659029ADF84700FE9118 /* AnalyzeViewController.swift in Sources */,
 				4BFB657C29A7903C00FE9118 /* SimpleAlertViewController.swift in Sources */,
 				4BFB657829A778E900FE9118 /* TimerActivateViewController.swift in Sources */,
 				4BFB658129AB123000FE9118 /* AlertStyle.swift in Sources */,
@@ -710,6 +766,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B96115329B0B95300019C50 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4BDA2058299141740032161C /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -750,9 +814,30 @@
 				kind = branch;
 			};
 		};
+		4BFB659129AE2AA000FE9118 /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/htmlprogrammist/EmojiPicker.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		4BFB659429AE2ACB00FE9118 /* XCRemoteSwiftPackageReference "MultiProgressView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-gallagher/MultiProgressView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B96115429B0B95300019C50 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B96115329B0B95300019C50 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		4BDA2059299141740032161C /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4BDA2058299141740032161C /* XCRemoteSwiftPackageReference "Moya" */;
@@ -787,6 +872,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4BDA20962997B3910032161C /* XCRemoteSwiftPackageReference "DropDown" */;
 			productName = DropDown;
+		};
+		4BFB659229AE2AA000FE9118 /* EmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFB659129AE2AA000FE9118 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			productName = EmojiPicker;
+		};
+		4BFB659529AE2ACB00FE9118 /* MultiProgressView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFB659429AE2ACB00FE9118 /* XCRemoteSwiftPackageReference "MultiProgressView" */;
+			productName = MultiProgressView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
