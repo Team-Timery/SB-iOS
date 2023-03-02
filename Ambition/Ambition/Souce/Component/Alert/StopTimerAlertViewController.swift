@@ -23,7 +23,7 @@ class StopTimerAlertViewController: UIViewController {
     }
 
     private let titleLabel = UILabel().then {
-        $0.text = "정말 타이머 측정을 멈추시겠어요?"
+        $0.text = "타이머 측정을 멈추시겠어요?"
         $0.textColor = .white
         $0.font = .title3Bold
     }
