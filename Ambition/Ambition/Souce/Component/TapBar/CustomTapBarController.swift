@@ -21,7 +21,7 @@ class CustomTapBarController: UITabBarController {
         recordVC.tabBarItem.title = "측정 기록"
         recordVC.tabBarItem.image = UIImage(named: "tabbar_record")
         
-        let analyzeVC = TimerViewController()
+        let analyzeVC = AnalyzeViewController()
         analyzeVC.tabBarItem.title = "분석"
         analyzeVC.tabBarItem.image = UIImage(named: "tabbar_analyze")
         
