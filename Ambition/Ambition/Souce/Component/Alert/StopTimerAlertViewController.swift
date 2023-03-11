@@ -18,7 +18,7 @@ class StopTimerAlertViewController: UIViewController {
     private var isShow: Bool = false
 
     private let alertBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken2
+        $0.backgroundColor = .grayDarken3
         $0.layer.cornerRadius = 30
     }
 
@@ -55,7 +55,7 @@ class StopTimerAlertViewController: UIViewController {
             string: "ex) 수학 35~40페이지",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.whiteElevated4!]
         )
-        $0.backgroundColor = .grayDarken1
+        $0.backgroundColor = .grayDarken2
         $0.layer.cornerRadius = 10
         $0.autocapitalizationType = .none
         $0.autocorrectionType = .no
@@ -78,17 +78,17 @@ class StopTimerAlertViewController: UIViewController {
     }
 
     init(
-        stopAction: @escaping () -> Void,
+        action: @escaping () -> Void,
         alertStyle: AlertStyle = .light,
         isShowMemo: Bool = false
     ) {
         super.init(nibName: nil, bundle: nil)
         titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken2
-        alertStopButton.backgroundColor = alertStyle == .light ? .main : .grayDarken1
+        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
+        alertStopButton.backgroundColor = alertStyle == .light ? .main : .grayDarken2
         isShow = isShowMemo
         modalPresentationStyle = .overFullScreen
-        bind(stopAction: stopAction)
+        bind(stopAction: action)
     }
 
     required init?(coder: NSCoder) {
@@ -210,13 +210,13 @@ extension StopTimerAlertViewController {
         alertStopButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.leftMargin.equalTo(13)
-            $0.right.equalTo(view.snp.centerX).offset(-4)
+            $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
             $0.top.greaterThanOrEqualTo(memoLabel.snp.bottom).offset(18)
         }
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.right.equalToSuperview().inset(13)
-            $0.left.equalTo(view.snp.centerX).offset(4) 
+            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4) 
             $0.top.greaterThanOrEqualTo(memoLabel.snp.bottom).offset(18)
         }
     }

@@ -16,7 +16,7 @@ class SimpleAlertViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     private let alertBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken2
+        $0.backgroundColor = .grayDarken3
         $0.layer.cornerRadius = 30
     }
     
@@ -42,7 +42,7 @@ class SimpleAlertViewController: UIViewController {
         titleLabel.text = titleText
         messageLabel.text = messageText
         titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken2
+        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
         modalPresentationStyle = .overFullScreen
     }
     

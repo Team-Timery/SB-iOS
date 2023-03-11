@@ -1,8 +1,8 @@
 //
-//  DeleteSubjectAlertViewController.swift
+//  QuitAlertViewController.swift
 //  Ambition
 //
-//  Created by 조병진 on 2023/02/26.
+//  Created by 조병진 on 2023/03/08.
 //
 
 import UIKit
@@ -11,57 +11,57 @@ import Then
 import RxSwift
 import RxCocoa
 
-class DeleteSubjectAlertViewController: UIViewController {
-    
+class QuitAlertViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private let alertBackgroundView = UIView().then {
         $0.backgroundColor = .grayDarken3
         $0.layer.cornerRadius = 30
     }
+    
+    private let imageView = UIImageView(image: UIImage(named: "circle_exclamation_mark"))
 
     private let titleLabel = UILabel().then {
+        $0.text = "정말 탈퇴하시겠어요?"
         $0.textColor = .white
         $0.font = .title3Bold
+        $0.textAlignment = .center
     }
-
+    
     private let messageLabel = UILabel().then {
-        $0.text = "측정 기록은 지워지지 않아요"
+        $0.text = "측정 기록, 과목, 내 정보등\n모든 데이터가 삭제되고 복구할 수 없어요"
         $0.textColor = .whiteElevated4
         $0.font = .main1Medium
-        $0.textAlignment = .left
+        $0.textAlignment = .center
         $0.numberOfLines = .max
-        $0.lineBreakStrategy = .pushOut
     }
 
-    private let alertCancelButton = UIButton(type: .system).then {
-        $0.setTitle("취소", for: .normal)
-        $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
-        $0.backgroundColor = .mainElevated
-        $0.layer.cornerRadius = 30
-    }
-
-    private let alertDeleteButton = UIButton(type: .system).then {
-        $0.setTitle("삭제", for: .normal)
+    private let alertQuitButton = UIButton(type: .system).then {
+        $0.setTitle("탈퇴하기", for: .normal)
         $0.setTitleColor(UIColor.mainElevated, for: .normal)
         $0.titleLabel?.font = UIFont.title3Bold
         $0.backgroundColor = .main
         $0.layer.cornerRadius = 30
     }
 
+    private let alertCancelButton = UIButton(type: .system).then {
+        $0.setTitle("계속 쓸래요", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = UIFont.title3Bold
+        $0.backgroundColor = .mainElevated
+        $0.layer.cornerRadius = 30
+    }
+
     init(
-        subjectName: String? = nil,
         action: @escaping () -> Void,
         alertStyle: AlertStyle = .light
     ) {
         super.init(nibName: nil, bundle: nil)
-        titleLabel.text = (subjectName ?? "알수없음") + "을(를) 삭제하시겠습니까?"
         titleLabel.textColor = alertStyle == .light ? .black : .white
         alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
-        alertDeleteButton.backgroundColor = alertStyle == .light ? .main : .grayDarken2
+        alertQuitButton.backgroundColor = alertStyle == .light ? .main : .grayDarken2
         modalPresentationStyle = .overFullScreen
-        bind(deleteAction: action)
+        bind(quitAction: action)
     }
 
     required init?(coder: NSCoder) {
@@ -79,17 +79,17 @@ class DeleteSubjectAlertViewController: UIViewController {
     }
 }
 
-extension DeleteSubjectAlertViewController {
-    private func bind(deleteAction: @escaping () -> Void) {
+extension QuitAlertViewController {
+    private func bind(quitAction: @escaping () -> Void) {
         alertCancelButton.rx.tap
             .bind {
                 self.dismiss(animated: false)
             }
             .disposed(by: disposeBag)
         
-        alertDeleteButton.rx.tap
+        alertQuitButton.rx.tap
             .bind {
-                deleteAction()
+                quitAction()
             }
             .disposed(by: disposeBag)
     }
@@ -98,10 +98,11 @@ extension DeleteSubjectAlertViewController {
         view.addSubview(alertBackgroundView)
         
         [
+            imageView,
             titleLabel,
             messageLabel,
             alertCancelButton,
-            alertDeleteButton
+            alertQuitButton
         ].forEach({ alertBackgroundView.addSubview($0) })
     }
 
@@ -109,29 +110,32 @@ extension DeleteSubjectAlertViewController {
         alertBackgroundView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.right.left.equalToSuperview().inset(30)
-            $0.bottom.equalTo(alertDeleteButton.snp.bottom).offset(14)
+            $0.bottom.equalTo(alertQuitButton.snp.bottom).offset(14)
+        }
+        imageView.snp.makeConstraints {
+            $0.size.equalTo(70)
+            $0.topMargin.equalTo(36)
+            $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.topMargin.equalTo(36)
-            $0.left.right.equalToSuperview().inset(45)
+            $0.top.equalTo(imageView.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
         }
         messageLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(9)
-            $0.right.left.equalToSuperview().inset(45)
+            $0.left.right.equalToSuperview().inset(22)
         }
-        
-        alertDeleteButton.snp.makeConstraints {
+        alertQuitButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.leftMargin.equalTo(13)
             $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
-            $0.top.equalTo(messageLabel.snp.bottom).offset(33)
+            $0.top.equalTo(messageLabel.snp.bottom).offset(36)
         }
-        
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.right.equalToSuperview().inset(13)
             $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
-            $0.top.equalTo(messageLabel.snp.bottom).offset(33)
+            $0.top.equalTo(messageLabel.snp.bottom).offset(36)
         }
     }
 }

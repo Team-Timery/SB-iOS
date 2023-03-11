@@ -16,12 +16,12 @@ class TimerActivateViewController: UIViewController {
     private let disposedBag = DisposeBag()
     
     private let timerBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken3
+        $0.backgroundColor = .grayDarken4
         $0.layer.cornerRadius = 20
     }
     
     private let gaugeBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken3
+        $0.backgroundColor = .grayDarken4
         $0.layer.cornerRadius = 20
     }
     
@@ -122,24 +122,28 @@ extension TimerActivateViewController {
                 )
                 let deleteAlertVC = DeleteSubjectAlertViewController(
                     subjectName: "수학",
-                    deleteAction: {
+                    action: {
                         print("삭제")
                     },
                     alertStyle: .dark
                 )
                 let addAlertVC = AddSubjectAlertViewController(
-                    addAction: {
+                    action: {
                         print("확인")
                     },
                     alertStyle: .dark
                 )
                 let stopAlertVC = StopTimerAlertViewController(
-                    stopAction: {
+                    action: {
                         print("멈춤")
                     },
                     alertStyle: .dark
                 )
-                self.present(stopAlertVC, animated: false)
+                let quitAlert = QuitAlertViewController(
+                    action: { print("탈퇴") },
+                    alertStyle: .light
+                )
+                self.present(quitAlert, animated: false)
             }
             .disposed(by: disposedBag)
     }

@@ -16,7 +16,7 @@ class AddSubjectAlertViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private let alertBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken2
+        $0.backgroundColor = .grayDarken3
         $0.layer.cornerRadius = 30
     }
 
@@ -62,15 +62,15 @@ class AddSubjectAlertViewController: UIViewController {
     }
 
     init(
-        addAction: @escaping () -> Void,
+        action: @escaping () -> Void,
         alertStyle: AlertStyle = .light
     ) {
         super.init(nibName: nil, bundle: nil)
         titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken2
-        alertCancelButton.backgroundColor = alertStyle == .light ? .main : .grayDarken1
+        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
+        alertCancelButton.backgroundColor = alertStyle == .light ? .main : .grayDarken2
         modalPresentationStyle = .overFullScreen
-        bind(addAction: addAction)
+        bind(addAction: action)
     }
 
     required init?(coder: NSCoder) {
@@ -144,13 +144,13 @@ extension AddSubjectAlertViewController {
         alertAddButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.right.equalToSuperview().inset(13)
-            $0.left.equalTo(view.snp.centerX).offset(4)
+            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
             $0.top.equalTo(emojiButton.snp.bottom).offset(33)
         }
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.leftMargin.equalTo(13)
-            $0.right.equalTo(view.snp.centerX).offset(-4)
+            $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
             $0.top.equalTo(emojiButton.snp.bottom).offset(33)
         }
     }
