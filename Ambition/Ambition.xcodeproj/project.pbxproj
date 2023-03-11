@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B16D3F32997B4E700F325C4 /* AuthDropDown.swift */; };
+		4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62C84829B95C3000B7A10C /* NoticeViewController.swift */; };
+		4B62C84F29B988B000B7A10C /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */; };
 		4B96114C29B015CB00019C50 /* SubjectStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */; };
 		4B96114F29B02E0700019C50 /* subjectTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96114E29B02E0700019C50 /* subjectTimeModel.swift */; };
 		4B96115529B0B95300019C50 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4B96115429B0B95300019C50 /* Charts */; };
+		4B96115929B34EC700019C50 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96115829B34EC700019C50 /* MoreViewController.swift */; };
+		4B96116129B355E400019C50 /* MoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96116029B355E400019C50 /* MoreListTableViewCell.swift */; };
+		4B96116329B3776E00019C50 /* ListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96116229B3776E00019C50 /* ListHeaderView.swift */; };
+		4BB4B48F29B83AC60088D5C9 /* QuitAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB4B48E29B83AC60088D5C9 /* QuitAlertViewController.swift */; };
 		4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA204429913E8D0032161C /* AppDelegate.swift */; };
 		4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA204629913E8D0032161C /* SceneDelegate.swift */; };
 		4BDA204E29913E8E0032161C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BDA204D29913E8E0032161C /* Assets.xcassets */; };
@@ -64,8 +70,14 @@
 
 /* Begin PBXFileReference section */
 		4B16D3F32997B4E700F325C4 /* AuthDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDropDown.swift; sourceTree = "<group>"; };
+		4B62C84829B95C3000B7A10C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectStackViewCell.swift; sourceTree = "<group>"; };
 		4B96114E29B02E0700019C50 /* subjectTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subjectTimeModel.swift; sourceTree = "<group>"; };
+		4B96115829B34EC700019C50 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		4B96116029B355E400019C50 /* MoreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreListTableViewCell.swift; sourceTree = "<group>"; };
+		4B96116229B3776E00019C50 /* ListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderView.swift; sourceTree = "<group>"; };
+		4BB4B48E29B83AC60088D5C9 /* QuitAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitAlertViewController.swift; sourceTree = "<group>"; };
 		4BDA204129913E8D0032161C /* Ambition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ambition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BDA204429913E8D0032161C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BDA204629913E8D0032161C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,12 +143,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B62C84A29B97E7800B7A10C /* NoticeView */ = {
+			isa = PBXGroup;
+			children = (
+				4B62C84B29B97E8200B7A10C /* Cell */,
+				4B62C84829B95C3000B7A10C /* NoticeViewController.swift */,
+			);
+			path = NoticeView;
+			sourceTree = "<group>";
+		};
+		4B62C84B29B97E8200B7A10C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4B96114D29B02DC400019C50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4B96114E29B02E0700019C50 /* subjectTimeModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4B96115629B34E9700019C50 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				4B96115C29B3522100019C50 /* Model */,
+				4B96115729B34EB000019C50 /* ViewController */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		4B96115729B34EB000019C50 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4BB4B49029B957750088D5C9 /* ContentViews */,
+				4B96115F29B355C700019C50 /* Cell */,
+				4B96115829B34EC700019C50 /* MoreViewController.swift */,
+				4B96116229B3776E00019C50 /* ListHeaderView.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4B96115A29B34ED700019C50 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4B96115B29B34F4800019C50 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4B96115C29B3522100019C50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4B96115F29B355C700019C50 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4B96116029B355E400019C50 /* MoreListTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4BB4B49029B957750088D5C9 /* ContentViews */ = {
+			isa = PBXGroup;
+			children = (
+				4B62C84A29B97E7800B7A10C /* NoticeView */,
+			);
+			path = ContentViews;
 			sourceTree = "<group>";
 		};
 		4BDA203829913E8D0032161C = {
@@ -171,11 +259,12 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4B96115629B34E9700019C50 /* More */,
 				4BFB658C29ADF7A100FE9118 /* Analyze */,
 				4BFB657529A7787100FE9118 /* TimerActivate */,
 				4BE0296829A3643C00788B37 /* Timer */,
 				4BDA208D2996743C0032161C /* Auth */,
-				4BDA206A299142150032161C /* mainView */,
+				4BDA206A299142150032161C /* Main */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -189,12 +278,12 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		4BDA206A299142150032161C /* mainView */ = {
+		4BDA206A299142150032161C /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				4BDA206B299142240032161C /* MainViewController.swift */,
 			);
-			path = mainView;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		4BDA206D2991477B0032161C /* Fonts */ = {
@@ -228,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				4BFB657A29A78F2500FE9118 /* Alert */,
-				4BFB656F29A6658D00FE9118 /* TableViewCells */,
 				4BFB656B29A48C0100FE9118 /* TapBar */,
 				4BDA20832994EBFE0032161C /* Auth */,
 				4BE0296F29A372D300788B37 /* RoundBackgroundLabelView.swift */,
@@ -263,8 +351,8 @@
 		4BDA208D2996743C0032161C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4BE0295F29A11DEC00788B37 /* ViewController */,
 				4BE0295E29A11DE600788B37 /* ViewModel */,
+				4BE0295F29A11DEC00788B37 /* ViewController */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -307,6 +395,7 @@
 		4BE0296929A3645000788B37 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4B96115B29B34F4800019C50 /* Cell */,
 				4BE0296B29A3648900788B37 /* TimerViewController.swift */,
 				4BFB657D29AA384200FE9118 /* TimerHeaderView.swift */,
 			);
@@ -326,22 +415,6 @@
 				4BFB656C29A48C4600FE9118 /* CustomTapBarController.swift */,
 			);
 			path = TapBar;
-			sourceTree = "<group>";
-		};
-		4BFB656F29A6658D00FE9118 /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				4BFB657029A665A000FE9118 /* SubjectCell */,
-			);
-			path = TableViewCells;
-			sourceTree = "<group>";
-		};
-		4BFB657029A665A000FE9118 /* SubjectCell */ = {
-			isa = PBXGroup;
-			children = (
-				4BFB657129A665FF00FE9118 /* SubjectsTableViewCell.swift */,
-			);
-			path = SubjectCell;
 			sourceTree = "<group>";
 		};
 		4BFB657529A7787100FE9118 /* TimerActivate */ = {
@@ -376,6 +449,7 @@
 				4BFB658329AB14E500FE9118 /* DeleteSubjectAlertViewController.swift */,
 				4BFB658729AB5CE800FE9118 /* AddSubjectAlertViewController.swift */,
 				4BFB658929ACBE7500FE9118 /* StopTimerAlertViewController.swift */,
+				4BB4B48E29B83AC60088D5C9 /* QuitAlertViewController.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -408,8 +482,8 @@
 		4BFB658E29ADF7E700FE9118 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4B96115A29B34ED700019C50 /* Cell */,
 				4BFB658F29ADF84700FE9118 /* AnalyzeViewController.swift */,
-				4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -522,6 +596,8 @@
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
 				4B96114C29B015CB00019C50 /* SubjectStackViewCell.swift in Sources */,
 				4BDA208A2994EF2D0032161C /* UIColor+Colors.swift in Sources */,
+				4B62C84F29B988B000B7A10C /* NoticeTableViewCell.swift in Sources */,
+				4B96116329B3776E00019C50 /* ListHeaderView.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
 				4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */,
 				4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */,
@@ -530,12 +606,16 @@
 				4BFB657E29AA384200FE9118 /* TimerHeaderView.swift in Sources */,
 				4B16D3F42997B4E700F325C4 /* AuthDropDown.swift in Sources */,
 				4BDA20872994EECD0032161C /* AuthNextButton.swift in Sources */,
+				4B96115929B34EC700019C50 /* MoreViewController.swift in Sources */,
+				4B96116129B355E400019C50 /* MoreListTableViewCell.swift in Sources */,
+				4BB4B48F29B83AC60088D5C9 /* QuitAlertViewController.swift in Sources */,
 				4BDA206C299142240032161C /* MainViewController.swift in Sources */,
 				4BFB658829AB5CE800FE9118 /* AddSubjectAlertViewController.swift in Sources */,
 				4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */,
 				4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */,
 				4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */,
 				4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */,
+				4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */,
 				4BE0294E299D1BD300788B37 /* AuthTermsList.swift in Sources */,
 				4BDA2093299791440032161C /* AuthInfoViewController.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
