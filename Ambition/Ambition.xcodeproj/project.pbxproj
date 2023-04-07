@@ -367,12 +367,9 @@
 			isa = PBXGroup;
 			children = (
 				4B05378C29D50E5800B63BA3 /* Service */,
-				4BDA206D2991477B0032161C /* Fonts */,
+				4BF7EF1629E0670B002741EF /* SupportingFiles */,
+				4BF7EF1529E0664F002741EF /* Resource */,
 				4BDA20812994EA5D0032161C /* Source */,
-				4BDA2069299141F20032161C /* Application */,
-				4BDA204D29913E8E0032161C /* Assets.xcassets */,
-				4BDA204F29913E8E0032161C /* LaunchScreen.storyboard */,
-				4BDA205229913E8E0032161C /* Info.plist */,
 			);
 			path = Ambition;
 			sourceTree = "<group>";
@@ -389,15 +386,6 @@
 				4BDA206A299142150032161C /* Main */,
 			);
 			path = Scene;
-			sourceTree = "<group>";
-		};
-		4BDA2069299141F20032161C /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				4BDA204429913E8D0032161C /* AppDelegate.swift */,
-				4BDA204629913E8D0032161C /* SceneDelegate.swift */,
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		4BDA206A299142150032161C /* Main */ = {
@@ -530,6 +518,26 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4BF7EF1529E0664F002741EF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA206D2991477B0032161C /* Fonts */,
+				4BDA204D29913E8E0032161C /* Assets.xcassets */,
+				4BDA204F29913E8E0032161C /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4BF7EF1629E0670B002741EF /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				4BDA204429913E8D0032161C /* AppDelegate.swift */,
+				4BDA204629913E8D0032161C /* SceneDelegate.swift */,
+				4BDA205229913E8E0032161C /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		4BFB656B29A48C0100FE9118 /* TapBar */ = {
@@ -907,7 +915,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 629Q9H7922;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Ambition/Info.plist;
+				INFOPLIST_FILE = Ambition/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -939,7 +947,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 629Q9H7922;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Ambition/Info.plist;
+				INFOPLIST_FILE = Ambition/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
