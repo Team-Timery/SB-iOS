@@ -1,10 +1,3 @@
-//
-//  AuthTermsList.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/15.
-//
-
 import Foundation
 import UIKit
 import SnapKit
@@ -14,51 +7,51 @@ import RxCocoa
 
 class AuthTermsList: UIView {
     let disposebag = DisposeBag()
-    
+
     private let allFormLabel = UILabel().then {
         $0.text = "모두 동의"
         $0.textColor = .black
         $0.font = .main1Medium
     }
-    
+
     private let form1Label = UILabel().then {
         $0.text = "[필수] 이용약관 동의"
         $0.textColor = .black
         $0.font = .main1Medium
     }
-    
+
     private let form2Label = UILabel().then {
         $0.text = "[필수] 개인정보 수집·이용 동의"
         $0.textColor = .black
         $0.font = .main1Medium
     }
-    
+
     private let form3Label = UILabel().then {
         $0.text = "[선택] 홍보 및 마케팅 수집·이용 동의"
         $0.textColor = .black
         $0.font = .main1Medium
     }
-    
+
     private let allFormToggleButton = AuthToggleButton()
     private let form1ToggleButton = AuthToggleButton()
     private let form2ToggleButton = AuthToggleButton()
     private let form3ToggleButton = AuthToggleButton()
-    
+
     private let spacerBarView = UIView().then {
         $0.backgroundColor = .whiteElevated4
     }
-    
+
     init() {
         super.init(frame: .zero)
         layer.cornerRadius = 20
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.whiteElevated4?.cgColor
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         addSubViews()
         makeConstraints()
@@ -79,7 +72,7 @@ extension AuthTermsList {
             spacerBarView
         ].forEach({ addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         spacerBarView.snp.makeConstraints {
             $0.top.equalTo(allFormLabel.snp.bottom).offset(33)

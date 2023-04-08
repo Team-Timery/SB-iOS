@@ -1,28 +1,21 @@
-//
-//  MoreListTableViewCell.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/03/04.
-//
-
 import UIKit
 import SnapKit
 import Then
 
 class MoreListTableViewCell: UITableViewCell {
-    
+
     let titleLabel = UILabel().then {
         $0.textColor = .black
         $0.font = .title3Medium
     }
-    
+
     let arrowImage = UIImageView(image: UIImage(named: "round_left_arrow"))
-    
+
     let leftSubLabel = UILabel().then {
         $0.textColor = .whiteElevated4
         $0.font = .main1Medium
     }
-    
+
     override func layoutSubviews() {
         addSubViews()
         makeConstraints()
@@ -48,7 +41,7 @@ extension MoreListTableViewCell {
             leftSubLabel
         ].forEach({ addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         titleLabel.snp.makeConstraints {
             $0.leftMargin.equalTo(10)
@@ -65,5 +58,3 @@ extension MoreListTableViewCell {
         }
     }
 }
-
-

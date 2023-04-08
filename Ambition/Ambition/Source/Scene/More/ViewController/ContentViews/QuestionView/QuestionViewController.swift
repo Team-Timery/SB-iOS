@@ -1,10 +1,3 @@
-//
-//  QuestionViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/03/31.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -46,15 +39,19 @@ extension QuestionViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as? QuestionTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "questionCell",
+            for: indexPath
+        ) as? QuestionTableViewCell else { return UITableViewCell() }
 
         cell.titleLabel.text = "Q. 앰비션 타이머는 무엇이 다른가요?"
         cell.contentLabel.text = "알잘딱하게 분석을 활용해보세요. 알잘딱알잘딱알잘딱알잘딱"
 
-        cell.contentLabel.isHidden = selectIndex == indexPath ? false : true
-        cell.showContentArrowImageView.image = UIImage(named: "\(selectIndex == indexPath ? "up" : "down")_arrow_round_line")?.withRenderingMode(.alwaysTemplate)
+        cell.contentLabel.isHidden = !(selectIndex == indexPath)
+        let arrowImage = UIImage(named: "\(selectIndex == indexPath ? "up" : "down")_arrow_round_line")
+        cell.showContentArrowImageView.image = arrowImage?.withRenderingMode(.alwaysTemplate)
         cell.layoutIfNeeded()
-        
+
         return cell
     }
 
@@ -68,7 +65,7 @@ extension QuestionViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadRows(at: [selectCell, indexPath], with: .automatic)
         } else {
             selectIndex = indexPath
-            tableView.reloadRows(at: [indexPath],with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 

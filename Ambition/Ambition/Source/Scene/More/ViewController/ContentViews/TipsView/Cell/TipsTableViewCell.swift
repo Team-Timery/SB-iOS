@@ -1,10 +1,3 @@
-//
-//  TipsTableViewCell.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/04/02.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -12,7 +5,7 @@ import RxSwift
 import RxCocoa
 
 class TipsTableViewCell: UITableViewCell {
-    
+
     let contentBackgroundView = UIView().then {
         $0.backgroundColor = .whiteElevated1
         $0.layer.cornerRadius = 15

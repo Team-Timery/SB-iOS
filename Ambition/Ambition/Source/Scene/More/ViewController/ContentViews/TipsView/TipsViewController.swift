@@ -1,10 +1,3 @@
-//
-//  TipsViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/04/02.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -12,7 +5,6 @@ import RxSwift
 import RxCocoa
 
 class TipsViewController: UIViewController {
-
     private var selectIndex: IndexPath?
 
     private let titleLabel = UILabel().then {
@@ -21,7 +13,7 @@ class TipsViewController: UIViewController {
         $0.font = .title1Bold
     }
 
-    private let TipsTableView = UITableView().then {
+    private let tipsTableView = UITableView().then {
         $0.clipsToBounds = true
         $0.backgroundColor = .clear
     }
@@ -29,10 +21,10 @@ class TipsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        TipsTableView.delegate = self
-        TipsTableView.dataSource = self
-        TipsTableView.register(TipsTableViewCell.self, forCellReuseIdentifier: "tipCell")
-        TipsTableView.separatorStyle = .none
+        tipsTableView.delegate = self
+        tipsTableView.dataSource = self
+        tipsTableView.register(TipsTableViewCell.self, forCellReuseIdentifier: "tipCell")
+        tipsTableView.separatorStyle = .none
     }
 
     override func viewDidLayoutSubviews() {
@@ -45,7 +37,7 @@ extension TipsViewController {
     private func addSubViews() {
         [
             titleLabel,
-            TipsTableView
+            tipsTableView
         ].forEach({ view.addSubview($0) })
     }
 
@@ -54,7 +46,7 @@ extension TipsViewController {
             $0.leftMargin.equalTo(20)
             $0.topMargin.equalTo(15)
         }
-        TipsTableView.snp.makeConstraints {
+        tipsTableView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.width.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -68,15 +60,19 @@ extension TipsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "tipCell", for: indexPath) as? TipsTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "tipCell",
+            for: indexPath
+        ) as? TipsTableViewCell else { return UITableViewCell() }
 
         cell.titleLabel.text = "1. 효율적인 공부를 위한 메모하기"
         cell.contentLabel.text = "알잘딱하게 분석을 활용해보세요. 알잘딱알잘딱알잘딱알잘딱"
 
-        cell.contentLabel.isHidden = selectIndex == indexPath ? false : true
-        cell.showContentArrowImageView.image = UIImage(named: "\(selectIndex == indexPath ? "up" : "down")_arrow_round_line")?.withRenderingMode(.alwaysTemplate)
+        cell.contentLabel.isHidden = !(selectIndex == indexPath)
+        let arrowImage = UIImage(named: "\(selectIndex == indexPath ? "up" : "down")_arrow_round_line")
+        cell.showContentArrowImageView.image = arrowImage?.withRenderingMode(.alwaysTemplate)
         cell.layoutIfNeeded()
-        
+
         return cell
     }
 
@@ -90,7 +86,7 @@ extension TipsViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadRows(at: [selectCell, indexPath], with: .automatic)
         } else {
             selectIndex = indexPath
-            tableView.reloadRows(at: [indexPath],with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 

@@ -22,12 +22,11 @@
 		4B3DA2F129D98CE00041524E /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3DA2F029D98CE00041524E /* ProfileResponse.swift */; };
 		4B3DA2F329D98DB10041524E /* SubjectsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3DA2F229D98DB10041524E /* SubjectsResponse.swift */; };
 		4B3DA2F529D9C56D0041524E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3DA2F429D9C56D0041524E /* AuthService.swift */; };
+		4B43E52329E130F900FEFD68 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B43E52229E130F900FEFD68 /* .swiftlint.yml */; };
 		4B5E971029DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */; };
 		4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62C84829B95C3000B7A10C /* NoticeViewController.swift */; };
 		4B62C84F29B988B000B7A10C /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */; };
 		4B96114C29B015CB00019C50 /* SubjectStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */; };
-		4B96114F29B02E0700019C50 /* subjectTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96114E29B02E0700019C50 /* subjectTimeModel.swift */; };
-		4B96115529B0B95300019C50 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4B96115429B0B95300019C50 /* Charts */; };
 		4B96115929B34EC700019C50 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96115829B34EC700019C50 /* MoreViewController.swift */; };
 		4B96116129B355E400019C50 /* MoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96116029B355E400019C50 /* MoreListTableViewCell.swift */; };
 		4B96116329B3776E00019C50 /* ListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96116229B3776E00019C50 /* ListHeaderView.swift */; };
@@ -98,11 +97,11 @@
 		4B3DA2F029D98CE00041524E /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
 		4B3DA2F229D98DB10041524E /* SubjectsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsResponse.swift; sourceTree = "<group>"; };
 		4B3DA2F429D9C56D0041524E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4B43E52229E130F900FEFD68 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTimeLineCellView.swift; sourceTree = "<group>"; };
 		4B62C84829B95C3000B7A10C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		4B96114B29B015CB00019C50 /* SubjectStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectStackViewCell.swift; sourceTree = "<group>"; };
-		4B96114E29B02E0700019C50 /* subjectTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subjectTimeModel.swift; sourceTree = "<group>"; };
 		4B96115829B34EC700019C50 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		4B96116029B355E400019C50 /* MoreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreListTableViewCell.swift; sourceTree = "<group>"; };
 		4B96116229B3776E00019C50 /* ListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderView.swift; sourceTree = "<group>"; };
@@ -161,7 +160,6 @@
 				4BDA2067299141A30032161C /* Then in Frameworks */,
 				4BDA205C299141740032161C /* RxMoya in Frameworks */,
 				4BDA2061299141880032161C /* RxSwift in Frameworks */,
-				4B96115529B0B95300019C50 /* Charts in Frameworks */,
 				4BDA20982997B3910032161C /* DropDown in Frameworks */,
 				4BFB659329AE2AA000FE9118 /* EmojiPicker in Frameworks */,
 				4BDA205A299141740032161C /* Moya in Frameworks */,
@@ -278,18 +276,9 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		4B96114D29B02DC400019C50 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4B96114E29B02E0700019C50 /* subjectTimeModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4B96115629B34E9700019C50 /* More */ = {
 			isa = PBXGroup;
 			children = (
-				4B96115C29B3522100019C50 /* Model */,
 				4B96115729B34EB000019C50 /* ViewController */,
 			);
 			path = More;
@@ -322,13 +311,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		4B96115C29B3522100019C50 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4B96115F29B355C700019C50 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +332,7 @@
 		4BDA203829913E8D0032161C = {
 			isa = PBXGroup;
 			children = (
+				4B43E52229E130F900FEFD68 /* .swiftlint.yml */,
 				4BDA204329913E8D0032161C /* Ambition */,
 				4BDA204229913E8D0032161C /* Products */,
 			);
@@ -597,7 +580,6 @@
 		4BFB658C29ADF7A100FE9118 /* Analyze */ = {
 			isa = PBXGroup;
 			children = (
-				4B96114D29B02DC400019C50 /* Model */,
 				4BFB658D29ADF7E200FE9118 /* ViewModel */,
 				4BFB658E29ADF7E700FE9118 /* ViewController */,
 			);
@@ -627,6 +609,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BDA205529913E8E0032161C /* Build configuration list for PBXNativeTarget "Ambition" */;
 			buildPhases = (
+				4BDF909E29E1128800D0E276 /* SwiftLint Script */,
 				4BDA203D29913E8D0032161C /* Sources */,
 				4BDA203E29913E8D0032161C /* Frameworks */,
 				4BDA203F29913E8D0032161C /* Resources */,
@@ -646,7 +629,6 @@
 				4BDA20972997B3910032161C /* DropDown */,
 				4BFB659229AE2AA000FE9118 /* EmojiPicker */,
 				4BFB659529AE2ACB00FE9118 /* MultiProgressView */,
-				4B96115429B0B95300019C50 /* Charts */,
 				4B17E46D29DBE30F00460145 /* FSCalendar */,
 			);
 			productName = Ambition;
@@ -685,7 +667,6 @@
 				4BDA20962997B3910032161C /* XCRemoteSwiftPackageReference "DropDown" */,
 				4BFB659129AE2AA000FE9118 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
 				4BFB659429AE2ACB00FE9118 /* XCRemoteSwiftPackageReference "MultiProgressView" */,
-				4B96115329B0B95300019C50 /* XCRemoteSwiftPackageReference "Charts" */,
 				4B17E46C29DBE30F00460145 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 4BDA204229913E8D0032161C /* Products */;
@@ -702,6 +683,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B43E52329E130F900FEFD68 /* .swiftlint.yml in Resources */,
 				4BDA207F2991478A0032161C /* Pretendard-Bold.otf in Resources */,
 				4BDA20772991478A0032161C /* Pretendard-ExtraLight.otf in Resources */,
 				4BDA20792991478A0032161C /* Pretendard-Thin.otf in Resources */,
@@ -718,6 +700,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BDF909E29E1128800D0E276 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nif test -d \"$HOME/.mint/bin\"; then\n  PATH=\"$HOME/.mint/bin:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, run setup.sh (or download from https://github.com/realm/SwiftLint)\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4BDA203D29913E8D0032161C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -726,7 +730,6 @@
 				4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */,
 				4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */,
 				4B3DA2E829D965850041524E /* TipsViewController.swift in Sources */,
-				4B96114F29B02E0700019C50 /* subjectTimeModel.swift in Sources */,
 				4BFB656D29A48C4600FE9118 /* CustomTapBarController.swift in Sources */,
 				4B17E47329DD23DD00460145 /* Date+toString.swift in Sources */,
 				4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */,
@@ -1002,14 +1005,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		4B96115329B0B95300019C50 /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		4BDA2058299141740032161C /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -1073,11 +1068,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B17E46C29DBE30F00460145 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
-		};
-		4B96115429B0B95300019C50 /* Charts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B96115329B0B95300019C50 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
 		};
 		4BDA2059299141740032161C /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;

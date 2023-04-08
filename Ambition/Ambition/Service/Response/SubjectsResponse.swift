@@ -1,6 +1,6 @@
 import Foundation
 
-struct subjectsResponse: Decodable {
+struct SubjectsResponse: Decodable {
     private enum CodingKeys: String, CodingKey {
         case subjectList = "subject_list"
     }
@@ -19,18 +19,3 @@ struct SubjectDetailResponse: Decodable {
     let userID: Int
     let todayRecord: String
 }
-
-//{
-//    "subject_list" : [
-//        {
-//            "subject_id":1,
-//            "user_id":1,
-//            "today_record": 03:33:00
-//        },
-//                {
-//            "subject_id":1,
-//            "user_id":1,
-//            "today_record": 03:33:00
-//        }
-//    ]
-//}

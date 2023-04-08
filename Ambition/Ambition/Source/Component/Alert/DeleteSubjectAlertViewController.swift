@@ -1,10 +1,3 @@
-//
-//  DeleteSubjectAlertViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/26.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -12,7 +5,7 @@ import RxSwift
 import RxCocoa
 
 class DeleteSubjectAlertViewController: UIViewController {
-    
+
     private let disposeBag = DisposeBag()
 
     private let alertBackgroundView = UIView().then {
@@ -86,7 +79,7 @@ extension DeleteSubjectAlertViewController {
                 self.dismiss(animated: false)
             }
             .disposed(by: disposeBag)
-        
+
         alertDeleteButton.rx.tap
             .bind {
                 deleteAction()
@@ -96,7 +89,7 @@ extension DeleteSubjectAlertViewController {
 
     private func addSubViews() {
         view.addSubview(alertBackgroundView)
-        
+
         [
             titleLabel,
             messageLabel,
@@ -119,14 +112,12 @@ extension DeleteSubjectAlertViewController {
             $0.top.equalTo(titleLabel.snp.bottom).offset(9)
             $0.right.left.equalToSuperview().inset(45)
         }
-        
         alertDeleteButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.leftMargin.equalTo(13)
             $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
             $0.top.equalTo(messageLabel.snp.bottom).offset(33)
         }
-        
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.right.equalToSuperview().inset(13)

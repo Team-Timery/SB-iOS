@@ -5,6 +5,7 @@ import RxSwift
 import RxCocoa
 import FSCalendar
 
+// swiftlint:disable function_body_length
 class CalenderViewController: UIViewController {
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {
         $0.layer.opacity = 0
@@ -43,7 +44,7 @@ class CalenderViewController: UIViewController {
         $0.locale = Locale(identifier: "ko_KR")
         $0.scope = .month
     }
-    
+
     private let calendarStudyTimeMarkLabel = UILabel().then {
         $0.text = "전체 내역"
         $0.font = .title2Bold
@@ -52,11 +53,11 @@ class CalenderViewController: UIViewController {
 
     private let studyTimeView = CalendarTimeCellView(title: "공부시간")
     private let maxStudyTimeView = CalendarTimeCellView(title: "최대 집중시간")
-    
+
     private let footerView = UIView().then {
         $0.backgroundColor = .whiteElevated2
     }
-    
+
     private let timeLineContentView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -89,7 +90,7 @@ class CalenderViewController: UIViewController {
         addSubViews()
         makeConstraints()
     }
-    
+
     func domeDate() {
         studyTimeView.content = "0시 0분 0초"
         maxStudyTimeView.content = "0시 0분 0초"
@@ -112,13 +113,11 @@ extension CalenderViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("\(date.toString(to: "YYYY년 MM월 dd일")) 가 선택됨")
     }
-
-    //최대 날짜
+    // 최대 날짜
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
-
-    //캘린더 이벤트
+    // 캘린더 이벤트
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if date.toString(to: "YYYY-MM-dd").contains(Date().toString(to: "YYYY-MM-dd")) {
             return 1
@@ -158,7 +157,7 @@ extension CalenderViewController {
             timeLineTitleMarkLabel
         ].forEach({ timeLineContentView.addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         topView.snp.makeConstraints {
             $0.width.equalToSuperview()
@@ -170,8 +169,7 @@ extension CalenderViewController {
             $0.width.equalToSuperview()
             $0.height.equalTo(1)
         }
-        
-        //스크롤뷰
+        // 스크롤뷰
         calenderScrollView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
             $0.top.equalToSuperview()
@@ -181,7 +179,7 @@ extension CalenderViewController {
         contentView.snp.makeConstraints {
             $0.width.top.bottom.equalToSuperview()
         }
-        //캘린더
+        // 캘린더
         monthTitleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.topMargin.equalToSuperview()
@@ -219,7 +217,7 @@ extension CalenderViewController {
             $0.top.equalTo(calendarStudyTimeMarkLabel.snp.bottom).offset(35)
             $0.left.equalTo(studyTimeView.snp.right).offset(8)
         }
-        //타임라인
+        // 타임라인
         timeLineContentView.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.top.equalTo(footerView.snp.bottom)
@@ -238,8 +236,7 @@ extension CalenderViewController {
             $0.height.equalTo(34)
             $0.width.equalTo(view.frame.width / 1.3)
         }
-        
-        //칸 나누는 회색 선
+        // 칸 나누는 회색 선
         footerView.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalTo(12)
@@ -254,22 +251,22 @@ extension CalenderViewController {
         calendarView.placeholderType = .none
         calendarView.backgroundColor = .white
 
-        //오늘 날짜 설정
+        // 오늘 날짜 설정
         calendarView.appearance.todayColor = .whiteElevated2
         calendarView.appearance.titleTodayColor = .grayDarken1
 
-        //선택 날짜 설정
+        // 선택 날짜 설정
         calendarView.appearance.selectionColor = .mainElevated
 
-        //토~일 날짜 설정
+        // 토~일 날짜 설정
         calendarView.appearance.weekdayFont = .main2Medium
         calendarView.appearance.weekdayTextColor = .whiteElevated4
 
-        //헤더 설정
+        // 헤더 설정
         calendarView.calendarHeaderView.isHidden = true
         calendarView.headerHeight = 160
 
-        //이벤트 설정
+        // 이벤트 설정
         calendarView.appearance.eventDefaultColor = .whiteElevated4
         calendarView.appearance.eventSelectionColor = .whiteElevated4
     }
@@ -285,3 +282,4 @@ extension CalenderViewController: UIScrollViewDelegate {
         })
     }
 }
+// swiftlint:enable function_body_length

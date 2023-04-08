@@ -25,7 +25,7 @@ class CalendarTimeCellView: UIView {
         $0.font = UIFont(name: "Pretendard-SemiBold", size: 14)
         $0.textColor = .black
     }
-    
+
     init(title: String, times: String? = nil) {
         super.init(frame: .zero)
         backgroundColor = .whiteElevated1

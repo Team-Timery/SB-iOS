@@ -29,7 +29,7 @@ class SubjectTimeLineCellView: UIStackView {
         }
     }
     public var cellWidth: Double = 0
-    
+
     private var showMemo: Bool = false
 
     private let subjectCellView = UIView().then {

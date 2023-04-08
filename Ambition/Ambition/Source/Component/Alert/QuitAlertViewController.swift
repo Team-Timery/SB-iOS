@@ -1,10 +1,3 @@
-//
-//  QuitAlertViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/03/08.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -18,7 +11,7 @@ class QuitAlertViewController: UIViewController {
         $0.backgroundColor = .grayDarken3
         $0.layer.cornerRadius = 30
     }
-    
+
     private let imageView = UIImageView(image: UIImage(named: "circle_exclamation_mark"))
 
     private let titleLabel = UILabel().then {
@@ -27,7 +20,7 @@ class QuitAlertViewController: UIViewController {
         $0.font = .title3Bold
         $0.textAlignment = .center
     }
-    
+
     private let messageLabel = UILabel().then {
         $0.text = "측정 기록, 과목, 내 정보등\n모든 데이터가 삭제되고 복구할 수 없어요"
         $0.textColor = .whiteElevated4
@@ -86,7 +79,7 @@ extension QuitAlertViewController {
                 self.dismiss(animated: false)
             }
             .disposed(by: disposeBag)
-        
+
         alertQuitButton.rx.tap
             .bind {
                 quitAction()
@@ -96,7 +89,7 @@ extension QuitAlertViewController {
 
     private func addSubViews() {
         view.addSubview(alertBackgroundView)
-        
+
         [
             imageView,
             titleLabel,

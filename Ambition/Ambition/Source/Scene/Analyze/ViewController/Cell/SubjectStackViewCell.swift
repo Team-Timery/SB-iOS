@@ -1,10 +1,3 @@
-//
-//  SubjectStackViewCell.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/03/02.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -13,26 +6,26 @@ class SubjectStackViewCell: UIView {
     private let emojiLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 40)
     }
-    
+
     private let subjectNameLabel = UILabel().then {
         $0.textColor = .grayDarken2
         $0.font = .title3Bold
     }
-    
+
     private let percentLabel = UILabel().then {
         $0.textColor = .whiteElevated4
         $0.font = .title3Medium
     }
-    
+
     private let timeLabel = UILabel().then {
         $0.textColor = .whiteElevated5
         $0.font = .title2Medium
     }
-    
+
     override var intrinsicContentSize: CGSize {
         CGSize(width: 0, height: 75)
     }
-    
+
     init(
         emoji: String?,
         subjectName: String?,
@@ -46,11 +39,11 @@ class SubjectStackViewCell: UIView {
         timeLabel.text = time
         backgroundColor = .white
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         addSubViews()
         makeConstraints()
@@ -59,7 +52,7 @@ class SubjectStackViewCell: UIView {
 
 extension SubjectStackViewCell {
     private func addSubViews() {
-        
+
         [
             emojiLabel,
             subjectNameLabel,
@@ -67,7 +60,7 @@ extension SubjectStackViewCell {
             timeLabel
         ].forEach({ addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         emojiLabel.snp.makeConstraints {
             $0.leftMargin.equalTo(28)

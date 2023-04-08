@@ -1,10 +1,3 @@
-//
-//  NoticeTableViewCell.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/03/09.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -81,7 +74,7 @@ extension NoticeTableViewCell {
             showContentArrowImageView
         ].forEach({ contentBackgroundView.addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         contentBackgroundView.snp.makeConstraints {
             $0.center.equalToSuperview()

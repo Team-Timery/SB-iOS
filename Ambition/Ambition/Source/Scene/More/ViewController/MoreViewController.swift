@@ -5,6 +5,7 @@ import RxSwift
 import RxCocoa
 import MessageUI
 
+// swiftlint: disable line_length
 class MoreViewController: UIViewController {
     private let sections = ["", "공지", "도움말", "약관 및 정책", "앱 정보", "피드백", "계정 관리", "회원탈퇴"]
     private let sectionElements: [[String]] = [
@@ -17,25 +18,25 @@ class MoreViewController: UIViewController {
         ["로그아웃"],
         ["탈퇴하기"]
     ]
-    
+
     private let composeVC = MFMailComposeViewController()
-    
+
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {
         $0.layer.opacity = 0
     }
-    
+
     private let topShadowView = UIView().then {
         $0.backgroundColor = .whiteElevated3
         $0.layer.opacity = 0
     }
-    
+
     private let listTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.contentInsetAdjustmentBehavior = .scrollableAxes
         $0.backgroundColor = .white
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -49,7 +50,7 @@ class MoreViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
+
     override func viewDidLayoutSubviews() {
         addSubViews()
         makeConstraints()
@@ -63,7 +64,7 @@ extension MoreViewController {
             topView,
             topShadowView
         ].forEach({ view.addSubview($0) })
-        
+
     }
     private func makeConstraints() {
         topView.snp.makeConstraints {
@@ -81,7 +82,9 @@ extension MoreViewController {
             $0.top.equalToSuperview()
         }
     }
-    
+
+    // MARK: - 나중에 로직 변경해야 할듯
+
     private func selectPath(selectName: String) {
         switch selectName {
         case "회원정보":
@@ -107,9 +110,7 @@ extension MoreViewController {
             print(selectName)
         case "탈퇴하기":
             let quitAlert = QuitAlertViewController(
-                action: {
-                    
-                },
+                action: {},
                 alertStyle: .light
             )
             present(quitAlert, animated: false)
@@ -117,7 +118,7 @@ extension MoreViewController {
             print(selectName + " defalte")
         }
     }
-    
+
     private func sendEmail() {
        if MFMailComposeViewController.canSendMail() {
            composeVC.mailComposeDelegate = self
@@ -146,50 +147,50 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sectionElements[section].count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = listTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? MoreListTableViewCell else { return UITableViewCell() }
-        
-        if(indexPath.section == 4) {
+        guard let cell = listTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? MoreListTableViewCell
+        else { return UITableViewCell() }
+        if indexPath.section == 4 {
             cell.arrowImage.layer.opacity = 0
             cell.leftSubLabel.text = "1.0.0"
         }
-        
+
         cell.titleLabel.text = sectionElements[indexPath.section][indexPath.row]
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectPath(selectName: sectionElements[indexPath.section][indexPath.row])
     }
-    
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         footerView.backgroundColor = .whiteElevated3
-        
+
         return section < 7 ? footerView : nil
     }
-    
+
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return indexPath.section != 4 ? indexPath : nil
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         [
             topView,
@@ -199,3 +200,4 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         })
     }
 }
+// swiftlint: enable line_length

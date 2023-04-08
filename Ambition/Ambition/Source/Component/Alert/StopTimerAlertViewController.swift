@@ -1,10 +1,3 @@
-//
-//  StopTimerAlertViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/27.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -14,7 +7,7 @@ import RxCocoa
 class StopTimerAlertViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
-    
+
     private var isShow: Bool = false
 
     private let alertBackgroundView = UIView().then {
@@ -27,7 +20,7 @@ class StopTimerAlertViewController: UIViewController {
         $0.textColor = .white
         $0.font = .title3Bold
     }
-    
+
     private let messageLabel = UILabel().then {
         $0.text = "과거의 나를 이겨야 해요"
         $0.textColor = .whiteElevated4
@@ -36,18 +29,18 @@ class StopTimerAlertViewController: UIViewController {
         $0.numberOfLines = .max
         $0.lineBreakStrategy = .pushOut
     }
-    
+
     private let memoLabel = UILabel().then {
         $0.text = "공부한 내용 메모하기"
         $0.textColor = .white
         $0.font = .main1Medium
     }
-    
+
     private let memoPopupButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "down_arrow_round_line"), for: .normal)
         $0.tintColor = .white
     }
-    
+
     private let memoTextField = UITextField().then {
         $0.font = .main1Medium
         $0.textColor = .white
@@ -120,13 +113,13 @@ extension StopTimerAlertViewController {
                 self.dismiss(animated: false)
             }
             .disposed(by: disposeBag)
-        
+
         alertStopButton.rx.tap
             .bind {
                 stopAction()
             }
             .disposed(by: disposeBag)
-        
+
         memoPopupButton.rx.tap
             .bind { [unowned self] in
                 isShow.toggle()
@@ -135,9 +128,9 @@ extension StopTimerAlertViewController {
             }
             .disposed(by: disposeBag)
     }
-    
+
     private func memoAnimation() {
-        if(self.isShow) {
+        if self.isShow {
             self.memoTextField.snp.remakeConstraints {
                 $0.top.equalTo(self.memoLabel.snp.bottom).offset(18)
             }
@@ -167,7 +160,7 @@ extension StopTimerAlertViewController {
 
     private func addSubViews() {
         view.addSubview(alertBackgroundView)
-        
+
         [
             titleLabel,
             messageLabel,
@@ -216,7 +209,7 @@ extension StopTimerAlertViewController {
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.right.equalToSuperview().inset(13)
-            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4) 
+            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
             $0.top.greaterThanOrEqualTo(memoLabel.snp.bottom).offset(18)
         }
     }

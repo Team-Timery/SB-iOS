@@ -1,10 +1,3 @@
-//
-//  NoticeViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/03/09.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -67,7 +60,11 @@ extension NoticeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "noticeCell", for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "noticeCell",
+            for: indexPath
+        ) as? NoticeTableViewCell else { return UITableViewCell() }
+
         cell.titleLabel.text = "공지사항 입니다."
         cell.subtitleLabel.text = "2023.07.31"
         cell.contentLabel.text = """
@@ -76,9 +73,10 @@ extension NoticeViewController: UITableViewDelegate, UITableViewDataSource {
         아무튼 그렇다고요.
         """
         cell.contentLabel.isHidden = selectIndex == indexPath ? false : true
-        cell.showContentArrowImageView.image = UIImage(named: "\(selectIndex == indexPath ? "up" : "down")_arrow_round_line")?.withRenderingMode(.alwaysTemplate)
+        let arrowImage = UIImage(named: "\(selectIndex == indexPath ? "up" : "down")_arrow_round_line")
+        cell.showContentArrowImageView.image = arrowImage?.withRenderingMode(.alwaysTemplate)
         cell.layoutIfNeeded()
-        
+
         return cell
     }
 
@@ -92,7 +90,7 @@ extension NoticeViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadRows(at: [selectCell, indexPath], with: .automatic)
         } else {
             selectIndex = indexPath
-            tableView.reloadRows(at: [indexPath],with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 

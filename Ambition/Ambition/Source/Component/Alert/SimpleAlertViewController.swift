@@ -1,10 +1,3 @@
-//
-//  SimpleAlertViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/23.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -12,19 +5,19 @@ import RxSwift
 import RxCocoa
 
 class SimpleAlertViewController: UIViewController {
-    
+
     private let disposeBag = DisposeBag()
-    
+
     private let alertBackgroundView = UIView().then {
         $0.backgroundColor = .grayDarken3
         $0.layer.cornerRadius = 30
     }
-    
+
     private let titleLabel = UILabel().then {
         $0.textColor = .white
         $0.font = .title3Bold
     }
-    
+
     private let messageLabel = UILabel().then {
         $0.textColor = .whiteElevated4
         $0.font = .main1Medium
@@ -32,7 +25,7 @@ class SimpleAlertViewController: UIViewController {
         $0.numberOfLines = .max
         $0.lineBreakStrategy = .pushOut
     }
-    
+
     init(
         titleText: String? = nil,
         messageText: String? = nil,
@@ -45,11 +38,11 @@ class SimpleAlertViewController: UIViewController {
         alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
         modalPresentationStyle = .overFullScreen
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private let alertButton = UIButton(type: .system).then {
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(UIColor.white, for: .normal)
@@ -57,13 +50,13 @@ class SimpleAlertViewController: UIViewController {
         $0.backgroundColor = .mainElevated
         $0.layer.cornerRadius = 21
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black.withAlphaComponent(0.5)
         bind()
     }
-    
+
     override func viewDidLayoutSubviews() {
         addSubViews()
         makeConstraints()
@@ -78,17 +71,17 @@ extension SimpleAlertViewController {
             }
             .disposed(by: disposeBag)
     }
-    
+
     private func addSubViews() {
         view.addSubview(alertBackgroundView)
-        
+
         [
             titleLabel,
             messageLabel,
             alertButton
         ].forEach({ alertBackgroundView.addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         alertBackgroundView.snp.makeConstraints {
             $0.center.equalToSuperview()

@@ -1,69 +1,63 @@
-//
-//  TimerActivateViewController.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/23.
-//
-
 import UIKit
 import SnapKit
 import Then
 import RxSwift
 import RxCocoa
 
+// swiftlint:disable function_body_length line_length
 class TimerActivateViewController: UIViewController {
-    
+
     private let disposedBag = DisposeBag()
-    
+
     private let startTimer = PublishRelay<Bool>()
-    
+
     private let timerBackgroundView = UIView().then {
         $0.backgroundColor = .grayDarken4
         $0.layer.cornerRadius = 20
     }
-    
+
     private let gaugeBackgroundView = UIView().then {
         $0.backgroundColor = .grayDarken4
         $0.layer.cornerRadius = 20
     }
-    
+
     private let timerTotalTimeLabel = UILabel().then {
         $0.text = "00:00:00"
         $0.textColor = .white
         $0.font = UIFont(name: "Pretendard-Medium", size: 64)
         $0.textAlignment = .center
     }
-    
+
     private let timerSubjectTimeLabel = UILabel().then {
         $0.text = "00:00:00"
         $0.textColor = .white
         $0.font = .main2Medium
     }
-    
+
     private let timerTodayTimeLabel = UILabel().then {
         $0.text = "00:00:00"
         $0.textColor = .white
         $0.font = .main2Medium
     }
-    
+
     private let todayTimerTitleLabel = UILabel().then {
         $0.text = "오늘"
         $0.textColor = .white
         $0.font = .main2Bold
     }
-    
+
     private let subjectTimerTitleLabel = UILabel().then {
         $0.text = "과목"
         $0.textColor = .white
         $0.font = .main2Bold
     }
-    
+
     private let gaugeTitleLabel = UILabel().then {
         $0.text = "집중게이지"
         $0.textColor = .white
         $0.font = .title3Bold
     }
-    
+
     private let gaugeProgressBarView = UIProgressView().then {
         $0.progressViewStyle = .bar
         $0.progressTintColor = .mainElevated
@@ -71,39 +65,38 @@ class TimerActivateViewController: UIViewController {
         $0.layer.cornerRadius = 4
         $0.clipsToBounds = true
     }
-    
+
     private let gaugeStartLabel = UILabel().then {
         $0.text = "0분"
         $0.textColor = .white
         $0.font = .indicatorMedium
     }
-    
+
     private let gaugeEndLabel = UILabel().then {
         $0.text = "10분"
         $0.textColor = .white
         $0.font = .indicatorMedium
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
            return .lightContent
     }
-    
+
     private let gaugeInfoButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "info_circle"), for: .normal)
         $0.tintColor = .white
     }
-    
+
     private let stopButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "unfill_x_gray"), for: .normal)
         $0.tintColor = .whiteElevated5
     }
-    
+
     private lazy var input = TimerActivateViewModel.Input(
         startSignal: self.startTimer.asSignal()
     )
     private lazy var output = viewModel.transform(input: input)
     let viewModel = TimerActivateViewModel()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,12 +104,12 @@ class TimerActivateViewController: UIViewController {
         bind()
         startTimer.accept(true)
     }
-    
+
     override func viewDidLayoutSubviews() {
         addSubViews()
         makeConstraints()
     }
-    
+
 }
 
 extension TimerActivateViewController {
@@ -124,13 +117,13 @@ extension TimerActivateViewController {
         output.timerText.asObservable()
             .bind(to: timerTotalTimeLabel.rx.text)
             .disposed(by: disposedBag)
-        
+
         output.progressBarValue.asObservable()
             .bind { [unowned self] progressValue in
                 gaugeProgressBarView.setProgress(progressValue, animated: true)
             }
             .disposed(by: disposedBag)
-        
+
         gaugeInfoButton.rx.tap
             .bind {
                 let alertVC = SimpleAlertViewController(
@@ -138,41 +131,41 @@ extension TimerActivateViewController {
                     messageText: "집중 게이지는 10분을 넘기면 불타게 돼요. 처음부터 목표를 크게 잡기보다 단 10분만이라도 열심히 하다보면 더 오래 집중할 수 있을 거에요!",
                     alertStyle: .dark
                 )
-                let deleteAlertVC = DeleteSubjectAlertViewController(
-                    subjectName: "수학",
-                    action: {
-                        print("삭제")
-                    },
-                    alertStyle: .dark
-                )
-                let addAlertVC = AddSubjectAlertViewController(
-                    action: {
-                        print("확인")
-                    },
-                    alertStyle: .dark
-                )
-                let stopAlertVC = StopTimerAlertViewController(
-                    action: {
-                        print("멈춤")
-                    },
-                    alertStyle: .dark
-                )
-                let quitAlert = QuitAlertViewController(
-                    action: { print("탈퇴") },
-                    alertStyle: .light
-                )
+//                let deleteAlertVC = DeleteSubjectAlertViewController(
+//                    subjectName: "수학",
+//                    action: {
+//                        print("삭제")
+//                    },
+//                    alertStyle: .dark
+//                )
+//                let addAlertVC = AddSubjectAlertViewController(
+//                    action: {
+//                        print("확인")
+//                    },
+//                    alertStyle: .dark
+//                )
+//                let stopAlertVC = StopTimerAlertViewController(
+//                    action: {
+//                        print("멈춤")
+//                    },
+//                    alertStyle: .dark
+//                )
+//                let quitAlert = QuitAlertViewController(
+//                    action: { print("탈퇴") },
+//                    alertStyle: .light
+//                )
                 self.present(alertVC, animated: false)
             }
             .disposed(by: disposedBag)
     }
-    
+
     private func addSubViews() {
         [
             timerBackgroundView,
             gaugeBackgroundView,
             stopButton
         ].forEach({ view.addSubview($0) })
-        
+
         [
             timerTotalTimeLabel,
             timerSubjectTimeLabel,
@@ -180,7 +173,7 @@ extension TimerActivateViewController {
             todayTimerTitleLabel,
             subjectTimerTitleLabel
         ].forEach({ timerBackgroundView.addSubview($0) })
-        
+
         [
             gaugeTitleLabel,
             gaugeProgressBarView,
@@ -189,7 +182,7 @@ extension TimerActivateViewController {
             gaugeInfoButton
         ].forEach({ gaugeBackgroundView.addSubview($0) })
     }
-    
+
     private func makeConstraints() {
         timerBackgroundView.snp.makeConstraints {
             $0.top.equalToSuperview().inset((view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + 42)
@@ -250,3 +243,4 @@ extension TimerActivateViewController {
         }
     }
 }
+// swiftlint:enable function_body_length line_length

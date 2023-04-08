@@ -1,10 +1,3 @@
-//
-//  AuthNextButton.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/09.
-//
-
 import Foundation
 import UIKit
 import SnapKit
@@ -15,11 +8,11 @@ import RxCocoa
 class AuthNextButton: UIButton {
 //    let disposeBag = DisposeBag()
 //    let isTouch = PublishRelay<Bool>()
-    
+
     private let testView = UIView().then {
         $0.backgroundColor = .blue
     }
-    
+
     init(title: String) {
         super.init(frame: .zero)
         backgroundColor = .mainElevated
@@ -28,11 +21,11 @@ class AuthNextButton: UIButton {
         titleLabel?.font = UIFont.title2Bold
         layer.cornerRadius = 30
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 //    override func layoutSubviews() {
 //        addSubview(testView)
 //        testView.snp.makeConstraints {
@@ -42,7 +35,7 @@ class AuthNextButton: UIButton {
 //    }
 }
 
-extension AuthNextButton  {
+extension AuthNextButton {
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        isTouch.accept(true)
 //    }

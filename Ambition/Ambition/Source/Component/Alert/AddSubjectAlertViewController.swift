@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class AddSubjectAlertViewController: UIViewController {
-    
     private let disposeBag = DisposeBag()
 
     private let alertBackgroundView = UIView().then {
@@ -26,7 +25,7 @@ class AddSubjectAlertViewController: UIViewController {
         $0.font = .title3Bold
         $0.textAlignment = .center
     }
-    
+
     private let emojiButton = UIButton(type: .system).then {
         $0.setTitle("🔥", for: .normal)
         $0.backgroundColor = .whiteElevated1
@@ -34,7 +33,7 @@ class AddSubjectAlertViewController: UIViewController {
         $0.layer.borderColor = UIColor.black.cgColor
         $0.layer.cornerRadius = 10
     }
-    
+
     private let subjectNameTextField = UITextField().then {
         $0.font = .main1Medium
         $0.placeholder = "ex) 과학"
@@ -100,7 +99,7 @@ extension AddSubjectAlertViewController {
                 self.dismiss(animated: false)
             }
             .disposed(by: disposeBag)
-        
+
         alertAddButton.rx.tap
             .bind {
                 addAction()
@@ -110,7 +109,7 @@ extension AddSubjectAlertViewController {
 
     private func addSubViews() {
         view.addSubview(alertBackgroundView)
-        
+
         [
             titleLabel,
             emojiButton,

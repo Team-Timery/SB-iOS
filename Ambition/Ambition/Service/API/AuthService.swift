@@ -23,7 +23,6 @@ extension AuthService: TargetType {
 
     var method: Moya.Method {
         switch self {
-
         case .login, .singup:
             return .post
         case .reissuanceRefreshToken:
@@ -33,12 +32,12 @@ extension AuthService: TargetType {
 
     var task: Moya.Task {
         switch self {
-        case .singup(email: let email, password: let password, name: let name, age: let age, sex: let sex):
+        case .singup(let email, let password, let name, let age, let sex):
             return .requestParameters(parameters: [
                 "email": email,
                 "password": password,
                 "name": name,
-                "age" : age,
+                "age": age,
                 "sex": sex
 
             ], encoding: JSONEncoding.default)
@@ -47,7 +46,7 @@ extension AuthService: TargetType {
         }
     }
 
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return ["Content-Type": "application/json"]
     }
 }

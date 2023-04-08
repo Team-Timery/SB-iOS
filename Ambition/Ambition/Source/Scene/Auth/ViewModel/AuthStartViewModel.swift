@@ -1,10 +1,3 @@
-//
-//  AuthStartViewModel.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/18.
-//
-
 import Foundation
 import Moya
 import RxSwift
@@ -15,30 +8,30 @@ class AuthStartViewModel: ViewModelType {
         let googleOauthSignal: Signal<Void>
         let appleOauthSignal: Signal<Void>
     }
-    
+
     struct Output {
         let googleOauthAction: Signal<Bool>
         let appleOauthAction: Signal<Bool>
     }
-    
+
     private let googleOauthAction = PublishRelay<Bool>()
     private let appleOauthAction = PublishRelay<Bool>()
-    
+
     var disposedBag = DisposeBag()
-    
+
     func transform(input: Input) -> Output {
         input.appleOauthSignal
             .emit { [unowned self] _ in
                 appleOauthAction.accept(true)
             }
             .disposed(by: disposedBag)
-        
+
         input.googleOauthSignal
             .emit { [unowned self] _ in
                 googleOauthAction.accept(true)
             }
             .disposed(by: disposedBag)
-        
+
         return Output(
             googleOauthAction: googleOauthAction.asSignal(),
             appleOauthAction: appleOauthAction.asSignal()
