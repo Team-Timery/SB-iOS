@@ -8,18 +8,20 @@ import RxCocoa
 class AuthTextField: UITextField {
     let disposedBag = DisposeBag()
 
-    var isErrorRelay = BehaviorRelay(value: false)
+    private var isSecure: Bool = true
 
-    private var textRegex: String?
-
-    private let cancelButton = UIButton(type: .custom).then {
-        $0.setImage(UIImage(named: "fill_x_gray"), for: .normal)
-        $0.contentMode = .scaleAspectFit
+    public var isError: Bool? {
+        didSet {
+            guard let isError = isError else { return }
+            self.errorLabel.layer.opacity = isError ? 1 : 0
+            self.underLineView.backgroundColor = isError ? .error : .whiteElevated3
+        }
     }
 
-    private let titleLabel = UILabel().then {
-        $0.textColor = .whiteElevated4
-        $0.font = .main2Medium
+    private var placeholderText: String?
+
+    private let underLineView = UIView().then {
+        $0.backgroundColor = .whiteElevated3
     }
 
     private let errorLabel = UILabel().then {
@@ -28,32 +30,35 @@ class AuthTextField: UITextField {
         $0.layer.opacity = 0
     }
 
+    private let secureButton = UIButton(type: .system).then {
+        $0.tintColor = .grayDarken1
+        $0.setImage(UIImage(named: "eye_able"), for: .normal)
+    }
+
     init(
-        label: String,
+        placeholder: String? = nil,
         errorMessage: String? = nil,
-        regex: String? = nil,
+        isError: Bool = false,
+        isSecure: Bool = false,
         keyboardType: UIKeyboardType = .default
     ) {
         super.init(frame: .zero)
         self.keyboardType = keyboardType
+        autocapitalizationType = .none
         autocorrectionType = .no
+        isSecureTextEntry = isSecure
+        self.isError = isError
         delegate = self
-        backgroundColor = .white
         textColor = .black
-        font = UIFont.title3Medium
-        titleLabel.text = label
+        font = .title3Medium
+        clearButtonMode = .always
+        placeholderText = placeholder
         errorLabel.text = errorMessage
-        textRegex = regex
-        layer.cornerRadius = 10
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.whiteElevated4?.cgColor
-        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: frame.height))
-        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: frame.height))
-        leftView = leftPaddingView
-        rightView = rightPaddingView
-        leftViewMode = .always
-        rightViewMode = .always
-        bind()
+        if isSecure {
+            rightView = secureButton
+            rightViewMode = .always
+            bind()
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -61,70 +66,67 @@ class AuthTextField: UITextField {
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         addSubviews()
         makeConstraints()
+        fieldSetting()
     }
 }
 
 extension AuthTextField {
     private func bind() {
-        isErrorRelay.asObservable()
-            .bind { [self] status in
-                layer.borderColor = status ? UIColor.error?.cgColor : UIColor.whiteElevated4?.cgColor
-                errorLabel.layer.opacity = status ? 1 : 0
-                layer.borderWidth = status ? 1 : 0.5
+        secureButton.rx.tap
+            .bind { [unowned self] in
+                isSecure.toggle()
+                isSecureTextEntry = isSecure
+                secureButton.setImage(UIImage(named: "eye_\(isSecure ? "" : "dis")able"), for: .normal)
             }
             .disposed(by: disposedBag)
-
-        cancelButton.rx.tap
-            .bind { [self] in
-                text = ""
-            }
-            .disposed(by: disposedBag)
+    }
+    private func fieldSetting() {
+        self.attributedPlaceholder = NSAttributedString(
+            string: placeholderText ?? "",
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.grayDarken1!,
+                NSAttributedString.Key.font: UIFont.title2Medium as Any
+            ]
+        )
     }
 }
 
 extension AuthTextField {
     private func addSubviews() {
         [
-            titleLabel,
-            errorLabel,
-            cancelButton
+            underLineView,
+            errorLabel
         ].forEach({ addSubview($0) })
     }
 
     private func makeConstraints() {
-        titleLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(9)
-            $0.bottom.equalTo(self.snp.top).offset(-8)
+        underLineView.snp.makeConstraints {
+            $0.height.equalTo(1.5)
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(self.snp.bottom).offset(5)
         }
 
         errorLabel.snp.makeConstraints {
             $0.left.equalToSuperview().offset(3)
-            $0.top.equalTo(self.snp.bottom).offset(3)
-        }
-
-        cancelButton.snp.makeConstraints {
-            $0.width.height.equalTo(24)
-            $0.right.equalToSuperview().inset(12)
-            $0.centerY.equalToSuperview()
+            $0.top.equalTo(underLineView.snp.bottom).offset(3)
         }
     }
 }
 
 extension AuthTextField: UITextFieldDelegate {
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.underLineView.backgroundColor = .mainElevated
+//    }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let regexValue = textRegex else {
-            isErrorRelay.accept(false)
-            return
+        if !(isError ?? false) {
+            if self.text != nil {
+                self.underLineView.backgroundColor = .mainElevated
+            } else {
+                self.underLineView.backgroundColor = .whiteElevated3
+            }
         }
-
-        guard let textValue = textField.text,
-            textValue.isEmpty == false else {
-            isErrorRelay.accept(true)
-            return
-        }
-
-        isErrorRelay.accept(!NSPredicate(format: "SELF MATCHES %@", regexValue).evaluate(with: textValue))
     }
 }

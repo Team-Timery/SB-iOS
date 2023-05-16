@@ -9,6 +9,11 @@ class TimerViewController: UIViewController {
 
     let disposeBag = DisposeBag()
 
+    private var subjectList: [MySubjectEntity] = []
+    private var todayTotalTime: Int = 0
+    private let getSubjectListRelay = PublishRelay<Void>()
+    private let deleteSubjectRelay = PublishRelay<Int>()
+
     private let timerTitleLabel = UILabel().then {
         $0.text = "타이머"
         $0.textColor = .black
@@ -25,10 +30,18 @@ class TimerViewController: UIViewController {
         $0.layer.shadowRadius = 4
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.setImage(UIImage(named: "orange_plus"), for: .normal)
-        $0.layer.cornerRadius = 40
+        $0.layer.cornerRadius = 35
         $0.backgroundColor = .white
         $0.tintColor = .mainElevated
     }
+    private let timerHeaderView = TimerHeaderView()
+
+    private let viewModel = TimerViewModel()
+    lazy var input = TimerViewModel.Input(
+        getSubjectList: getSubjectListRelay.asSignal(),
+        deleteSubject: deleteSubjectRelay.asSignal()
+    )
+    lazy var output = viewModel.transform(input: input)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +56,7 @@ class TimerViewController: UIViewController {
         subjectTableView.tableFooterView = insetView
         subjectTableView.register(SubjectsTableViewCell.self, forCellReuseIdentifier: "subjectCell")
         view.backgroundColor = .white
+        bind()
     }
 
     override func viewDidLayoutSubviews() {
@@ -51,17 +65,17 @@ class TimerViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        let timerHeaderView = TimerHeaderView(timerText: "01:10:23")
+        self.getSubjectListRelay.accept(())
+        self.subjectTableView.contentOffset.y = 0
         timerHeaderView.frame.size.height = view.frame.height / 4.5
         subjectTableView.tableHeaderView = timerHeaderView
-        self.subjectTableView.contentOffset.y = 0
     }
 }
 
-extension TimerViewController: UITableViewDelegate, UITableViewDataSource {
+extension TimerViewController: UITableViewDelegate, UITableViewDataSource, SubjectCellTapButtonDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return subjectList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +83,12 @@ extension TimerViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: "subjectCell",
             for: indexPath
         ) as? SubjectsTableViewCell else { return UITableViewCell() }
-        cell.subjectLabel.text = "수학 \(indexPath.row)"
+        cell.timerLabel.text = subjectList[indexPath.row].todayRecord.toTimerString()
+        cell.emojiLabel.text = subjectList[indexPath.row].emoji
+        cell.subjectLabel.text = subjectList[indexPath.row].title
+        cell.subjectID = subjectList[indexPath.row].id
+        cell.indexPath = indexPath
+        cell.delegate = self
         cell.selectionStyle = .none
         return cell
     }
@@ -96,9 +115,55 @@ extension TimerViewController: UITableViewDelegate, UITableViewDataSource {
             scrollView.contentOffset.y = 0
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let timerView = TimerActivateViewController()
+        timerView.timerSubjectEntity = subjectList[indexPath.row]
+        timerView.todayStudyTime = todayTotalTime
+        timerView.modalPresentationStyle = .fullScreen
+        present(timerView, animated: true)
+    }
+
+    func deleteButtonTapped(id: Int, indexPath: IndexPath, title: String?) {
+        let deleteAlert = DeleteSubjectAlertViewController(
+            subjectName: title,
+            completion: {
+                self.subjectList.remove(at: indexPath.row)
+                self.subjectTableView.deleteRows(at: [indexPath], with: .fade)
+                self.subjectTableView.reloadData()
+                self.deleteSubjectRelay.accept(id)
+            }
+        )
+        present(deleteAlert, animated: false)
+    }
 }
 
 extension TimerViewController {
+    private func bind() {
+        output.postData.asObservable()
+            .subscribe(onNext: { data in
+                guard let data = data else { return }
+                self.timerHeaderView.timeText = data.totalTime.toTimerString()
+                self.todayTotalTime = data.totalTime
+                self.subjectList = data.subjectList
+//                self.subjectTableView.reloadSections(IndexSet(integer: 0), with: .bottom)
+                self.subjectTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+
+        output.reloadList
+            .bind { self.getSubjectListRelay.accept(()) }
+            .disposed(by: disposeBag)
+
+        addSubjetcButton.rx.tap
+            .bind { [unowned self] in
+                let subjectAddAlert = AddSubjectAlertViewController(completion: {
+                    self.getSubjectListRelay.accept(())
+                })
+                present(subjectAddAlert, animated: false)
+            }
+            .disposed(by: disposeBag)
+    }
     private func addSubViews() {
         [
             timerTitleLabel,
@@ -120,7 +185,7 @@ extension TimerViewController {
         addSubjetcButton.snp.makeConstraints {
             $0.right.equalToSuperview().inset(22)
             $0.bottom.equalToSuperview().inset(view.safeAreaInsets.bottom + 22)
-            $0.width.height.equalTo(80)
+            $0.width.height.equalTo(70)
         }
     }
 }

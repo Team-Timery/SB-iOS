@@ -3,33 +3,7 @@ import SnapKit
 import Then
 
 class SubjectTimeLineCellView: UIStackView {
-    public var startTime: String? {
-        didSet {
-            startTimeLabel.text = startTime
-        }
-    }
-    public var emoji: String? {
-        didSet {
-            emojiLabel.text = emoji
-        }
-    }
-    public var subjectName: String? {
-        didSet {
-            subjectTitleLabel.text = subjectName
-        }
-    }
-    public var studyTime: String? {
-        didSet {
-            studyTimeLabel.text = studyTime
-        }
-    }
-    public var memo: String? {
-        didSet {
-            studyMemoLabel.text = memo
-        }
-    }
-    public var cellWidth: Double = 0
-
+    private var cellWidth: Double = 0
     private var showMemo: Bool = false
 
     private let subjectCellView = UIView().then {
@@ -68,8 +42,21 @@ class SubjectTimeLineCellView: UIStackView {
         $0.textColor = .whiteElevated4
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(
+        emoji: String,
+        subjectName: String,
+        startTime: String,
+        studyTime: String,
+        memo: String,
+        cellWidth: Double
+    ) {
+        super.init(frame: .zero)
+        startTimeLabel.text = startTime
+        emojiLabel.text = emoji
+        subjectTitleLabel.text = subjectName
+        studyTimeLabel.text = studyTime
+        studyMemoLabel.text = memo
+        self.cellWidth = cellWidth
         axis = .horizontal
         spacing = 8
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))

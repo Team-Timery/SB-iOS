@@ -8,8 +8,10 @@ import RxCocoa
 class TimerActivateViewController: UIViewController {
 
     private let disposedBag = DisposeBag()
-
-    private let startTimer = PublishRelay<Bool>()
+    private let startTimer = PublishRelay<(Int, Int)>()
+    private var stratTime: Date = Date()
+    public var timerSubjectEntity: MySubjectEntity = MySubjectEntity(id: 0, title: "", emoji: "", userID: 0, todayRecord: 0)
+    public var todayStudyTime: Int = 0
 
     private let timerBackgroundView = UIView().then {
         $0.backgroundColor = .grayDarken4
@@ -47,7 +49,6 @@ class TimerActivateViewController: UIViewController {
     }
 
     private let subjectTimerTitleLabel = UILabel().then {
-        $0.text = "과목"
         $0.textColor = .white
         $0.font = .main2Bold
     }
@@ -101,8 +102,10 @@ class TimerActivateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        self.stratTime = Date()
+        self.subjectTimerTitleLabel.text = timerSubjectEntity.title
         bind()
-        startTimer.accept(true)
+        startTimer.accept((timerSubjectEntity.todayRecord, todayStudyTime))
     }
 
     override func viewDidLayoutSubviews() {
@@ -118,9 +121,17 @@ extension TimerActivateViewController {
             .bind(to: timerTotalTimeLabel.rx.text)
             .disposed(by: disposedBag)
 
+        output.subjectText.asObservable()
+            .bind(to: timerSubjectTimeLabel.rx.text)
+            .disposed(by: disposedBag)
+
+        output.todayText.asObservable()
+            .bind(to: timerTodayTimeLabel.rx.text)
+            .disposed(by: disposedBag)
+
         output.progressBarValue.asObservable()
-            .bind { [unowned self] progressValue in
-                gaugeProgressBarView.setProgress(progressValue, animated: true)
+            .bind { progressValue in
+                self.gaugeProgressBarView.setProgress(progressValue, animated: true)
             }
             .disposed(by: disposedBag)
 
@@ -131,30 +142,21 @@ extension TimerActivateViewController {
                     messageText: "집중 게이지는 10분을 넘기면 불타게 돼요. 처음부터 목표를 크게 잡기보다 단 10분만이라도 열심히 하다보면 더 오래 집중할 수 있을 거에요!",
                     alertStyle: .dark
                 )
-//                let deleteAlertVC = DeleteSubjectAlertViewController(
-//                    subjectName: "수학",
-//                    action: {
-//                        print("삭제")
-//                    },
-//                    alertStyle: .dark
-//                )
-//                let addAlertVC = AddSubjectAlertViewController(
-//                    action: {
-//                        print("확인")
-//                    },
-//                    alertStyle: .dark
-//                )
-//                let stopAlertVC = StopTimerAlertViewController(
-//                    action: {
-//                        print("멈춤")
-//                    },
-//                    alertStyle: .dark
-//                )
-//                let quitAlert = QuitAlertViewController(
-//                    action: { print("탈퇴") },
-//                    alertStyle: .light
-//                )
                 self.present(alertVC, animated: false)
+            }
+            .disposed(by: disposedBag)
+
+        stopButton.rx.tap
+            .bind { [unowned self] in
+                let stopAlert = StopTimerAlertViewController(
+                    alertStyle: .dark,
+                    startTime: stratTime,
+                    subjectID: timerSubjectEntity.id,
+                    completion: {
+                        self.dismiss(animated: true)
+                    }
+                )
+                present(stopAlert, animated: false)
             }
             .disposed(by: disposedBag)
     }
@@ -196,7 +198,6 @@ extension TimerActivateViewController {
         }
         timerTotalTimeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.left.right.equalToSuperview().inset(29)
             $0.topMargin.equalTo(33)
         }
         timerSubjectTimeLabel.snp.makeConstraints {

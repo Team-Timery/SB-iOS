@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Ambition
-//
-//  Created by 조병진 on 2023/02/06.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -17,7 +10,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: CustomTapBarController())
+        window?.rootViewController = UINavigationController(
+            rootViewController: AuthStartViewController()
+        )
         window?.makeKeyAndVisible()
     }
 

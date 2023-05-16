@@ -22,6 +22,7 @@ class CalendarTimeCellView: UIView {
     }
 
     private let timeLabel = UILabel().then {
+        $0.text = "데이터가 없습니다."
         $0.font = UIFont(name: "Pretendard-SemiBold", size: 14)
         $0.textColor = .black
     }

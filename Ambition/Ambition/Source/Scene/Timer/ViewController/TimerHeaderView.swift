@@ -3,6 +3,13 @@ import SnapKit
 import Then
 
 class TimerHeaderView: UIView {
+    public var timeText: String? {
+        didSet {
+            guard let timeText = timeText else { return }
+            timerTimeLabel.text = timeText
+        }
+    }
+
     private let timerSubtitleLabel = UILabel().then {
         $0.text = "시간측정"
         $0.textColor = .whiteElevated4

@@ -16,6 +16,8 @@ class DeleteSubjectAlertViewController: UIViewController {
     private let titleLabel = UILabel().then {
         $0.textColor = .white
         $0.font = .title3Bold
+        $0.numberOfLines = .max
+        $0.lineBreakStrategy = .pushOut
     }
 
     private let messageLabel = UILabel().then {
@@ -29,32 +31,32 @@ class DeleteSubjectAlertViewController: UIViewController {
 
     private let alertCancelButton = UIButton(type: .system).then {
         $0.setTitle("취소", for: .normal)
-        $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
-        $0.backgroundColor = .mainElevated
-        $0.layer.cornerRadius = 30
-    }
-
-    private let alertDeleteButton = UIButton(type: .system).then {
-        $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(UIColor.mainElevated, for: .normal)
         $0.titleLabel?.font = UIFont.title3Bold
         $0.backgroundColor = .main
         $0.layer.cornerRadius = 30
     }
 
+    private let alertDeleteButton = UIButton(type: .system).then {
+        $0.setTitle("삭제", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = UIFont.title3Bold
+        $0.backgroundColor = .mainElevated
+        $0.layer.cornerRadius = 30
+    }
+
     init(
         subjectName: String? = nil,
-        action: @escaping () -> Void,
+        completion: @escaping () -> Void,
         alertStyle: AlertStyle = .light
     ) {
         super.init(nibName: nil, bundle: nil)
-        titleLabel.text = (subjectName ?? "알수없음") + "을(를) 삭제하시겠습니까?"
-        titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
-        alertDeleteButton.backgroundColor = alertStyle == .light ? .main : .grayDarken2
+        titleLabel.text = (subjectName ?? "알수없음") + "을(를) 삭제할까요?"
+        titleLabel.textColor = alertStyle.textColor
+        alertBackgroundView.backgroundColor = alertStyle.backgroungColor
+        alertCancelButton.backgroundColor = alertStyle.buttonBackgroundColor
         modalPresentationStyle = .overFullScreen
-        bind(deleteAction: action)
+        bind(completion: completion)
     }
 
     required init?(coder: NSCoder) {
@@ -73,7 +75,7 @@ class DeleteSubjectAlertViewController: UIViewController {
 }
 
 extension DeleteSubjectAlertViewController {
-    private func bind(deleteAction: @escaping () -> Void) {
+    private func bind(completion: @escaping () -> Void) {
         alertCancelButton.rx.tap
             .bind {
                 self.dismiss(animated: false)
@@ -82,7 +84,8 @@ extension DeleteSubjectAlertViewController {
 
         alertDeleteButton.rx.tap
             .bind {
-                deleteAction()
+                completion()
+                self.dismiss(animated: false)
             }
             .disposed(by: disposeBag)
     }
@@ -114,14 +117,14 @@ extension DeleteSubjectAlertViewController {
         }
         alertDeleteButton.snp.makeConstraints {
             $0.height.equalTo(60)
-            $0.leftMargin.equalTo(13)
-            $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
+            $0.right.equalToSuperview().inset(13)
+            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
             $0.top.equalTo(messageLabel.snp.bottom).offset(33)
         }
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
-            $0.right.equalToSuperview().inset(13)
-            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
+            $0.leftMargin.equalTo(13)
+            $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
             $0.top.equalTo(messageLabel.snp.bottom).offset(33)
         }
     }

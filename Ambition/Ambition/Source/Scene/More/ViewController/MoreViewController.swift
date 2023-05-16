@@ -7,19 +7,21 @@ import MessageUI
 
 // swiftlint: disable line_length
 class MoreViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    private let logoutRelay = PublishRelay<Void>()
+    private let quitUserRelay = PublishRelay<Void>()
+
     private let sections = ["", "공지", "도움말", "약관 및 정책", "앱 정보", "피드백", "계정 관리", "회원탈퇴"]
     private let sectionElements: [[String]] = [
         ["회원정보"],
-        ["공지사항", "앰비션 이야기"],
-        ["자주 묻는 질문", "앰비션으로 갓생살기"],
+        ["공지사항", "타이머리 이야기"],
+        ["자주 묻는 질문", "타이머리로 갓생살기"],
         ["이용약관", "개인정보 처리방침"],
         ["버전정보"],
         ["이메일 보내기"],
         ["로그아웃"],
         ["탈퇴하기"]
     ]
-
-    private let composeVC = MFMailComposeViewController()
 
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {
         $0.layer.opacity = 0
@@ -37,6 +39,13 @@ class MoreViewController: UIViewController {
         $0.showsVerticalScrollIndicator = false
     }
 
+    private let viewModel = MoreViewModel()
+    lazy var input = MoreViewModel.Input(
+        logout: self.logoutRelay.asSignal(),
+        quitUser: self.quitUserRelay.asSignal()
+    )
+    lazy var output = viewModel.transform(input: input)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -49,6 +58,9 @@ class MoreViewController: UIViewController {
         listTableView.tableHeaderView = headerView
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.backIndicatorImage = UIImage()
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
+        bind()
     }
 
     override func viewDidLayoutSubviews() {
@@ -58,6 +70,20 @@ class MoreViewController: UIViewController {
 }
 
 extension MoreViewController {
+
+    private func bind() {
+        output.isLogoutSucceed.asObservable()
+            .bind {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        output.isQuitUserSucceed.asObservable()
+            .bind {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+    }
     private func addSubViews() {
         [
             listTableView,
@@ -92,25 +118,39 @@ extension MoreViewController {
         case "공지사항":
             let noticeView = NoticeViewController()
             navigationController?.pushViewController(noticeView, animated: true)
-        case "앰비션 이야기":
-            print(selectName)
+        case "타이머리 이야기":
+            if let url = URL(string: "https://timery.notion.site/0501f10811204d7f9f95f999f06fb964") {
+                UIApplication.shared.open(url)
+            }
         case "자주 묻는 질문":
             let questionView = QuestionViewController()
             navigationController?.pushViewController(questionView, animated: true)
-        case "앰비션으로 갓생살기":
+        case "타이머리로 갓생살기":
             let tipsView = TipsViewController()
             navigationController?.pushViewController(tipsView, animated: true)
         case "이용약관":
-            print(selectName)
+            if let url = URL(string: "https://timery.notion.site/961026a89ec9492ab6359fe9b301f083") {
+                UIApplication.shared.open(url)
+            }
         case "개인정보 처리방침":
-            print(selectName)
+            if let url = URL(string: "https://timery.notion.site/c849a43a4b8c40c69192f061c166fbbc") {
+                UIApplication.shared.open(url)
+            }
         case "이메일 보내기":
             sendEmail()
         case "로그아웃":
-            print(selectName)
+            let logoutAlert = LogoutAlert(
+                completion: {
+                    self.logoutRelay.accept(())
+                },
+                alertStyle: .light
+            )
+            present(logoutAlert, animated: false)
         case "탈퇴하기":
             let quitAlert = QuitAlertViewController(
-                action: {},
+                completion: {
+                    self.quitUserRelay.accept(())
+                },
                 alertStyle: .light
             )
             present(quitAlert, animated: false)
@@ -121,10 +161,11 @@ extension MoreViewController {
 
     private func sendEmail() {
        if MFMailComposeViewController.canSendMail() {
+           let composeVC = MFMailComposeViewController()
            composeVC.mailComposeDelegate = self
-           composeVC.setToRecipients(["seomone@naver.com"])
-           composeVC.setSubject("Message subjetc")
-           composeVC.setMessageBody("Message", isHTML: false)
+           composeVC.setToRecipients(["timery.help@gmail.com"])
+           composeVC.setSubject("제목을 입력하세요.")
+           composeVC.setMessageBody("", isHTML: false)
            self.present(composeVC, animated: true)
        } else {
            let errorAlert = SimpleAlertViewController(
@@ -138,7 +179,7 @@ extension MoreViewController {
 }
 
 extension MoreViewController: MFMailComposeViewControllerDelegate {
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true)
     }
 }
@@ -161,7 +202,14 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         else { return UITableViewCell() }
         if indexPath.section == 4 {
             cell.arrowImage.layer.opacity = 0
-            cell.leftSubLabel.text = "1.0.0"
+            var version: String? {
+                guard let dictionary = Bundle.main.infoDictionary,
+                      let version = dictionary["CFBundleShortVersionString"] as? String else {return nil}
+
+                let versionAndBuild: String = "\(version)"
+                return versionAndBuild
+            }
+            cell.leftSubLabel.text = version
         }
 
         cell.titleLabel.text = sectionElements[indexPath.section][indexPath.row]

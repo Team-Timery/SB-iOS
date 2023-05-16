@@ -9,7 +9,7 @@ class MoreListTableViewCell: UITableViewCell {
         $0.font = .title3Medium
     }
 
-    let arrowImage = UIImageView(image: UIImage(named: "round_left_arrow"))
+    let arrowImage = UIImageView(image: UIImage(named: "round_right_arrow"))
 
     let leftSubLabel = UILabel().then {
         $0.textColor = .whiteElevated4

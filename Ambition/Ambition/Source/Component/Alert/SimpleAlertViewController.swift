@@ -34,8 +34,8 @@ class SimpleAlertViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         titleLabel.text = titleText
         messageLabel.text = messageText
-        titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
+        titleLabel.textColor = alertStyle.textColor
+        alertBackgroundView.backgroundColor = alertStyle.backgroungColor
         modalPresentationStyle = .overFullScreen
     }
 

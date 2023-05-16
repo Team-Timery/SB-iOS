@@ -31,30 +31,30 @@ class QuitAlertViewController: UIViewController {
 
     private let alertQuitButton = UIButton(type: .system).then {
         $0.setTitle("탈퇴하기", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = UIFont.title3Bold
+        $0.backgroundColor = .red
+        $0.layer.cornerRadius = 30
+    }
+
+    private let alertCancelButton = UIButton(type: .system).then {
+        $0.setTitle("계속 쓸래요", for: .normal)
         $0.setTitleColor(UIColor.mainElevated, for: .normal)
         $0.titleLabel?.font = UIFont.title3Bold
         $0.backgroundColor = .main
         $0.layer.cornerRadius = 30
     }
 
-    private let alertCancelButton = UIButton(type: .system).then {
-        $0.setTitle("계속 쓸래요", for: .normal)
-        $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
-        $0.backgroundColor = .mainElevated
-        $0.layer.cornerRadius = 30
-    }
-
     init(
-        action: @escaping () -> Void,
+        completion: @escaping () -> Void,
         alertStyle: AlertStyle = .light
     ) {
         super.init(nibName: nil, bundle: nil)
-        titleLabel.textColor = alertStyle == .light ? .black : .white
-        alertBackgroundView.backgroundColor = alertStyle == .light ? .white : .grayDarken3
-        alertQuitButton.backgroundColor = alertStyle == .light ? .main : .grayDarken2
+        titleLabel.textColor = alertStyle.textColor
+        alertBackgroundView.backgroundColor = alertStyle.backgroungColor
+        alertCancelButton.backgroundColor = alertStyle.buttonBackgroundColor
         modalPresentationStyle = .overFullScreen
-        bind(quitAction: action)
+        bind(completion: completion)
     }
 
     required init?(coder: NSCoder) {
@@ -73,7 +73,7 @@ class QuitAlertViewController: UIViewController {
 }
 
 extension QuitAlertViewController {
-    private func bind(quitAction: @escaping () -> Void) {
+    private func bind(completion: @escaping () -> Void) {
         alertCancelButton.rx.tap
             .bind {
                 self.dismiss(animated: false)
@@ -82,7 +82,8 @@ extension QuitAlertViewController {
 
         alertQuitButton.rx.tap
             .bind {
-                quitAction()
+                self.dismiss(animated: false)
+                completion()
             }
             .disposed(by: disposeBag)
     }
@@ -120,14 +121,14 @@ extension QuitAlertViewController {
         }
         alertQuitButton.snp.makeConstraints {
             $0.height.equalTo(60)
-            $0.leftMargin.equalTo(13)
-            $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
+            $0.right.equalToSuperview().inset(13)
+            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
             $0.top.equalTo(messageLabel.snp.bottom).offset(36)
         }
         alertCancelButton.snp.makeConstraints {
             $0.height.equalTo(60)
-            $0.right.equalToSuperview().inset(13)
-            $0.left.equalTo(alertBackgroundView.snp.centerX).offset(4)
+            $0.leftMargin.equalTo(13)
+            $0.right.equalTo(alertBackgroundView.snp.centerX).offset(-4)
             $0.top.equalTo(messageLabel.snp.bottom).offset(36)
         }
     }

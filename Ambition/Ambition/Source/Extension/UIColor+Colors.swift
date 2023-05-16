@@ -16,6 +16,10 @@ extension UIColor {
 
     // red
     static let error = UIColor(named: "error")
+    static let progressRed = UIColor(named: "progress-red")
+
+    //blue
+    static let progressBlue = UIColor(named: "progress-blue")
 
     // gray
     static let grayDarken1 = UIColor(named: "gray-Darken1")

@@ -3,19 +3,15 @@ import SnapKit
 import Then
 
 class BreakTimeLineCellView: UIView {
-    public var content: String? {
-        didSet {
-            contentLabel.text = content
-        }
-    }
-
     private let contentLabel = UILabel().then {
         $0.font = .indicatorMedium
         $0.textColor = .whiteElevated4
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(
+        content: String
+    ) {
+        super.init(frame: .zero)
         contentLabel.text = content
         backgroundColor = .whiteElevated2
         layer.cornerRadius = 5

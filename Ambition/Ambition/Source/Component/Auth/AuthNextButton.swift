@@ -6,11 +6,27 @@ import RxSwift
 import RxCocoa
 
 class AuthNextButton: UIButton {
-//    let disposeBag = DisposeBag()
-//    let isTouch = PublishRelay<Bool>()
 
-    private let testView = UIView().then {
-        $0.backgroundColor = .blue
+    public var isActivate: Bool? {
+        didSet {
+            guard let isActivate = isActivate else { return }
+            self.isEnabled = isActivate
+            backgroundColor =  isActivate ? .mainElevated : .main
+        }
+    }
+
+    public var isLoading: Bool = false {
+        didSet {
+            self.indicatorView.isHidden = !isLoading
+            self.titleLabel?.layer.opacity = isLoading ? 0 : 1
+        }
+    }
+
+    private let indicatorView = UIActivityIndicatorView().then {
+        $0.startAnimating()
+        $0.color = .white
+        $0.style = .medium
+        $0.isHidden = true
     }
 
     init(title: String) {
@@ -26,25 +42,11 @@ class AuthNextButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    override func layoutSubviews() {
-//        addSubview(testView)
-//        testView.snp.makeConstraints {
-//            $0.center.equalToSuperview()
-//            $0.width.height.equalTo(60)
-//        }
-//    }
-}
-
-extension AuthNextButton {
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        isTouch.accept(true)
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        isTouch.accept(false)
-//    }
-//
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        isTouch.accept(false)
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        addSubview(self.indicatorView)
+        indicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
 }

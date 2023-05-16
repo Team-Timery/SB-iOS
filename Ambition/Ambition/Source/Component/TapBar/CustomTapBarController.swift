@@ -4,13 +4,15 @@ class CustomTapBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        navigationItem.backBarButtonItem = NavigationBackButton()
         setUpTabBar()
 
         let timerVC = TimerViewController()
         timerVC.tabBarItem.title = "타이머"
         timerVC.tabBarItem.image = UIImage(named: "tabbar_timer")
 
-        let recordVC = CalenderViewController()
+        let recordVC = CalendarViewController()
         recordVC.tabBarItem.title = "측정 기록"
         recordVC.tabBarItem.image = UIImage(named: "tabbar_record")
 
