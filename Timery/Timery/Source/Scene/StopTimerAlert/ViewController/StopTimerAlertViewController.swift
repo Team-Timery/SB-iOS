@@ -132,9 +132,9 @@ extension StopTimerAlertViewController {
             .disposed(by: disposeBag)
 
         output.isButtonActivate.asObservable()
-            .subscribe(onNext: { [unowned self] status in
-                alertStopButton.layer.opacity = status ? 1 : 0.3
-                alertStopButton.isEnabled = status
+            .subscribe(onNext: { [weak self] status in
+                self?.alertStopButton.layer.opacity = status ? 1 : 0.3
+                self?.alertStopButton.isEnabled = status
             })
             .disposed(by: disposeBag)
 

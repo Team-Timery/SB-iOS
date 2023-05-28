@@ -63,6 +63,12 @@ class AnalyzeViewController: UIViewController {
         $0.backgroundColor = .clear
         $0.alignment = .fill
     }
+    private let notingLable = UILabel().then {
+        $0.text = "아직 집중한 기록이 없어요"
+        $0.textColor = .black
+        $0.font = .title3Bold
+        $0.isHidden = true
+    }
     // 집중력 분석 뷰
 //    private let concentrationContentView = UIView().then {
 //        $0.backgroundColor = .white
@@ -140,12 +146,6 @@ class AnalyzeViewController: UIViewController {
         $0.textColor = .black
         $0.font = .main1Medium
     }
-    private let notingLable = UILabel().then {
-        $0.text = "아직 집중한 기록이 없어요"
-        $0.textColor = .black
-        $0.font = .title3Bold
-        $0.isHidden = true
-    }
 
     private let viewModel = AnalyzeViewModel()
     lazy var input = AnalyzeViewModel.Input(
@@ -161,6 +161,20 @@ class AnalyzeViewController: UIViewController {
         view.backgroundColor = .white
         timeProgressBar.delegate = self
         timeProgressBar.dataSource = self
+        [
+            dateControllerLeftButton,
+            dateControllerRightButton,
+            dateControllerLabel,
+            displayTimeLabel,
+            timeProgressBar,
+            subjectsTimeStackView,
+            notingLable,
+            graphTitleLabel,
+            graphSubtitleLabel,
+            graphImageView,
+            graphStartMonthLabel,
+            graphEndMonthLabel
+        ].forEach({ $0.layer.opacity = 0 })
         bind()
     }
 
@@ -184,33 +198,48 @@ extension AnalyzeViewController: MultiProgressViewDelegate, MultiProgressViewDat
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let progressView = ProgressViewSection()
 
-        if section == 0 {
-            addProgressBorder(view: progressView, color: .white, width: 2)
+        switch section {
+        case 0:
             progressView.backgroundColor = .mainElevated
-        } else if section == 1 {
-            addProgressBorder(view: progressView, color: .white, width: 2)
+            progressView.addProgressBorder(color: .white, width: 2)
+        case 1:
             progressView.backgroundColor = .progressBlue
-        } else if section == 2 {
-            addProgressBorder(view: progressView, color: .white, width: 2)
+            progressView.addProgressBorder(color: .white, width: 2)
+        case 2:
             progressView.backgroundColor = .progressRed
-        } else {
-            progressView.backgroundColor = .whiteElevated3
+            progressView.addProgressBorder(color: .white, width: 2)
+        default: progressView.backgroundColor = .whiteElevated3
         }
         return progressView
     }
 }
 
 extension AnalyzeViewController {
-    private func addProgressBorder(view: ProgressViewSection, color: UIColor, width: Float) {
-        let border = UIView().then {
-            $0.backgroundColor = color
-        }
-        view.addSubview(border)
-        border.snp.makeConstraints {
-            $0.height.equalToSuperview()
-            $0.width.equalTo(width)
-            $0.right.equalToSuperview()
-        }
+    private func showMonthOfAnalysis() {
+        UIView.animate(withDuration: 0.7, animations: { [weak self] in
+            guard let self = self else { return }
+            [
+                self.dateControllerLeftButton,
+                self.dateControllerRightButton,
+                self.dateControllerLabel,
+                self.displayTimeLabel,
+                self.timeProgressBar,
+                self.subjectsTimeStackView,
+                self.notingLable
+            ].forEach({ $0.layer.opacity = 1})
+        })
+    }
+    private func showAnalysisGraph() {
+        UIView.animate(withDuration: 0.7, animations: { [weak self] in
+            guard let self = self else { return }
+            [
+                self.graphTitleLabel,
+                self.graphSubtitleLabel,
+                self.graphImageView,
+                self.graphStartMonthLabel,
+                self.graphEndMonthLabel
+            ].forEach({ $0.layer.opacity = 1})
+        })
     }
     private func bind() {
         output.monthOfAnalysis.asObservable()
@@ -223,16 +252,17 @@ extension AnalyzeViewController {
                 subjectsTimeStackView.removeAll()
                 notingLable.isHidden = !data.focusResponses.isEmpty
                 timeProgressBar.isHidden = data.focusResponses.isEmpty
-                data.focusResponses.enumerated().forEach {
-                    timeProgressBar.setProgress(section: $0, to: Float($1.focusedRatio) / 100)
+                data.focusResponses.enumerated().forEach { sectionNum, value in
+                    self.timeProgressBar.setProgressWithAnimate(section: sectionNum, to: Float(value.focusedRatio) / 100, withDuration: 0.5)
                     let subjectCell = SubjectAnalyzeCell(
-                        emoji: $1.emoji,
-                        subjectName: $1.title,
-                        percent: "\($1.focusedRatio)%",
-                        time: "\($1.sum.decimalFormat())분"
+                        emoji: value.emoji,
+                        subjectName: value.title,
+                        percent: "\(value.focusedRatio)%",
+                        time: "\(value.sum.decimalFormat())분"
                     )
                     subjectsTimeStackView.addArrangedSubview(subjectCell)
                 }
+                showMonthOfAnalysis()
             })
             .disposed(by: disposebag)
 
@@ -243,6 +273,7 @@ extension AnalyzeViewController {
                 graphStartMonthLabel.text = data.lastMonth.toMonthString
                 graphEndMonthLabel.text = data.thisMonth.toMonthString
                 graphImageView.image = UIImage(named: "\(data.increasedTime <= 0 ? "no_" : "")increase_graph")
+                showAnalysisGraph()
             })
             .disposed(by: disposebag)
 

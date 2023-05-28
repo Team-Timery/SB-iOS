@@ -23,6 +23,7 @@ class MoreViewModel: ViewModelType {
         let isQuitUserSucceed = PublishRelay<Void>()
 
         input.logout.asObservable()
+            .take(1)
             .flatMap {
                 service.logout()
             }
@@ -31,12 +32,13 @@ class MoreViewModel: ViewModelType {
                 case .SUCCEED:
                     isLogoutSucceed.accept(())
                 default:
-                    print("err")
+                    print(res.errorMessage)
                 }
             })
             .disposed(by: disposeBag)
 
         input.quitUser.asObservable()
+            .take(1)
             .flatMap {
                 service.deleteUser()
             }
@@ -45,7 +47,7 @@ class MoreViewModel: ViewModelType {
                 case .SUCCEED:
                     isQuitUserSucceed.accept(())
                 default:
-                    print("err")
+                    print(res.errorMessage)
                 }
             })
             .disposed(by: disposeBag)

@@ -32,6 +32,7 @@ class CalendarViewModel: ViewModelType {
         let resultMonth = PublishRelay<Date>()
 
         input.selectDate.asObservable()
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .flatMap { date in
                 service.getDayOfRecord(date: date)
             }
@@ -51,6 +52,7 @@ class CalendarViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         input.selectDate.asObservable()
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .flatMap { date in
                 service.getCalendarTime(date: date)
             }

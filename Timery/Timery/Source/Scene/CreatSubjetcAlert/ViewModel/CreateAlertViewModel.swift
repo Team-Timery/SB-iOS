@@ -25,6 +25,7 @@ class CreateAlertViewModel: ViewModelType {
         let isActivate = BehaviorRelay<Bool>(value: false)
 
         input.createButtonTap.asObservable().withLatestFrom(subjectInfo)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .flatMap { title, emoji in
                 subjectService.createMySubject(title: title, emoji: emoji)
             }

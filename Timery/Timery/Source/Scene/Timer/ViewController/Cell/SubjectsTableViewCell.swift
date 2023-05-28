@@ -111,12 +111,13 @@ extension SubjectsTableViewCell {
         }
         timerLabel.setContentCompressionResistancePriority(.init(1), for: .horizontal)
         timerLabel.snp.makeConstraints {
-            $0.right.equalTo(deleteButton.snp.left).offset(-17)
+            $0.right.equalTo(deleteButton.snp.left).offset(-10)
             $0.centerY.equalToSuperview()
         }
         deleteButton.snp.makeConstraints {
-            $0.width.height.equalTo(20)
-            $0.rightMargin.equalTo(-20)
+            $0.width.equalTo(35)
+            $0.rightMargin.equalTo(-12)
+            $0.top.bottom.equalToSuperview().inset(2)
             $0.centerY.equalToSuperview()
         }
     }

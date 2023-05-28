@@ -9,7 +9,7 @@ class AuthEmailViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private let titleLabel = UILabel().then {
-        $0.text = "이메일를 입력해주세요"
+        $0.text = "이메일을 입력해주세요"
         $0.font = .title2Bold
     }
 

@@ -24,7 +24,6 @@ class TimerActivateViewModel: ViewModelType {
     private let timerText = PublishRelay<String>()
     private let subjectText = PublishRelay<String>()
     private let todayText = PublishRelay<String>()
-    private var totalTime: Int = 0
     private var subjectTime: Int = 0
     private var todayTime: Int = 0
 
@@ -49,7 +48,7 @@ class TimerActivateViewModel: ViewModelType {
                         self.todayText.accept((self.todayTime + timeGap).toTimerString())
                         self.progressBarValue.accept(Float(timeGap) / 600)
                     }
-                    if self.totalTime / 60 >= 10 { overLimit.accept(()) }
+                    if timeGap / 60 >= 10 { overLimit.accept(()) }
                 })
             })
             .disposed(by: disposeBag)

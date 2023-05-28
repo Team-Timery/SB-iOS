@@ -22,15 +22,14 @@ class StopTimerAlertViewModel: ViewModelType {
         let isButtonActivate = input.memo.map {
             if !$0.isEmpty {
                 return $0.count <= 20
-            } else {
-                return true
-            }
+            } else { return true }
         }
         let info = Driver.combineLatest(input.subjectID, input.startTime, input.memo)
         let isSucceed = PublishRelay<Void>()
 
         input.stopTimer.asObservable().withLatestFrom(info)
-            .flatMap { subjectID, startTime, memo in
+            .take(1)
+            .flatMapLatest { subjectID, startTime, memo in
                 service.createRecord(subjectID: subjectID, startTime: startTime, stopTime: Date(), memo: memo)
             }
             .subscribe(onNext: { res in
