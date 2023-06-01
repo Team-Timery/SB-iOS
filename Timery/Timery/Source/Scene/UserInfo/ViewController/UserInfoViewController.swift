@@ -84,9 +84,9 @@ extension UserInfoViewController {
         output.isSucceed.asObservable()
             .bind { [unowned self] data in
                 nameLabel.text = data.name
-                ageLabel.text = "\(data.age)"
-                sexLabel.text = data.sex.toKRString
-                emailLabel.text = data.email
+//                ageLabel.text = "\(data.age)"
+//                sexLabel.text = data.sex.toKRString
+//                emailLabel.text = data.email
             }
             .disposed(by: disposeBag)
 
@@ -101,13 +101,13 @@ extension UserInfoViewController {
         [
             userImageView,
             nameMarkLabel,
-            ageMarkLabel,
-            sexMarkLabel,
-            emailMarkLabel,
+//            ageMarkLabel,
+//            sexMarkLabel,
+//            emailMarkLabel,
             nameLabel,
-            ageLabel,
-            sexLabel,
-            emailLabel
+//            ageLabel,
+//            sexLabel,
+//            emailLabel
         ].forEach({ view.addSubview($0) })
     }
 
@@ -121,33 +121,33 @@ extension UserInfoViewController {
             $0.left.equalToSuperview().offset(20)
             $0.top.equalTo(userImageView.snp.bottom).offset(30)
         }
-        ageMarkLabel.snp.makeConstraints {
-            $0.left.equalTo(nameMarkLabel)
-            $0.top.equalTo(nameMarkLabel.snp.bottom).offset(38)
-        }
-        sexMarkLabel.snp.makeConstraints {
-            $0.left.equalTo(nameMarkLabel)
-            $0.top.equalTo(ageMarkLabel.snp.bottom).offset(38)
-        }
-        emailMarkLabel.snp.makeConstraints {
-            $0.left.equalTo(nameMarkLabel)
-            $0.top.equalTo(sexMarkLabel.snp.bottom).offset(38)
-        }
+//        ageMarkLabel.snp.makeConstraints {
+//            $0.left.equalTo(nameMarkLabel)
+//            $0.top.equalTo(nameMarkLabel.snp.bottom).offset(38)
+//        }
+//        sexMarkLabel.snp.makeConstraints {
+//            $0.left.equalTo(nameMarkLabel)
+//            $0.top.equalTo(ageMarkLabel.snp.bottom).offset(38)
+//        }
+//        emailMarkLabel.snp.makeConstraints {
+//            $0.left.equalTo(nameMarkLabel)
+//            $0.top.equalTo(sexMarkLabel.snp.bottom).offset(38)
+//        }
         nameLabel.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-20)
             $0.top.equalTo(nameMarkLabel)
         }
-        ageLabel.snp.makeConstraints {
-            $0.right.equalTo(nameLabel)
-            $0.top.equalTo(nameLabel.snp.bottom).offset(38)
-        }
-        sexLabel.snp.makeConstraints {
-            $0.right.equalTo(nameLabel)
-            $0.top.equalTo(ageLabel.snp.bottom).offset(38)
-        }
-        emailLabel.snp.makeConstraints {
-            $0.right.equalTo(nameLabel)
-            $0.top.equalTo(sexLabel.snp.bottom).offset(38)
-        }
+//        ageLabel.snp.makeConstraints {
+//            $0.right.equalTo(nameLabel)
+//            $0.top.equalTo(nameLabel.snp.bottom).offset(38)
+//        }
+//        sexLabel.snp.makeConstraints {
+//            $0.right.equalTo(nameLabel)
+//            $0.top.equalTo(ageLabel.snp.bottom).offset(38)
+//        }
+//        emailLabel.snp.makeConstraints {
+//            $0.right.equalTo(nameLabel)
+//            $0.top.equalTo(sexLabel.snp.bottom).offset(38)
+//        }
     }
 }

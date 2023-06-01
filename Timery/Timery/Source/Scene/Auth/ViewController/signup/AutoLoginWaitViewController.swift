@@ -7,19 +7,17 @@ class AutoLoginWaitViewController: UIViewController {
         self.dismiss(animated: false)
     }
 
-    private let indicatorView = UIActivityIndicatorView().then {
-        $0.startAnimating()
-        $0.color = .white
-        $0.style = .large
+    private let logoImageView = UIImageView().then {
+        $0.image = UIImage(named: "Timery_logo")
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = .white
     }
 
     override func viewDidLayoutSubviews() {
-        view.addSubview(indicatorView)
-        indicatorView.snp.makeConstraints {
+        view.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
     }

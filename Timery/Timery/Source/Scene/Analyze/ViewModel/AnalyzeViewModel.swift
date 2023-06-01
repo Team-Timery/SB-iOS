@@ -43,6 +43,7 @@ class AnalyzeViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         input.getNextMonth.asObservable()
+            .throttle(.milliseconds(300), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.monthCount += 1
                 var dayComponent = DateComponents()
@@ -53,6 +54,7 @@ class AnalyzeViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         input.getLastMonth.asObservable()
+            .throttle(.milliseconds(300), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.monthCount -= 1
                 var dayComponent = DateComponents()

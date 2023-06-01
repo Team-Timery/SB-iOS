@@ -59,6 +59,20 @@ final class AuthService {
             }
     }
 
+    func anonymousLogin() -> Single<AuthServiceResult> {
+        return provider.rx.request(.anonymousLogin)
+            .filterSuccessfulStatusCodes()
+            .map(TokenResponse.self)
+            .map { res -> AuthServiceResult in
+                Token.accessToken = res.accessToken
+                Token.refreshToken = res.refreshToken
+                return .SUCCEED
+            }
+            .catch { err in
+                return .just(self.netErr(err))
+            }
+    }
+
     func logout() -> Single<AuthServiceResult> {
         return provider.rx.request(.logout)
             .filterSuccessfulStatusCodes()

@@ -3,6 +3,7 @@ import Moya
 
 enum AuthAPI {
     case login(email: String, password: String)
+    case anonymousLogin
     case singup(email: String, password: String, name: String, age: Int, sex: String, isMarketingAgreed: Bool)
     case logout
     case deleteUser
@@ -18,6 +19,8 @@ extension AuthAPI: TargetType {
 
     var path: String {
         switch self {
+        case .anonymousLogin:
+            return "/anonymous"
         case .login:
             return "/token"
         case .reissuanceRefreshToken:
@@ -35,7 +38,7 @@ extension AuthAPI: TargetType {
         switch self {
         case .getUserProfile:
             return .get
-        case .login, .singup:
+        case .login, .singup, .anonymousLogin:
             return .post
         case .reissuanceRefreshToken, .patchUserProfile:
             return .patch
@@ -67,7 +70,7 @@ extension AuthAPI: TargetType {
 
     var headers: [String: String]? {
         switch self {
-        case .patchUserProfile, .getUserProfile, .logout, .deleteUser:
+        case .patchUserProfile, .getUserProfile, .logout, .deleteUser, .anonymousLogin:
             return Header.accessToken.header()
         case .reissuanceRefreshToken:
             return Header.refreshToken.header()

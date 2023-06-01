@@ -11,16 +11,25 @@ class MoreViewController: UIViewController {
     private let logoutRelay = PublishRelay<Void>()
     private let quitUserRelay = PublishRelay<Void>()
 
-    private let sections = ["", "공지", "도움말", "약관 및 정책", "앱 정보", "피드백", "계정 관리", "회원탈퇴"]
+    private let sections = [
+        "",
+        "공지",
+        "도움말",
+        "약관 및 정책",
+        "앱 정보",
+        "피드백"
+//        "계정 관리",
+//        "회원탈퇴"
+    ]
     private let sectionElements: [[String]] = [
         ["회원정보"],
         ["공지사항", "타이머리 이야기"],
         ["자주 묻는 질문", "타이머리로 갓생살기"],
         ["이용약관", "개인정보 처리방침"],
         ["버전정보"],
-        ["이메일 보내기"],
-        ["로그아웃"],
-        ["탈퇴하기"]
+        ["이메일 보내기"]
+//        ["로그아웃"],
+//        ["탈퇴하기"]
     ]
 
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {

@@ -80,12 +80,29 @@ extension AuthStartViewController {
             .subscribe { [unowned self] _ in
                 let mainView = CustomTapBarController()
                 navigationController?.pushViewController(mainView, animated: true)
-                autoLoginWaitView.dismissView()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.autoLoginWaitView.dismissView()
+                }
             }
             .disposed(by: disposeBag)
 
         output.isError.asObservable()
-            .bind { self.autoLoginWaitView.dismissView()}
+            .bind { res in
+                switch res {
+                case .FORBIDDEN:
+                    Token.removeToken()
+                    self.autoLoginRelay.accept(())
+                default:
+                    let errorAlert = UIAlertController(
+                        title: "네트워크 오류",
+                        message: "네트워크 연결을 확인해주세요.",
+                        preferredStyle: .alert
+                    )
+                    errorAlert.addAction(UIAlertAction(title: "확인", style: .cancel))
+                    self.present(errorAlert, animated: true)
+                }
+//                self.autoLoginWaitView.dismissView()
+            }
             .disposed(by: disposeBag)
     }
 

@@ -248,7 +248,6 @@
 		4B88B8352A12623900F36335 /* CalendarTimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeEntity.swift; sourceTree = "<group>"; };
 		4B88B8372A126B5800F36335 /* Int+decimalFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+decimalFormat.swift"; sourceTree = "<group>"; };
 		4B88B83A2A1382DA00F36335 /* AutoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginService.swift; sourceTree = "<group>"; };
-		4B951DFA2A20462D000CB236 /* Timery copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Timery copy-Info.plist"; path = "/Users/bjcho/Desktop/GitHub/Timery-iOS/Timery/Timery copy-Info.plist"; sourceTree = "<absolute>"; };
 		4B951DFD2A20514D000CB236 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B96114B29B015CB00019C50 /* SubjectAnalyzeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectAnalyzeCell.swift; sourceTree = "<group>"; };
 		4B96115829B34EC700019C50 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -810,7 +809,6 @@
 				4B43E52229E130F900FEFD68 /* .swiftlint.yml */,
 				4BDA204329913E8D0032161C /* Timery */,
 				4BDA204229913E8D0032161C /* Products */,
-				4B951DFA2A20462D000CB236 /* Timery copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1710,7 +1708,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 235C2RVZ7L;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1747,7 +1745,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 235C2RVZ7L;
 				GENERATE_INFOPLIST_FILE = YES;
