@@ -47,12 +47,10 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
             $0.top.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.size.equalTo(20)
         }
-
         completeButton.snp.makeConstraints {
             $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(20)
         }
-
         contentTextView.snp.makeConstraints {
             $0.top.equalTo(completeButton.snp.bottom).offset(16)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
