@@ -23,6 +23,17 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
     )
     lazy var output: TextInputViewModel.Output = viewModel.transform(input: input)
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        contentTextView.do {
+            var topCorrect = ($0.bounds.size.height - $0.contentSize.height * $0.zoomScale) / 2
+            topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect
+            $0.contentInset.top = topCorrect
+            $0.textAlignment = .center
+            $0.becomeFirstResponder()
+        }
+    }
+
     override func addSubViews() {
         view.addSubViews(views: [
             xmarkButton,
@@ -31,24 +42,20 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
         ])
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        contentTextView.becomeFirstResponder()
-    }
-
     override func makeConstraints() {
         xmarkButton.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(20)
+            $0.top.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.size.equalTo(20)
         }
 
         completeButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(20)
+            $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.height.equalTo(20)
         }
 
         contentTextView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(completeButton.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
 

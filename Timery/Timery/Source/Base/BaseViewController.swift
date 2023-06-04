@@ -22,6 +22,7 @@ open class BaseViewController<ViewModel: ViewModelType>:
 
     open override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         addSubViews()
         makeConstraints()
         bind()
