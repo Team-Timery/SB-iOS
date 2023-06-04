@@ -146,7 +146,6 @@ extension TimerViewController {
                 self.timerHeaderView.timeText = data.totalTime.toTimerString()
                 self.todayTotalTime = data.totalTime
                 self.subjectList = data.subjectList
-//                self.subjectTableView.reloadSections(IndexSet(integer: 0), with: .bottom)
                 self.subjectTableView.reloadData()
             })
             .disposed(by: disposeBag)

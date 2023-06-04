@@ -250,6 +250,7 @@ extension AnalyzeViewController {
                 dateControllerRightButton.tintColor = isToday ? .whiteElevated3 : .whiteElevated4
                 dateControllerRightButton.isEnabled = !isToday
                 subjectsTimeStackView.removeAll()
+                self.timeProgressBar.resetProgress()
                 notingLable.isHidden = !data.focusResponses.isEmpty
                 timeProgressBar.isHidden = data.focusResponses.isEmpty
                 data.focusResponses.enumerated().forEach { sectionNum, value in
