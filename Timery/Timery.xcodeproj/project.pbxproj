@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46E901CB2A2CB0710054AA9C /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */; };
+		46E901CE2A2CB17F0054AA9C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */; };
+		46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CF2A2CB1A10054AA9C /* AddViewable.swift */; };
+		46E901D22A2CB21C0054AA9C /* ConstraintMakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901D12A2CB21C0054AA9C /* ConstraintMakable.swift */; };
+		46E901D42A2CB2A60054AA9C /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901D32A2CB2A60054AA9C /* HasDisposeBag.swift */; };
+		46E901D62A2CB6800054AA9C /* HasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901D52A2CB6800054AA9C /* HasViewModel.swift */; };
+		46E901D82A2CB6C90054AA9C /* ViewModelBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901D72A2CB6C90054AA9C /* ViewModelBindable.swift */; };
+		46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */; };
 		4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */; };
 		4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E46A29DBE26100460145 /* CalendarViewController.swift */; };
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
@@ -169,6 +177,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
+		46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		46E901CF2A2CB1A10054AA9C /* AddViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewable.swift; sourceTree = "<group>"; };
+		46E901D12A2CB21C0054AA9C /* ConstraintMakable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintMakable.swift; sourceTree = "<group>"; };
+		46E901D32A2CB2A60054AA9C /* HasDisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
+		46E901D52A2CB6800054AA9C /* HasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasViewModel.swift; sourceTree = "<group>"; };
+		46E901D72A2CB6C90054AA9C /* ViewModelBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindable.swift; sourceTree = "<group>"; };
+		46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewModel.swift; sourceTree = "<group>"; };
 		4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewModel.swift; sourceTree = "<group>"; };
 		4B17E46A29DBE26100460145 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeCellView.swift; sourceTree = "<group>"; };
@@ -343,6 +359,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46E901C82A2CB04F0054AA9C /* TextInput */ = {
+			isa = PBXGroup;
+			children = (
+				46E901D92A2CB95C0054AA9C /* ViewModel */,
+				46E901C92A2CB0530054AA9C /* ViewController */,
+			);
+			path = TextInput;
+			sourceTree = "<group>";
+		};
+		46E901C92A2CB0530054AA9C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		46E901CC2A2CB0AA0054AA9C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		46E901D92A2CB95C0054AA9C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4B05378C29D50E5800B63BA3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,6 +883,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				46E901C82A2CB04F0054AA9C /* TextInput */,
 				4B96115629B34E9700019C50 /* More */,
 				4B2F6AFC29E3E11000956CFA /* UserInfo */,
 				4B62C84A29B97E7800B7A10C /* Notice */,
@@ -869,6 +919,7 @@
 		4BDA20812994EA5D0032161C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				46E901CC2A2CB0AA0054AA9C /* Base */,
 				4B88B82C2A112AC300F36335 /* Enum */,
 				4BE0296229A11E3200788B37 /* Protocol */,
 				4BDA20882994EEF90032161C /* Extension */,
@@ -957,6 +1008,11 @@
 			children = (
 				4BE0296329A11E5000788B37 /* ViewModelType.swift */,
 				4BE595312A052B6300BEB1A1 /* SubjectCellTapButtonDelegate.swift */,
+				46E901CF2A2CB1A10054AA9C /* AddViewable.swift */,
+				46E901D12A2CB21C0054AA9C /* ConstraintMakable.swift */,
+				46E901D32A2CB2A60054AA9C /* HasDisposeBag.swift */,
+				46E901D72A2CB6C90054AA9C /* ViewModelBindable.swift */,
+				46E901D52A2CB6800054AA9C /* HasViewModel.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1437,6 +1493,7 @@
 			files = (
 				4B3B3CB129EF66CB007673FD /* AuthAgeSexViewController.swift in Sources */,
 				4B88B82B2A10CD9B00F36335 /* AnalyzeViewModel.swift in Sources */,
+				46E901D42A2CB2A60054AA9C /* HasDisposeBag.swift in Sources */,
 				4BDA204529913E8D0032161C /* AppDelegate.swift in Sources */,
 				4B97B7892A090E0A00242130 /* ErrorAlertViewController.swift in Sources */,
 				4B426C402A0F134E001BB36D /* CalendarViewModel.swift in Sources */,
@@ -1446,6 +1503,7 @@
 				4BE5952A2A0226B500BEB1A1 /* Int+toTimerString.swift in Sources */,
 				4B3DA2E829D965850041524E /* TipsViewController.swift in Sources */,
 				4BFB656D29A48C4600FE9118 /* CustomTapBarController.swift in Sources */,
+				46E901D82A2CB6C90054AA9C /* ViewModelBindable.swift in Sources */,
 				4B2EB47D2A19089400B9D055 /* UserProfileEntity.swift in Sources */,
 				4B17E47329DD23DD00460145 /* Date+toString.swift in Sources */,
 				4B2EB4752A18F38A00B9D055 /* AutoLoginWaitViewController.swift in Sources */,
@@ -1471,6 +1529,7 @@
 				4B4777F82A0D1E2400BAE131 /* LogoutAlert.swift in Sources */,
 				4B88B8362A12623900F36335 /* CalendarTimeEntity.swift in Sources */,
 				4B6E41AA29FF574200762174 /* AuthTermsViewModel.swift in Sources */,
+				46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
 				4B3DA2E529D6EE1F0041524E /* QuestionTableViewCell.swift in Sources */,
 				4B426C582A0FB666001BB36D /* DocumentResult.swift in Sources */,
@@ -1529,8 +1588,10 @@
 				4BE0296429A11E5000788B37 /* ViewModelType.swift in Sources */,
 				4B24F6022A23A57D00E5000E /* ProgressViewSection+addProgressBorder.swift in Sources */,
 				4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */,
+				46E901CB2A2CB0710054AA9C /* TextInputViewController.swift in Sources */,
 				4BE595122A0080F900BEB1A1 /* NetworkingResult.swift in Sources */,
 				4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */,
+				46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */,
 				4B426C6E2A0FBE93001BB36D /* NoticeViewModel.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				4BE02944299A0EE600788B37 /* UIViewController+hideKeyboardWhenTappedAround.swift in Sources */,
@@ -1543,11 +1604,14 @@
 				4B426C742A0FC0AB001BB36D /* FAQViewModel.swift in Sources */,
 				4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */,
 				4B88B82E2A112ADA00F36335 /* Month.swift in Sources */,
+				46E901CE2A2CB17F0054AA9C /* BaseViewController.swift in Sources */,
 				4B17E47129DC67BE00460145 /* CalendarTimeCellView.swift in Sources */,
 				4BFB659029ADF84700FE9118 /* AnalyzeViewController.swift in Sources */,
 				4B3DA2EF29D989DC0041524E /* TokenResponse.swift in Sources */,
 				4B6E419E29FD6A5D00762174 /* LoginViewModel.swift in Sources */,
 				4BFB657C29A7903C00FE9118 /* SimpleAlertViewController.swift in Sources */,
+				46E901D62A2CB6800054AA9C /* HasViewModel.swift in Sources */,
+				46E901D22A2CB21C0054AA9C /* ConstraintMakable.swift in Sources */,
 				4B3DA2F129D98CE00041524E /* ProfileResponse.swift in Sources */,
 				4BFB657829A778E900FE9118 /* TimerActivateViewController.swift in Sources */,
 				4B426C4B2A0F8F16001BB36D /* RecordSubjectResponse.swift in Sources */,

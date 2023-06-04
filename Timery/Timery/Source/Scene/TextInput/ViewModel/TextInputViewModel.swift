@@ -1,8 +1,15 @@
-//
-//  TextInputViewModel.swift
-//  Timery
-//
-//  Created by 최형우 on 2023/06/04.
-//
+import RxSwift
 
-import Foundation
+final class TextInputViewModel: ViewModelType {
+    struct Input {}
+
+    struct Output {}
+
+    var disposeBag: DisposeBag = DisposeBag()
+
+    init() {}
+
+    func transform(input: Input) -> Output {
+        return Output()
+    }
+}
