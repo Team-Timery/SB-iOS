@@ -20,6 +20,13 @@ open class BaseViewController<ViewModel: ViewModelType>:
         fatalError("init(coder:) has not been implemented")
     }
 
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubViews()
+        makeConstraints()
+        bind()
+    }
+
     open func addSubViews() {}
     open func makeConstraints() {}
     open func bind() {}
