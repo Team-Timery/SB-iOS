@@ -19,6 +19,7 @@
 		46E901E02A2CC7FB0054AA9C /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */; };
 		46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E12A2D74970054AA9C /* TodayReviewView.swift */; };
 		46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */; };
+		46E901E72A2D7BBC0054AA9C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 46E901E62A2D7BBC0054AA9C /* RxGesture */; };
 		4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */; };
 		4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E46A29DBE26100460145 /* CalendarViewController.swift */; };
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
@@ -350,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2EB46F2A1652D000B9D055 /* FirebaseAnalyticsSwift in Frameworks */,
+				46E901E72A2D7BBC0054AA9C /* RxGesture in Frameworks */,
 				4BFB659629AE2ACB00FE9118 /* MultiProgressView in Frameworks */,
 				4BDA205F299141880032161C /* RxCocoa in Frameworks */,
 				4B6E41A129FD770900762174 /* SwiftKeychainWrapper in Frameworks */,
@@ -1404,6 +1406,7 @@
 				4B6E41A029FD770900762174 /* SwiftKeychainWrapper */,
 				4B2EB46C2A1652D000B9D055 /* FirebaseAnalytics */,
 				4B2EB46E2A1652D000B9D055 /* FirebaseAnalyticsSwift */,
+				46E901E62A2D7BBC0054AA9C /* RxGesture */,
 			);
 			productName = Ambition;
 			productReference = 4BDA204129913E8D0032161C /* Timery.app */;
@@ -1443,6 +1446,7 @@
 				4B17E46C29DBE30F00460145 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				4B6E419F29FD770900762174 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				4B2EB46B2A1652D000B9D055 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				46E901E52A2D7BBC0054AA9C /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = 4BDA204229913E8D0032161C /* Products */;
 			projectDirPath = "";
@@ -1878,6 +1882,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		46E901E52A2D7BBC0054AA9C /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		4B17E46C29DBE30F00460145 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -1953,6 +1965,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		46E901E62A2D7BBC0054AA9C /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46E901E52A2D7BBC0054AA9C /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
 		4B17E46D29DBE30F00460145 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4B17E46C29DBE30F00460145 /* XCRemoteSwiftPackageReference "FSCalendar" */;
