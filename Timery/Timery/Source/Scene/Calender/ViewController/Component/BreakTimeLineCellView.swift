@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
+@available(*, deprecated, message: "Use 'TimeLineCellView'")
 class BreakTimeLineCellView: UIView {
     private let contentLabel = UILabel().then {
         $0.font = .indicatorMedium
