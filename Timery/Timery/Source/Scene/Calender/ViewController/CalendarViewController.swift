@@ -62,10 +62,7 @@ class CalendarViewController: UIViewController {
 
     private let studyTimeView = CalendarTimeCellView(title: "공부시간")
     private let maxStudyTimeView = CalendarTimeCellView(title: "최대 집중시간")
-
-    private let footerView = UIView().then {
-        $0.backgroundColor = .whiteElevated2
-    }
+    private let todayReviewView = TodayReviewView(review: nil)
 
     private let timeLineContentView = UIView().then {
         $0.backgroundColor = .white
@@ -208,7 +205,7 @@ extension CalendarViewController {
         calendarScrollView.addSubview(contentView)
         [
             calendarView,
-            footerView,
+            todayReviewView,
             timeLineContentView,
             monthTitleLabel,
             calendarLeftButton,
@@ -288,7 +285,7 @@ extension CalendarViewController {
         // 타임라인
         timeLineContentView.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.top.equalTo(footerView.snp.bottom)
+            $0.top.equalTo(todayReviewView.snp.bottom)
             $0.bottom.greaterThanOrEqualTo(timeLineStackView.snp.bottom).offset(100)
             $0.bottom.equalToSuperview()
         }
@@ -305,9 +302,9 @@ extension CalendarViewController {
             $0.left.right.equalToSuperview().inset(15)
         }
         // 칸 나누는 회색 선
-        footerView.snp.makeConstraints {
-            $0.width.equalToSuperview()
-            $0.height.equalTo(12)
+        todayReviewView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(calendarView.snp.bottom)
         }
     }

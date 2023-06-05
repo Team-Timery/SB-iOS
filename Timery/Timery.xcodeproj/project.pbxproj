@@ -17,6 +17,8 @@
 		46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */; };
 		46E901DD2A2CBC6C0054AA9C /* ViewModelTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */; };
 		46E901E02A2CC7FB0054AA9C /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */; };
+		46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E12A2D74970054AA9C /* TodayReviewView.swift */; };
+		46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */; };
 		4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */; };
 		4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E46A29DBE26100460145 /* CalendarViewController.swift */; };
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
@@ -189,6 +191,8 @@
 		46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewModel.swift; sourceTree = "<group>"; };
 		46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTransformable.swift; sourceTree = "<group>"; };
 		46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
+		46E901E12A2D74970054AA9C /* TodayReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewView.swift; sourceTree = "<group>"; };
+		46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArragedSubViews.swift"; sourceTree = "<group>"; };
 		4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewModel.swift; sourceTree = "<group>"; };
 		4B17E46A29DBE26100460145 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeCellView.swift; sourceTree = "<group>"; };
@@ -434,6 +438,7 @@
 		4B17E46F29DC676100460145 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				46E901E12A2D74970054AA9C /* TodayReviewView.swift */,
 				4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */,
 				4B17E47529DE4B2A00460145 /* BreakTimeLineCellView.swift */,
 				4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */,
@@ -976,6 +981,7 @@
 				4B24F5FF2A23A00400E5000E /* MultiProgressView+setProgressWithAnimate.swift */,
 				4B24F6012A23A57D00E5000E /* ProgressViewSection+addProgressBorder.swift */,
 				46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */,
+				46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1562,6 +1568,7 @@
 				4BDA20912997816D0032161C /* OauthButton.swift in Sources */,
 				4B3DA2F529D9C56D0041524E /* AuthAPI.swift in Sources */,
 				4B6E41A829FE96FE00762174 /* AuthAgeSexViewModel.swift in Sources */,
+				46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */,
 				4B88B8202A10CA0D00F36335 /* AnalysisGraphResponse.swift in Sources */,
 				4B88B8322A1216C500F36335 /* FocusEntity.swift in Sources */,
 				4BE595232A013F5D00BEB1A1 /* SubjectService.swift in Sources */,
@@ -1636,6 +1643,7 @@
 				4B426C442A0F762A001BB36D /* RecoedResponse.swift in Sources */,
 				4B3DA2EB29D9662B0041524E /* TipsTableViewCell.swift in Sources */,
 				4B426C5F2A0FB7D8001BB36D /* FAQListResponse.swift in Sources */,
+				46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */,
 				4B2EB4732A18783F00B9D055 /* UIViewController+keyboardDetection.swift in Sources */,
 				4B426C5D2A0FB7C5001BB36D /* TipsListResponse.swift in Sources */,
 				4B17E47629DE4B2A00460145 /* BreakTimeLineCellView.swift in Sources */,
