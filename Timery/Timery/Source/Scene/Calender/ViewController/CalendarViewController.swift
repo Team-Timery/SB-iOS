@@ -91,7 +91,8 @@ class CalendarViewController: UIViewController {
         getMonthOfRecordDay: getCalendarRecordRelay.asDriver(),
         getNextMonth: calendarRightButton.rx.tap,
         getLastMonth: calendarLeftButton.rx.tap,
-        inputTodayReview: inputTodayReviewRelay.asObservable()
+        inputTodayReview: inputTodayReviewRelay.asObservable(),
+        viewDidLoad: self.rx.methodInvoked(#selector(viewDidLoad)).map { _ in }
     )
     lazy var output = viewModel.transform(input: input)
 
@@ -213,8 +214,8 @@ extension CalendarViewController {
             })
             .disposed(by: dispoesBag)
 
-        output.calendarTimeData
-            .map(\.todayReview)
+        output.todayReview
+            .map(\.content)
             .emit(to: todayReviewView.rx.review)
             .disposed(by: dispoesBag)
     }

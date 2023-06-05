@@ -11,6 +11,7 @@ class CalendarViewModel: ViewModelType {
         let getNextMonth: ControlEvent<Void>
         let getLastMonth: ControlEvent<Void>
         let inputTodayReview: Observable<String>
+        let viewDidLoad: Observable<Void>
     }
 
     struct Output {
@@ -19,6 +20,7 @@ class CalendarViewModel: ViewModelType {
         let calendarTimeData: Signal<CalendarTimeEntity>
         let isHiddenEmptyLable: Driver<Bool>
         let calendarPage: Signal<Date>
+        let todayReview: Signal<TodayReviewEntity>
     }
 
     var monthCount = 0
@@ -31,6 +33,7 @@ class CalendarViewModel: ViewModelType {
         let monthRecordRelay = PublishRelay<MonthOfRecordDayEntity>()
         let isHiddenEmptyLable = PublishRelay<Bool>()
         let resultMonth = PublishRelay<Date>()
+        let todayReviewRelay = PublishRelay<TodayReviewEntity>()
 
         input.selectDate.asObservable()
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
@@ -103,20 +106,21 @@ class CalendarViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
-        Observable.zip(calendarTimeRelay, input.inputTodayReview)
-            .flatMap { calendar, review in
-                service.updateTodayReview(reviewID: calendar.reviewID, review: review)
-                    .map { _ in (calendar, review) }
+        input.viewDidLoad
+            .map { Date().toString(to: "yyyy-MM-dd") }
+            .flatMap { service.getTodayReview(date: $0) }
+            .bind(to: todayReviewRelay)
+            .disposed(by: disposeBag)
+
+        Observable.zip(todayReviewRelay, input.inputTodayReview)
+            .flatMap { todayReview, review in
+                service.updateTodayReview(reviewID: todayReview.reviewID, review: review)
+                    .map { _ in (todayReview, review) }
             }
             .map {
-                CalendarTimeEntity(
-                    totalFocusedTime: $0.totalFocusedTime,
-                    maxFocusedTime: $0.maxFocusedTime,
-                    todayReview: $1,
-                    reviewID: $0.reviewID
-                )
+                TodayReviewEntity(reviewID: $0.reviewID, content: $1)
             }
-            .bind(to: calendarTimeRelay)
+            .bind(to: todayReviewRelay)
             .disposed(by: disposeBag)
 
         return Output(
@@ -124,7 +128,8 @@ class CalendarViewModel: ViewModelType {
             monthRecordDay: monthRecordRelay.asSignal(),
             calendarTimeData: calendarTimeRelay.asSignal(),
             isHiddenEmptyLable: isHiddenEmptyLable.asDriver(onErrorJustReturn: false),
-            calendarPage: resultMonth.asSignal()
+            calendarPage: resultMonth.asSignal(),
+            todayReview: todayReviewRelay.asSignal()
         )
     }
 // swiftlint: enable function_body_length

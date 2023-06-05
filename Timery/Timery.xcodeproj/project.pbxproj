@@ -20,6 +20,8 @@
 		46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E12A2D74970054AA9C /* TodayReviewView.swift */; };
 		46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */; };
 		46E901E72A2D7BBC0054AA9C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 46E901E62A2D7BBC0054AA9C /* RxGesture */; };
+		46E901ED2A2DE5DC0054AA9C /* TodayReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */; };
+		46E901EF2A2DE6A60054AA9C /* GetTodayReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */; };
 		4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */; };
 		4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E46A29DBE26100460145 /* CalendarViewController.swift */; };
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
@@ -194,6 +196,8 @@
 		46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
 		46E901E12A2D74970054AA9C /* TodayReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewView.swift; sourceTree = "<group>"; };
 		46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArragedSubViews.swift"; sourceTree = "<group>"; };
+		46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewEntity.swift; sourceTree = "<group>"; };
+		46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayReviewResponse.swift; sourceTree = "<group>"; };
 		4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewModel.swift; sourceTree = "<group>"; };
 		4B17E46A29DBE26100460145 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeCellView.swift; sourceTree = "<group>"; };
@@ -569,6 +573,7 @@
 				4B426C4C2A0F8FDA001BB36D /* RecordSubjectEntity.swift */,
 				4B88B81B2A10C2A800F36335 /* MonthOfRecordDayEntity.swift */,
 				4B88B8352A12623900F36335 /* CalendarTimeEntity.swift */,
+				46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1210,6 +1215,7 @@
 				4B426C4A2A0F8F16001BB36D /* RecordSubjectResponse.swift */,
 				4B88B8192A10C27C00F36335 /* MonthOfRecordDayResponse.swift */,
 				4B88B8332A12616600F36335 /* CalendarTimeResponse.swift */,
+				46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1517,6 +1523,7 @@
 				4B426C422A0F6A51001BB36D /* RecordListResponse.swift in Sources */,
 				46E901E02A2CC7FB0054AA9C /* UIView+addSubViews.swift in Sources */,
 				4B426C622A0FB94B001BB36D /* NoticeListEntity.swift in Sources */,
+				46E901ED2A2DE5DC0054AA9C /* TodayReviewEntity.swift in Sources */,
 				4BE5952A2A0226B500BEB1A1 /* Int+toTimerString.swift in Sources */,
 				4B3DA2E829D965850041524E /* TipsViewController.swift in Sources */,
 				4BFB656D29A48C4600FE9118 /* CustomTapBarController.swift in Sources */,
@@ -1563,6 +1570,7 @@
 				4B6E419629FD12CC00762174 /* AuthPasswordViewModel.swift in Sources */,
 				4B426C722A0FC062001BB36D /* TipsViewModel.swift in Sources */,
 				4BE595142A0126FD00BEB1A1 /* TimerViewModel.swift in Sources */,
+				46E901EF2A2DE6A60054AA9C /* GetTodayReviewResponse.swift in Sources */,
 				4B88B8292A10CC2900F36335 /* AnalysisGraphEntity.swift in Sources */,
 				4B426C662A0FB9EC001BB36D /* FAQListEntity.swift in Sources */,
 				4B88B8382A126B5800F36335 /* Int+decimalFormat.swift in Sources */,

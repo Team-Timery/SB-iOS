@@ -23,6 +23,13 @@ class RecordService {
             }
     }
 
+    func getTodayReview(date: String) -> Single<TodayReviewEntity> {
+        return provider.rx.request(.getTodayReview(date: date))
+            .filterSuccessfulStatusCodes()
+            .map(GetTodayReviewResponse.self)
+            .map { $0.toDomain() }
+    }
+
     func updateTodayReview(reviewID: Int, review: String) -> Single<RecordResult> {
         return provider.rx.request(.updateTodayReview(reviewID: reviewID, review: review))
             .filterSuccessfulStatusCodes()
