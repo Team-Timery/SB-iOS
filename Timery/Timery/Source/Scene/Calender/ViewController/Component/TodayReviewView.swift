@@ -22,24 +22,26 @@ final class TodayReviewView: UIView, AddViewable, ConstraintMakable {
         $0.image = UIImage(systemName: "chevron.right")
         $0.tintColor = .whiteElevated4
     }
-    private var review: String {
-        didSet {
-            self.reviewContentLabel.text = review
-        }
-    }
+    @Invalidating(wrappedValue: nil, .display) private var review: String?
 
     init(review: String?) {
-        self.review = review ?? "한줄평을 입력해주세요"
         super.init(frame: .zero)
         addSubViews()
         makeConstraints()
         self.backgroundColor = .whiteElevated1
         self.layer.cornerRadius = 20
+        self.clipsToBounds = true
         setReview(review: review)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.reviewContentLabel.text = self.review ?? "한줄평을 입력해주세요"
+        self.reviewContentLabel.textColor = self.review == nil ? .mainElevated : .whiteElevated4
     }
 
     func addSubViews() {
@@ -65,9 +67,7 @@ final class TodayReviewView: UIView, AddViewable, ConstraintMakable {
     }
 
     func setReview(review: String?) {
-        self.review = review ?? "한줄평을 입력해주세요"
-        self.reviewContentLabel.text = self.review
-        self.reviewContentLabel.textColor = review == nil ? .mainElevated : .whiteElevated4
+        self.review = review
     }
 }
 
