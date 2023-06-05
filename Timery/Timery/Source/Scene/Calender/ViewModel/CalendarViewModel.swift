@@ -10,6 +10,7 @@ class CalendarViewModel: ViewModelType {
         let getMonthOfRecordDay: Driver<String>
         let getNextMonth: ControlEvent<Void>
         let getLastMonth: ControlEvent<Void>
+        let inputTodayReview: Observable<String>
     }
 
     struct Output {
@@ -100,6 +101,22 @@ class CalendarViewModel: ViewModelType {
                 let lastMonthResult = Calendar.current.date(byAdding: dayComponent, to: Date()) ?? Date()
                 resultMonth.accept(lastMonthResult)
             })
+            .disposed(by: disposeBag)
+
+        Observable.zip(calendarTimeRelay, input.inputTodayReview)
+            .flatMap { calendar, review in
+                service.updateTodayReview(reviewID: calendar.reviewID, review: review)
+                    .map { _ in (calendar, review) }
+            }
+            .map {
+                CalendarTimeEntity(
+                    totalFocusedTime: $0.totalFocusedTime,
+                    maxFocusedTime: $0.maxFocusedTime,
+                    todayReview: $1,
+                    reviewID: $0.reviewID
+                )
+            }
+            .bind(to: calendarTimeRelay)
             .disposed(by: disposeBag)
 
         return Output(

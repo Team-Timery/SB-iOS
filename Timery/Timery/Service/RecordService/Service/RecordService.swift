@@ -23,6 +23,13 @@ class RecordService {
             }
     }
 
+    func updateTodayReview(reviewID: Int, review: String) -> Single<RecordResult> {
+        return provider.rx.request(.updateTodayReview(reviewID: reviewID, review: review))
+            .filterSuccessfulStatusCodes()
+            .map { _ in RecordResult.SUCCEED }
+            .catch { .just(self.netErr($0)) }
+    }
+
     func getDayOfRecord(date: String) -> Single<(RecordListEntity?, RecordResult)> {
         return provider.rx.request(.getDayOfRecord(date: date))
             .filterSuccessfulStatusCodes()

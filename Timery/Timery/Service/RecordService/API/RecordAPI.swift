@@ -6,6 +6,7 @@ enum RecordAPI {
     case getDayOfRecord(date: String)
     case getMonthOfRecordDay(yearMonth: String)
     case getCalendarTime(date: String)
+    case updateTodayReview(reviewID: Int, review: String)
 }
 
 extension RecordAPI: TargetType {
@@ -23,6 +24,8 @@ extension RecordAPI: TargetType {
             return "/calendar"
         case .getCalendarTime:
             return "/calendar/time"
+        case let .updateTodayReview(id, _):
+            return "/today-review/\(id)"
         }
     }
 
@@ -32,6 +35,8 @@ extension RecordAPI: TargetType {
             return .post
         case .getDayOfRecord, .getMonthOfRecordDay, .getCalendarTime:
             return .get
+        case .updateTodayReview:
+            return .patch
         }
     }
 
@@ -64,6 +69,10 @@ extension RecordAPI: TargetType {
                 ],
                 encoding: URLEncoding.queryString
             )
+        case let .updateTodayReview(_, review):
+            return .requestParameters(parameters: [
+                "today_review": review
+            ], encoding: JSONEncoding.default)
         }
     }
 

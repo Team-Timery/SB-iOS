@@ -4,6 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 import FSCalendar
+import RxGesture
 
 // swiftlint:disable function_body_length
 class CalendarViewController: UIViewController {
@@ -11,6 +12,7 @@ class CalendarViewController: UIViewController {
 
     private let selectCalendarRelay = PublishRelay<String>()
     private let getCalendarRecordRelay = BehaviorRelay<String>(value: Date().toString(to: "yyyy-MM"))
+    private let inputTodayReviewRelay = PublishRelay<String>()
     private var eventDays: [String] = [] {
         didSet { calendarView.reloadData() }
     }
@@ -88,7 +90,8 @@ class CalendarViewController: UIViewController {
         selectDate: selectCalendarRelay.asSignal(),
         getMonthOfRecordDay: getCalendarRecordRelay.asDriver(),
         getNextMonth: calendarRightButton.rx.tap,
-        getLastMonth: calendarLeftButton.rx.tap
+        getLastMonth: calendarLeftButton.rx.tap,
+        inputTodayReview: inputTodayReviewRelay.asObservable()
     )
     lazy var output = viewModel.transform(input: input)
 
@@ -146,6 +149,20 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 
 extension CalendarViewController {
     private func bind() {
+        todayReviewView.rx.tapGesture()
+            .when(.recognized)
+            .map { _ in }
+            .bind(with: self) { owner, _ in
+                let textInputViewController = TextInputViewController(
+                    viewModel: TextInputViewModel(completeionHandler: { text in
+                        owner.inputTodayReviewRelay.accept(text)
+                    })
+                )
+                textInputViewController.modalPresentationStyle = .overFullScreen
+                owner.present(textInputViewController, animated: true)
+            }
+            .disposed(by: dispoesBag)
+
         output.timeLineDate.asObservable()
             .subscribe(onNext: { data in
                 data.recordResponses.forEach({
@@ -189,10 +206,16 @@ extension CalendarViewController {
                 self.maxStudyTimeView.content = data.maxFocusedTime.toFullTimeString()
             })
             .disposed(by: dispoesBag)
+
         output.calendarPage.asObservable()
             .subscribe(onNext: { date in
                 self.calendarView.setCurrentPage(date, animated: false)
             })
+            .disposed(by: dispoesBag)
+
+        output.calendarTimeData
+            .map(\.todayReview)
+            .emit(to: todayReviewView.rx.review)
             .disposed(by: dispoesBag)
     }
 
