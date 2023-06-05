@@ -3,7 +3,7 @@ import Foundation
 struct CalendarTimeResponse: Decodable {
     let totalFocusedTime, maxFocusedTime: Int
     let todayReview: String?
-    let reviewID: Int?
+    let reviewID: Int
 
     enum CodingKeys: String, CodingKey {
         case totalFocusedTime = "total_focused_time"
@@ -19,7 +19,7 @@ extension CalendarTimeResponse {
             totalFocusedTime: totalFocusedTime,
             maxFocusedTime: maxFocusedTime,
             todayReview: todayReview,
-            reviewID: reviewID ?? 0
+            reviewID: reviewID
         )
     }
 }
