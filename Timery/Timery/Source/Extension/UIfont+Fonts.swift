@@ -17,6 +17,7 @@ extension UIFont {
 
     // typograpy
     static let typograpy = UIFont(name: "Pretendard-Bold", size: 40)
+    static let miniTypograph = UIFont(name: "Pretendard-Bold", size: 36)
 
     // title
     static let titleXLMedium = UIFont(name: "Pretendard-Medium", size: 32)
@@ -37,6 +38,13 @@ extension UIFont {
 
     static let main2Medium = UIFont(name: "Pretendard-Medium", size: 16)
     static let main2Bold = UIFont(name: "Pretendard-Bold", size: 16)
+
+    // mini
+    static let mini1Medium = UIFont(name: "Pretendard-Medium", size: 16)
+    static let mini1Bold = UIFont(name: "Pretendard-Bold", size: 16)
+
+    static let mini2Medium = UIFont(name: "Pretendard-Medium", size: 14)
+    static let mini2Bold = UIFont(name: "Pretendard-Bold", size: 14)
 
     // indicator
     static let indicator = UIFont(name: "Pretendard-Bold", size: 14)

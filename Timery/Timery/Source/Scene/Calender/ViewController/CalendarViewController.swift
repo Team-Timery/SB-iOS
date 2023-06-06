@@ -4,6 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 import FSCalendar
+import RxGesture
 
 // swiftlint:disable function_body_length
 class CalendarViewController: UIViewController {
@@ -11,6 +12,7 @@ class CalendarViewController: UIViewController {
 
     private let selectCalendarRelay = PublishRelay<String>()
     private let getCalendarRecordRelay = BehaviorRelay<String>(value: Date().toString(to: "yyyy-MM"))
+    private let inputTodayReviewRelay = PublishRelay<String>()
     private var eventDays: [String] = [] {
         didSet { calendarView.reloadData() }
     }
@@ -62,10 +64,7 @@ class CalendarViewController: UIViewController {
 
     private let studyTimeView = CalendarTimeCellView(title: "공부시간")
     private let maxStudyTimeView = CalendarTimeCellView(title: "최대 집중시간")
-
-    private let footerView = UIView().then {
-        $0.backgroundColor = .whiteElevated2
-    }
+    private let todayReviewView = TodayReviewView(review: nil)
 
     private let timeLineContentView = UIView().then {
         $0.backgroundColor = .white
@@ -83,7 +82,7 @@ class CalendarViewController: UIViewController {
     private lazy var timeLineStackView = UIStackView().then {
         $0.alignment = .trailing
         $0.axis = .vertical
-        $0.spacing = 15
+        $0.spacing = 40
     }
 
     private let viewModel = CalendarViewModel()
@@ -91,12 +90,16 @@ class CalendarViewController: UIViewController {
         selectDate: selectCalendarRelay.asSignal(),
         getMonthOfRecordDay: getCalendarRecordRelay.asDriver(),
         getNextMonth: calendarRightButton.rx.tap,
-        getLastMonth: calendarLeftButton.rx.tap
+        getLastMonth: calendarLeftButton.rx.tap,
+        inputTodayReview: inputTodayReviewRelay.asObservable(),
+        viewDidLoad: self.rx.methodInvoked(#selector(viewDidLoad)).map { _ in }
     )
     lazy var output = viewModel.transform(input: input)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubViews()
+        makeConstraints()
         view.backgroundColor = .white
         calendarView.delegate = self
         calendarView.dataSource = self
@@ -108,21 +111,21 @@ class CalendarViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         timeLineStackView.removeAll()
+        timeLineStackView.subviews
+            .forEach { $0.removeFromSuperview() }
         calendarView.select(Date())
         selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
-    }
-
-    override func viewDidLayoutSubviews() {
-        addSubViews()
-        makeConstraints()
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectCalendarRelay.accept(date.toString(to: "yyyy-MM-dd"))
+        timeLineStackView.subviews
+            .forEach { $0.removeFromSuperview() }
         timeLineStackView.removeAll()
     }
     // 최대 날짜
@@ -149,30 +152,32 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 
 extension CalendarViewController {
     private func bind() {
+        todayReviewView.rx.tapGesture()
+            .when(.recognized)
+            .map { _ in }
+            .bind(with: self) { owner, _ in
+                let textInputViewController = TextInputViewController(
+                    viewModel: TextInputViewModel(completeionHandler: { text in
+                        owner.inputTodayReviewRelay.accept(text)
+                    })
+                )
+                textInputViewController.modalPresentationStyle = .overFullScreen
+                owner.present(textInputViewController, animated: true)
+            }
+            .disposed(by: dispoesBag)
+
         output.timeLineDate.asObservable()
-            .subscribe(onNext: { data in
-                data.recordResponses.forEach({
-                    if $0.isRecord {
-                        let stackItem = SubjectTimeLineCellView(
-                            emoji: $0.subject.emoji,
-                            subjectName: $0.subject.title,
-                            startTime: $0.startedTime,
-                            studyTime: $0.total.toFullTimeString(),
-                            memo: $0.memo ?? "기록한 내용이 없습니다",
-                            cellWidth: self.view.frame.width / 1.35
-                        )
-                        self.timeLineStackView.addArrangedSubview(stackItem)
-                    } else {
-                        let stackItem = BreakTimeLineCellView(
-                            content: "\($0.startedTime) ~ \($0.finishedTime) \($0.total.toFullTimeString())"
-                        )
-                        stackItem.snp.makeConstraints {
+            .subscribe(with: self, onNext: { owner, data in
+                let timeLineViews = data.recordResponses
+                    .map {
+                        let cellView = TimeLineCellView(recordEntity: $0)
+                        cellView.snp.makeConstraints {
                             $0.height.equalTo(34)
-                            $0.width.equalTo(self.view.frame.width / 1.35)
+                            $0.width.equalTo(owner.timeLineStackView.frame.width)
                         }
-                        self.timeLineStackView.addArrangedSubview(stackItem)
+                        return cellView
                     }
-                })
+                owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)
             })
             .disposed(by: dispoesBag)
 
@@ -192,10 +197,16 @@ extension CalendarViewController {
                 self.maxStudyTimeView.content = data.maxFocusedTime.toFullTimeString()
             })
             .disposed(by: dispoesBag)
+
         output.calendarPage.asObservable()
             .subscribe(onNext: { date in
                 self.calendarView.setCurrentPage(date, animated: false)
             })
+            .disposed(by: dispoesBag)
+
+        output.todayReview
+            .map(\.content)
+            .emit(to: todayReviewView.rx.review)
             .disposed(by: dispoesBag)
     }
 
@@ -208,7 +219,7 @@ extension CalendarViewController {
         calendarScrollView.addSubview(contentView)
         [
             calendarView,
-            footerView,
+            todayReviewView,
             timeLineContentView,
             monthTitleLabel,
             calendarLeftButton,
@@ -288,7 +299,7 @@ extension CalendarViewController {
         // 타임라인
         timeLineContentView.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.top.equalTo(footerView.snp.bottom)
+            $0.top.equalTo(todayReviewView.snp.bottom)
             $0.bottom.greaterThanOrEqualTo(timeLineStackView.snp.bottom).offset(100)
             $0.bottom.equalToSuperview()
         }
@@ -305,9 +316,9 @@ extension CalendarViewController {
             $0.left.right.equalToSuperview().inset(15)
         }
         // 칸 나누는 회색 선
-        footerView.snp.makeConstraints {
-            $0.width.equalToSuperview()
-            $0.height.equalTo(12)
+        todayReviewView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(calendarView.snp.bottom)
         }
     }

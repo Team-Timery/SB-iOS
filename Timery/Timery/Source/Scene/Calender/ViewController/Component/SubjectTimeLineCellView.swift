@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
+@available(*, deprecated, message: "Use 'TimeLineCellView'")
 class SubjectTimeLineCellView: UIStackView {
     private var cellWidth: Double = 0
     private var showMemo: Bool = false
