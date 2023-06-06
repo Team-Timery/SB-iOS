@@ -23,6 +23,23 @@ class RecordService {
             }
     }
 
+    func getTodayReview(date: String) -> Single<TodayReviewEntity> {
+        return provider.rx.request(.getTodayReview(date: date))
+            .filterSuccessfulStatusCodes()
+            .map(GetTodayReviewResponse.self)
+            .map { $0.toDomain() }
+    }
+
+    func updateTodayReview(reviewID: Int, review: String) -> Single<RecordResult> {
+        return provider.rx.request(.updateTodayReview(reviewID: reviewID, review: review))
+            .filterSuccessfulStatusCodes()
+            .map { _ in RecordResult.SUCCEED }
+            .catch { [weak self] in
+                guard let self else { return .never() }
+                return .just(self.netErr($0))
+            }
+    }
+
     func getDayOfRecord(date: String) -> Single<(RecordListEntity?, RecordResult)> {
         return provider.rx.request(.getDayOfRecord(date: date))
             .filterSuccessfulStatusCodes()

@@ -1,5 +1,5 @@
 import Foundation
 
-struct CalendarTimeEntity: Decodable {
+struct CalendarTimeEntity {
     let totalFocusedTime, maxFocusedTime: Int
 }

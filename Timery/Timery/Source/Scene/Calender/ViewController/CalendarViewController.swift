@@ -4,6 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 import FSCalendar
+import RxGesture
 
 // swiftlint:disable function_body_length
 class CalendarViewController: UIViewController {
@@ -11,6 +12,7 @@ class CalendarViewController: UIViewController {
 
     private let selectCalendarRelay = PublishRelay<String>()
     private let getCalendarRecordRelay = BehaviorRelay<String>(value: Date().toString(to: "yyyy-MM"))
+    private let inputTodayReviewRelay = PublishRelay<String>()
     private var eventDays: [String] = [] {
         didSet { calendarView.reloadData() }
     }
@@ -62,10 +64,7 @@ class CalendarViewController: UIViewController {
 
     private let studyTimeView = CalendarTimeCellView(title: "공부시간")
     private let maxStudyTimeView = CalendarTimeCellView(title: "최대 집중시간")
-
-    private let footerView = UIView().then {
-        $0.backgroundColor = .whiteElevated2
-    }
+    private let todayReviewView = TodayReviewView(review: nil)
 
     private let timeLineContentView = UIView().then {
         $0.backgroundColor = .white
@@ -91,7 +90,9 @@ class CalendarViewController: UIViewController {
         selectDate: selectCalendarRelay.asSignal(),
         getMonthOfRecordDay: getCalendarRecordRelay.asDriver(),
         getNextMonth: calendarRightButton.rx.tap,
-        getLastMonth: calendarLeftButton.rx.tap
+        getLastMonth: calendarLeftButton.rx.tap,
+        inputTodayReview: inputTodayReviewRelay.asObservable(),
+        viewDidLoad: self.rx.methodInvoked(#selector(viewDidLoad)).map { _ in }
     )
     lazy var output = viewModel.transform(input: input)
 
@@ -149,6 +150,20 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 
 extension CalendarViewController {
     private func bind() {
+        todayReviewView.rx.tapGesture()
+            .when(.recognized)
+            .map { _ in }
+            .bind(with: self) { owner, _ in
+                let textInputViewController = TextInputViewController(
+                    viewModel: TextInputViewModel(completeionHandler: { text in
+                        owner.inputTodayReviewRelay.accept(text)
+                    })
+                )
+                textInputViewController.modalPresentationStyle = .overFullScreen
+                owner.present(textInputViewController, animated: true)
+            }
+            .disposed(by: dispoesBag)
+
         output.timeLineDate.asObservable()
             .subscribe(onNext: { data in
                 data.recordResponses.forEach({
@@ -192,10 +207,16 @@ extension CalendarViewController {
                 self.maxStudyTimeView.content = data.maxFocusedTime.toFullTimeString()
             })
             .disposed(by: dispoesBag)
+
         output.calendarPage.asObservable()
             .subscribe(onNext: { date in
                 self.calendarView.setCurrentPage(date, animated: false)
             })
+            .disposed(by: dispoesBag)
+
+        output.todayReview
+            .map(\.content)
+            .emit(to: todayReviewView.rx.review)
             .disposed(by: dispoesBag)
     }
 
@@ -208,7 +229,7 @@ extension CalendarViewController {
         calendarScrollView.addSubview(contentView)
         [
             calendarView,
-            footerView,
+            todayReviewView,
             timeLineContentView,
             monthTitleLabel,
             calendarLeftButton,
@@ -288,7 +309,7 @@ extension CalendarViewController {
         // 타임라인
         timeLineContentView.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.top.equalTo(footerView.snp.bottom)
+            $0.top.equalTo(todayReviewView.snp.bottom)
             $0.bottom.greaterThanOrEqualTo(timeLineStackView.snp.bottom).offset(100)
             $0.bottom.equalToSuperview()
         }
@@ -305,9 +326,9 @@ extension CalendarViewController {
             $0.left.right.equalToSuperview().inset(15)
         }
         // 칸 나누는 회색 선
-        footerView.snp.makeConstraints {
-            $0.width.equalToSuperview()
-            $0.height.equalTo(12)
+        todayReviewView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(calendarView.snp.bottom)
         }
     }
