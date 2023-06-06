@@ -7,6 +7,7 @@ class CustomTapBarController: UITabBarController {
         navigationItem.hidesBackButton = true
         navigationItem.backBarButtonItem = NavigationBackButton()
         setUpTabBar()
+        registerNotificationCenter()
 
         let timerVC = TimerViewController()
         timerVC.tabBarItem.title = "타이머"
@@ -42,8 +43,8 @@ class CustomTapBarController: UITabBarController {
     }
 }
 
-extension CustomTapBarController {
-    private func setUpTabBar() {
+private extension CustomTapBarController {
+    func setUpTabBar() {
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: UIFont(name: "Pretendard-Medium", size: 14)!],
             for: .normal
@@ -56,5 +57,14 @@ extension CustomTapBarController {
         self.tabBar.layer.borderColor = UIColor.whiteElevated2?.cgColor
         self.tabBar.backgroundImage = UIImage()
         self.tabBar.shadowImage = UIImage()
+    }
+
+    func registerNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(tabbarIndexDidChanged), name: .selectedTabbarIndex, object: nil)
+    }
+
+    @objc func tabbarIndexDidChanged(_ notification: Notification) {
+        guard let index = notification.object as? Int else { return }
+        self.selectedIndex = index
     }
 }

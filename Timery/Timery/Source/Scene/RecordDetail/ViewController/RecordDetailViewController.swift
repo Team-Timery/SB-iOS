@@ -119,6 +119,14 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
             }
             .disposed(by: disposeBag)
 
+        startRecordButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.navigationController?.popViewControllerWithCompletion(animated: true) {
+                    NotificationCenter.default.post(name: .selectedTabbarIndex, object: 0)
+                }
+            }
+            .disposed(by: disposeBag)
+
         output.recordEntity
             .drive(with: self, onNext: { owner, recordEntity in
                 if owner.subjectStackView.subviews.isEmpty {
