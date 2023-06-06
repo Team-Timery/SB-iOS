@@ -17,6 +17,8 @@
 		46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */; };
 		46E901DD2A2CBC6C0054AA9C /* ViewModelTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */; };
 		46E901E02A2CC7FB0054AA9C /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */; };
+		46E901F32A2E18320054AA9C /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */; };
+		46E901F62A2E18450054AA9C /* RecordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901F52A2E18450054AA9C /* RecordDetailViewModel.swift */; };
 		4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */; };
 		4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E46A29DBE26100460145 /* CalendarViewController.swift */; };
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
@@ -189,6 +191,8 @@
 		46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewModel.swift; sourceTree = "<group>"; };
 		46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTransformable.swift; sourceTree = "<group>"; };
 		46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
+		46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		46E901F52A2E18450054AA9C /* RecordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewModel.swift; sourceTree = "<group>"; };
 		4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewModel.swift; sourceTree = "<group>"; };
 		4B17E46A29DBE26100460145 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeCellView.swift; sourceTree = "<group>"; };
@@ -392,6 +396,31 @@
 			isa = PBXGroup;
 			children = (
 				46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46E901F02A2E18210054AA9C /* RecordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				46E901F42A2E183E0054AA9C /* ViewModel */,
+				46E901F12A2E18290054AA9C /* ViewController */,
+			);
+			path = RecordDetail;
+			sourceTree = "<group>";
+		};
+		46E901F12A2E18290054AA9C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		46E901F42A2E183E0054AA9C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				46E901F52A2E18450054AA9C /* RecordDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -887,6 +916,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				46E901F02A2E18210054AA9C /* RecordDetail */,
 				46E901C82A2CB04F0054AA9C /* TextInput */,
 				4B96115629B34E9700019C50 /* More */,
 				4B2F6AFC29E3E11000956CFA /* UserInfo */,
@@ -1514,6 +1544,7 @@
 				4B2EB47D2A19089400B9D055 /* UserProfileEntity.swift in Sources */,
 				4B17E47329DD23DD00460145 /* Date+toString.swift in Sources */,
 				4B2EB4752A18F38A00B9D055 /* AutoLoginWaitViewController.swift in Sources */,
+				46E901F32A2E18320054AA9C /* RecordDetailViewController.swift in Sources */,
 				4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */,
 				4B2EB47F2A190B6700B9D055 /* SexType.swift in Sources */,
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
@@ -1584,6 +1615,7 @@
 				4B4777F52A0A216600BAE131 /* AnalysisAPI.swift in Sources */,
 				4B88B8272A10CC1900F36335 /* MonthOfAnalysisEntity.swift in Sources */,
 				4BD0145029ECDB2700960C3C /* AuthPasswordViewController.swift in Sources */,
+				46E901F62A2E18450054AA9C /* RecordDetailViewModel.swift in Sources */,
 				4B88B83B2A1382DA00F36335 /* AutoLoginService.swift in Sources */,
 				4BD0145229ED50EF00960C3C /* AuthPickerView.swift in Sources */,
 				4B88B81E2A10C9EF00F36335 /* MonthOfAnalysisResponse.swift in Sources */,
