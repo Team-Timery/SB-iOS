@@ -105,19 +105,12 @@ class CalendarViewController: UIViewController {
         calendarView.dataSource = self
         calendarScrollView.delegate = self
         settingCalendar()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        bind()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        timeLineStackView.removeAll()
-        timeLineStackView.subviews
-            .forEach { $0.removeFromSuperview() }
         calendarView.select(Date())
         selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        bind()
     }
 }
 
@@ -169,12 +162,25 @@ extension CalendarViewController {
         output.timeLineDate.asObservable()
             .subscribe(with: self, onNext: { owner, data in
                 let timeLineViews = data.recordResponses
-                    .map {
-                        let cellView = TimeLineCellView(recordEntity: $0)
+                    .map { record in
+                        let cellView = TimeLineCellView(recordEntity: record)
                         cellView.snp.makeConstraints {
                             $0.height.equalTo(34)
                             $0.width.equalTo(owner.timeLineStackView.frame.width)
                         }
+                        cellView.rx.tapGesture()
+                            .when(.recognized)
+                            .bind { _ in
+                                let recordDetailViewController = RecordDetailViewController(
+                                    viewModel: .init(recordEntity: record)
+                                )
+                                owner.navigationController?.pushViewController(
+                                    recordDetailViewController,
+                                    animated: true
+                                )
+                            }
+                            .disposed(by: owner.dispoesBag)
+
                         return cellView
                     }
                 owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)

@@ -6,15 +6,28 @@ import RxSwift
 import RxCocoa
 
 final class RecordDetailViewController: BaseViewController<RecordDetailViewModel>, ViewModelTransformable {
+    private lazy var restIconImageView = UIImageView().then {
+        $0.image = UIImage(named: "rest_time")
+        $0.snp.makeConstraints { make in
+            make.size.equalTo(24)
+        }
+    }
+    private lazy var subjectEmojiLabel = UILabel().then {
+        $0.font = .title2Medium
+    }
     private let subjectLabel = UILabel().then {
         $0.textColor = .grayDarken4
         $0.font = .title2Medium
+    }
+    private let subjectStackView = UIStackView().then {
+        $0.spacing = 6
+        $0.axis = .horizontal
     }
     private let studyTimeLabel = UILabel().then {
         $0.textColor = .grayDarken4
         $0.font = .title1Bold
     }
-    private let subjectStackView = UIStackView().then {
+    private let studyStackView = UIStackView().then {
         $0.spacing = 16
         $0.axis = .vertical
     }
@@ -68,21 +81,21 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
     lazy var output: RecordDetailViewModel.Output = viewModel.transform(input: input)
 
     override func addSubViews() {
-        subjectStackView.addArrangedSubViews(views: [subjectLabel, studyTimeLabel])
+        studyStackView.addArrangedSubViews(views: [subjectStackView, studyTimeLabel])
         memoContentStackView.addArrangedSubViews(views: [memoContentLabel, chevronRightImageView])
         memoStackView.addArrangedSubViews(views: [memoTitleLabel, memoContentStackView])
         recordStackView.addArrangedSubViews(views: [recordTimeRangeTitleLabel, recordTimeRangeContentLabel])
         contentStackView.addArrangedSubViews(views: [memoStackView, recordStackView])
-        view.addSubViews(views: [subjectStackView, contentStackView, startRecordButton])
+        view.addSubViews(views: [studyStackView, contentStackView, startRecordButton])
     }
 
     override func makeConstraints() {
-        subjectStackView.snp.makeConstraints {
+        studyStackView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(40)
             $0.leading.equalToSuperview().inset(24)
         }
         contentStackView.snp.makeConstraints {
-            $0.top.equalTo(subjectStackView.snp.bottom).offset(40)
+            $0.top.equalTo(studyStackView.snp.bottom).offset(40)
             $0.leading.trailing.equalToSuperview().inset(24)
         }
         startRecordButton.snp.makeConstraints {
@@ -108,7 +121,13 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
 
         output.recordEntity
             .drive(with: self, onNext: { owner, recordEntity in
-                owner.subjectLabel.text = "\(recordEntity.subject.emoji) \(recordEntity.subject.title)"
+                if owner.subjectStackView.subviews.isEmpty {
+                    owner.subjectStackView.addArrangedSubViews(views: [
+                        recordEntity.isRecord ? owner.subjectEmojiLabel : owner.restIconImageView,
+                        owner.subjectLabel
+                    ])
+                }
+                owner.subjectLabel.text = recordEntity.subject.title
                 owner.studyTimeLabel.text = recordEntity.total.toFullTimeString()
                 owner.memoContentLabel.text = recordEntity.memo ?? "메모를 남겨보세요"
                 owner.memoContentLabel.textColor = recordEntity.memo == nil ? .mainElevated : .whiteElevated4
