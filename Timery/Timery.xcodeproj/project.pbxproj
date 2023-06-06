@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		468F0A5F2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A5E2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift */; };
+		468F0A612A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A602A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift */; };
+		468F0A632A2F89FA003DB4E8 /* GetDetailRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A622A2F89FA003DB4E8 /* GetDetailRecordResponse.swift */; };
+		468F0A662A2F8AA9003DB4E8 /* RecordDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A652A2F8AA9003DB4E8 /* RecordDetailEntity.swift */; };
 		46E901CB2A2CB0710054AA9C /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */; };
 		46E901CE2A2CB17F0054AA9C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */; };
 		46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CF2A2CB1A10054AA9C /* AddViewable.swift */; };
@@ -17,12 +21,14 @@
 		46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */; };
 		46E901DD2A2CBC6C0054AA9C /* ViewModelTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */; };
 		46E901E02A2CC7FB0054AA9C /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */; };
-		46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */; };
 		46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E12A2D74970054AA9C /* TodayReviewView.swift */; };
 		46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */; };
 		46E901E72A2D7BBC0054AA9C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 46E901E62A2D7BBC0054AA9C /* RxGesture */; };
+		46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */; };
 		46E901ED2A2DE5DC0054AA9C /* TodayReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */; };
 		46E901EF2A2DE6A60054AA9C /* GetTodayReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */; };
+		46E901F32A2E18320054AA9C /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */; };
+		46E901F62A2E18450054AA9C /* RecordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901F52A2E18450054AA9C /* RecordDetailViewModel.swift */; };
 		4B05378529D282E600B63BA3 /* TimerActivateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */; };
 		4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E46A29DBE26100460145 /* CalendarViewController.swift */; };
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
@@ -185,6 +191,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		468F0A5E2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+selectedTabbarIndex.swift"; sourceTree = "<group>"; };
+		468F0A602A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+popViewControllerWithCompletion.swift"; sourceTree = "<group>"; };
+		468F0A622A2F89FA003DB4E8 /* GetDetailRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetailRecordResponse.swift; sourceTree = "<group>"; };
+		468F0A652A2F8AA9003DB4E8 /* RecordDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailEntity.swift; sourceTree = "<group>"; };
 		46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
 		46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		46E901CF2A2CB1A10054AA9C /* AddViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewable.swift; sourceTree = "<group>"; };
@@ -195,11 +205,13 @@
 		46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewModel.swift; sourceTree = "<group>"; };
 		46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTransformable.swift; sourceTree = "<group>"; };
 		46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
-		46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCellView.swift; sourceTree = "<group>"; };
 		46E901E12A2D74970054AA9C /* TodayReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewView.swift; sourceTree = "<group>"; };
 		46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArragedSubViews.swift"; sourceTree = "<group>"; };
+		46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCellView.swift; sourceTree = "<group>"; };
 		46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewEntity.swift; sourceTree = "<group>"; };
 		46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayReviewResponse.swift; sourceTree = "<group>"; };
+		46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		46E901F52A2E18450054AA9C /* RecordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewModel.swift; sourceTree = "<group>"; };
 		4B05378429D282E600B63BA3 /* TimerActivateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivateViewModel.swift; sourceTree = "<group>"; };
 		4B17E46A29DBE26100460145 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeCellView.swift; sourceTree = "<group>"; };
@@ -375,6 +387,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		468F0A642A2F8AA1003DB4E8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				468F0A652A2F8AA9003DB4E8 /* RecordDetailEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		46E901C82A2CB04F0054AA9C /* TextInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +424,32 @@
 			isa = PBXGroup;
 			children = (
 				46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46E901F02A2E18210054AA9C /* RecordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				468F0A642A2F8AA1003DB4E8 /* Entity */,
+				46E901F42A2E183E0054AA9C /* ViewModel */,
+				46E901F12A2E18290054AA9C /* ViewController */,
+			);
+			path = RecordDetail;
+			sourceTree = "<group>";
+		};
+		46E901F12A2E18290054AA9C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		46E901F42A2E183E0054AA9C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				46E901F52A2E18450054AA9C /* RecordDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -902,6 +948,7 @@
 		4BDA2068299141BB0032161C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				46E901F02A2E18210054AA9C /* RecordDetail */,
 				46E901C82A2CB04F0054AA9C /* TextInput */,
 				4B96115629B34E9700019C50 /* More */,
 				4B2F6AFC29E3E11000956CFA /* UserInfo */,
@@ -992,6 +1039,8 @@
 				4B24F6012A23A57D00E5000E /* ProgressViewSection+addProgressBorder.swift */,
 				46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */,
 				46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */,
+				468F0A5E2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift */,
+				468F0A602A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1219,6 +1268,7 @@
 				4B88B8192A10C27C00F36335 /* MonthOfRecordDayResponse.swift */,
 				4B88B8332A12616600F36335 /* CalendarTimeResponse.swift */,
 				46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */,
+				468F0A622A2F89FA003DB4E8 /* GetDetailRecordResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1534,6 +1584,7 @@
 				4B2EB47D2A19089400B9D055 /* UserProfileEntity.swift in Sources */,
 				4B17E47329DD23DD00460145 /* Date+toString.swift in Sources */,
 				4B2EB4752A18F38A00B9D055 /* AutoLoginWaitViewController.swift in Sources */,
+				46E901F32A2E18320054AA9C /* RecordDetailViewController.swift in Sources */,
 				4BE0294C299CDD7600788B37 /* AuthToggleButton.swift in Sources */,
 				4B2EB47F2A190B6700B9D055 /* SexType.swift in Sources */,
 				4BDA208C2994F03D0032161C /* UIfont+Fonts.swift in Sources */,
@@ -1558,11 +1609,13 @@
 				4B6E41AA29FF574200762174 /* AuthTermsViewModel.swift in Sources */,
 				46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
+				468F0A632A2F89FA003DB4E8 /* GetDetailRecordResponse.swift in Sources */,
 				4B3DA2E529D6EE1F0041524E /* QuestionTableViewCell.swift in Sources */,
 				4B426C582A0FB666001BB36D /* DocumentResult.swift in Sources */,
 				4B426C492A0F7A0B001BB36D /* RecordEntity.swift in Sources */,
 				4BA292E529E8C9BE00B99A85 /* AuthNameViewController.swift in Sources */,
 				4B426C552A0FB526001BB36D /* DocumentAPI.swift in Sources */,
+				468F0A612A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift in Sources */,
 				4B2F6AF929E3AC8700956CFA /* NavigationBackButton.swift in Sources */,
 				4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */,
 				4BE595322A052B6300BEB1A1 /* SubjectCellTapButtonDelegate.swift in Sources */,
@@ -1606,9 +1659,11 @@
 				4B4777F52A0A216600BAE131 /* AnalysisAPI.swift in Sources */,
 				4B88B8272A10CC1900F36335 /* MonthOfAnalysisEntity.swift in Sources */,
 				4BD0145029ECDB2700960C3C /* AuthPasswordViewController.swift in Sources */,
+				46E901F62A2E18450054AA9C /* RecordDetailViewModel.swift in Sources */,
 				4B88B83B2A1382DA00F36335 /* AutoLoginService.swift in Sources */,
 				4BD0145229ED50EF00960C3C /* AuthPickerView.swift in Sources */,
 				4B88B81E2A10C9EF00F36335 /* MonthOfAnalysisResponse.swift in Sources */,
+				468F0A5F2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift in Sources */,
 				4B6E419829FD143000762174 /* AuthNameViewModel.swift in Sources */,
 				4BE0296C29A3648900788B37 /* TimerViewController.swift in Sources */,
 				4BD0141C29EA198F00960C3C /* AuthPickerButton.swift in Sources */,
@@ -1622,6 +1677,7 @@
 				46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */,
 				4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */,
 				46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */,
+				468F0A662A2F8AA9003DB4E8 /* RecordDetailEntity.swift in Sources */,
 				4B426C6E2A0FBE93001BB36D /* NoticeViewModel.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				46E901DD2A2CBC6C0054AA9C /* ViewModelTransformable.swift in Sources */,
@@ -1633,7 +1689,6 @@
 				4B426C472A0F79FE001BB36D /* RecordListEntity.swift in Sources */,
 				4B6E41A629FE5B6A00762174 /* String+isAbleRegex.swift in Sources */,
 				4B426C742A0FC0AB001BB36D /* FAQViewModel.swift in Sources */,
-				46E901EB2A2DB2BE0054AA9C /* UIStackView+addArragedSubViews.swift in Sources */,
 				4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */,
 				4B88B82E2A112ADA00F36335 /* Month.swift in Sources */,
 				46E901CE2A2CB17F0054AA9C /* BaseViewController.swift in Sources */,

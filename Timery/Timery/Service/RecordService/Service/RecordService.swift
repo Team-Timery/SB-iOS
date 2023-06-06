@@ -6,6 +6,12 @@ import RxSwift
 class RecordService {
     private let provider = MoyaProvider<RecordAPI>(plugins: [MoyaLoggerPlugin()])
 
+    func getDetailRecord(recordID: Int) -> Single<RecordDetailEntity> {
+        return provider.rx.request(.getDetailRecord(recordID: recordID))
+            .map(GetDetailRecordResponse.self)
+            .map { $0.toDomain() }
+    }
+
     func createRecord(subjectID: Int, startTime: Date, stopTime: Date, memo: String) -> Single<RecordResult> {
         return provider.rx.request(.createRecord(
                 subjectID: subjectID,
@@ -21,6 +27,12 @@ class RecordService {
             .catch { err in
                 return .just(self.netErr(err))
             }
+    }
+
+    func updateRecordMemo(recordID: Int, memo: String) -> Single<Void> {
+        return provider.rx.request(.updateRecordMemo(recordID: recordID, memo: memo))
+            .filterSuccessfulStatusCodes()
+            .map { _ in }
     }
 
     func getTodayReview(date: String) -> Single<TodayReviewEntity> {

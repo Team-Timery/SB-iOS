@@ -2,7 +2,9 @@ import Foundation
 import Moya
 
 enum RecordAPI {
+    case getDetailRecord(recordID: Int)
     case createRecord(subjectID: Int, startTime: Date, stopTime: Date, memo: String)
+    case updateRecordMemo(recordID: Int, memo: String)
     case getDayOfRecord(date: String)
     case getMonthOfRecordDay(yearMonth: String)
     case getCalendarTime(date: String)
@@ -17,8 +19,12 @@ extension RecordAPI: TargetType {
 
     var path: String {
         switch self {
+        case let .getDetailRecord(recordID):
+            return "/\(recordID)"
         case .createRecord(let subjectID, _, _, _):
             return "/\(subjectID)"
+        case let .updateRecordMemo(recordID, _):
+            return "/\(recordID)"
         case .getDayOfRecord:
             return ""
         case .getMonthOfRecordDay:
@@ -36,15 +42,17 @@ extension RecordAPI: TargetType {
         switch self {
         case .createRecord:
             return .post
-        case .getDayOfRecord, .getMonthOfRecordDay, .getCalendarTime, .getTodayReview:
+        case .getDetailRecord, .getDayOfRecord, .getMonthOfRecordDay, .getCalendarTime, .getTodayReview:
             return .get
-        case .updateTodayReview:
+        case .updateRecordMemo, .updateTodayReview:
             return .patch
         }
     }
 
     var task: Moya.Task {
         switch self {
+        case .getDetailRecord:
+            return .requestPlain
         case .createRecord(_, let startTime, let stopTime, let memo):
             var param: [String: Any] = [
                 "started_time": startTime.toString(to: "yyyy-MM-dd'T'HH:mm:ss"),
@@ -53,6 +61,13 @@ extension RecordAPI: TargetType {
             if !memo.isEmpty { param.updateValue(memo, forKey: "memo") }
             return .requestParameters(
                 parameters: param,
+                encoding: JSONEncoding.default
+            )
+        case let .updateRecordMemo(_, memo):
+            return .requestParameters(
+                parameters: [
+                    "memo": memo
+                ],
                 encoding: JSONEncoding.default
             )
         case .getDayOfRecord(let date):
@@ -84,7 +99,8 @@ extension RecordAPI: TargetType {
                 parameters: [
                     "today_review": review
                 ],
-                encoding: JSONEncoding.default)
+                encoding: JSONEncoding.default
+            )
         }
     }
 
