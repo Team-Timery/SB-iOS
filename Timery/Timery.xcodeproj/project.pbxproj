@@ -17,6 +17,7 @@
 		46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */; };
 		46E901DD2A2CBC6C0054AA9C /* ViewModelTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */; };
 		46E901E02A2CC7FB0054AA9C /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */; };
+		46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */; };
 		46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E12A2D74970054AA9C /* TodayReviewView.swift */; };
 		46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */; };
 		46E901E72A2D7BBC0054AA9C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 46E901E62A2D7BBC0054AA9C /* RxGesture */; };
@@ -194,6 +195,7 @@
 		46E901DA2A2CB9620054AA9C /* TextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewModel.swift; sourceTree = "<group>"; };
 		46E901DC2A2CBC6C0054AA9C /* ViewModelTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTransformable.swift; sourceTree = "<group>"; };
 		46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
+		46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCellView.swift; sourceTree = "<group>"; };
 		46E901E12A2D74970054AA9C /* TodayReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewView.swift; sourceTree = "<group>"; };
 		46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArragedSubViews.swift"; sourceTree = "<group>"; };
 		46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewEntity.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */,
 				4B17E47529DE4B2A00460145 /* BreakTimeLineCellView.swift */,
 				4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */,
+				46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1616,6 +1619,7 @@
 				4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */,
 				46E901CB2A2CB0710054AA9C /* TextInputViewController.swift in Sources */,
 				4BE595122A0080F900BEB1A1 /* NetworkingResult.swift in Sources */,
+				46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */,
 				4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */,
 				46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */,
 				4B426C6E2A0FBE93001BB36D /* NoticeViewModel.swift in Sources */,
@@ -1629,6 +1633,7 @@
 				4B426C472A0F79FE001BB36D /* RecordListEntity.swift in Sources */,
 				4B6E41A629FE5B6A00762174 /* String+isAbleRegex.swift in Sources */,
 				4B426C742A0FC0AB001BB36D /* FAQViewModel.swift in Sources */,
+				46E901EB2A2DB2BE0054AA9C /* UIStackView+addArragedSubViews.swift in Sources */,
 				4B17E46B29DBE26100460145 /* CalendarViewController.swift in Sources */,
 				4B88B82E2A112ADA00F36335 /* Month.swift in Sources */,
 				46E901CE2A2CB17F0054AA9C /* BaseViewController.swift in Sources */,

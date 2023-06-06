@@ -82,7 +82,7 @@ class CalendarViewController: UIViewController {
     private lazy var timeLineStackView = UIStackView().then {
         $0.alignment = .trailing
         $0.axis = .vertical
-        $0.spacing = 15
+        $0.spacing = 40
     }
 
     private let viewModel = CalendarViewModel()
@@ -98,6 +98,8 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubViews()
+        makeConstraints()
         view.backgroundColor = .white
         calendarView.delegate = self
         calendarView.dataSource = self
@@ -109,21 +111,21 @@ class CalendarViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         timeLineStackView.removeAll()
+        timeLineStackView.subviews
+            .forEach { $0.removeFromSuperview() }
         calendarView.select(Date())
         selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
-    }
-
-    override func viewDidLayoutSubviews() {
-        addSubViews()
-        makeConstraints()
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectCalendarRelay.accept(date.toString(to: "yyyy-MM-dd"))
+        timeLineStackView.subviews
+            .forEach { $0.removeFromSuperview() }
         timeLineStackView.removeAll()
     }
     // 최대 날짜
@@ -165,29 +167,17 @@ extension CalendarViewController {
             .disposed(by: dispoesBag)
 
         output.timeLineDate.asObservable()
-            .subscribe(onNext: { data in
-                data.recordResponses.forEach({
-                    if $0.isRecord {
-                        let stackItem = SubjectTimeLineCellView(
-                            emoji: $0.subject.emoji,
-                            subjectName: $0.subject.title,
-                            startTime: $0.startedTime,
-                            studyTime: $0.total.toFullTimeString(),
-                            memo: $0.memo ?? "기록한 내용이 없습니다",
-                            cellWidth: self.view.frame.width / 1.35
-                        )
-                        self.timeLineStackView.addArrangedSubview(stackItem)
-                    } else {
-                        let stackItem = BreakTimeLineCellView(
-                            content: "\($0.startedTime) ~ \($0.finishedTime) \($0.total.toFullTimeString())"
-                        )
-                        stackItem.snp.makeConstraints {
+            .subscribe(with: self, onNext: { owner, data in
+                let timeLineViews = data.recordResponses
+                    .map {
+                        let cellView = TimeLineCellView(recordEntity: $0)
+                        cellView.snp.makeConstraints {
                             $0.height.equalTo(34)
-                            $0.width.equalTo(self.view.frame.width / 1.35)
+                            $0.width.equalTo(owner.timeLineStackView.frame.width)
                         }
-                        self.timeLineStackView.addArrangedSubview(stackItem)
+                        return cellView
                     }
-                })
+                owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)
             })
             .disposed(by: dispoesBag)
 
