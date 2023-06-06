@@ -66,7 +66,7 @@ extension RecordAPI: TargetType {
         case let .updateRecordMemo(_, memo):
             return .requestParameters(
                 parameters: [
-                    "memo": memo
+                    "content": memo
                 ],
                 encoding: JSONEncoding.default
             )
