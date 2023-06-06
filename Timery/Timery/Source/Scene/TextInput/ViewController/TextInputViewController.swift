@@ -1,9 +1,14 @@
 import Then
 import UIKit
 import SnapKit
+import RxSwift
 import RxCocoa
 
 final class TextInputViewController: BaseViewController<TextInputViewModel>, ViewModelTransformable {
+    private let inputTextCountLabel = UILabel().then {
+        $0.textColor = .grayDarken1
+        $0.font = .mini2Medium
+    }
     private let xmarkButton = UIButton().then {
         $0.setImage(UIImage(named: "xmark"), for: .normal)
     }
@@ -37,6 +42,7 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
     override func addSubViews() {
         view.addSubViews(views: [
             xmarkButton,
+            inputTextCountLabel,
             completeButton,
             contentTextView
         ])
@@ -46,6 +52,10 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
         xmarkButton.snp.makeConstraints {
             $0.top.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.size.equalTo(20)
+        }
+        inputTextCountLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.centerX.equalToSuperview()
         }
         completeButton.snp.makeConstraints {
             $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -72,6 +82,11 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
             .drive(with: self) { owner, _ in
                 owner.dismiss(animated: true)
             }
+            .disposed(by: disposeBag)
+
+        Driver.combineLatest(output.contentText, output.maxInputCount)
+            .map { "\($0.count)/\($1)" }
+            .drive(inputTextCountLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

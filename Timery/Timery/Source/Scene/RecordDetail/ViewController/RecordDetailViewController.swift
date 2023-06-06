@@ -110,7 +110,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
             .when(.recognized)
             .bind(with: self) { owner, _ in
                 let textInputViewController = TextInputViewController(
-                    viewModel: TextInputViewModel(completeionHandler: { text in
+                    viewModel: TextInputViewModel(maxInputCount: 50, completeionHandler: { text in
                         owner.memoChangedRelay.accept(text)
                     })
                 )
