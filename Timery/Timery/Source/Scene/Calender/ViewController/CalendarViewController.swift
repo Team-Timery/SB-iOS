@@ -92,7 +92,7 @@ class CalendarViewController: UIViewController {
         getNextMonth: calendarRightButton.rx.tap,
         getLastMonth: calendarLeftButton.rx.tap,
         inputTodayReview: inputTodayReviewRelay.asObservable(),
-        viewDidLoad: self.rx.methodInvoked(#selector(viewDidLoad)).map { _ in }
+        viewWillAppear: self.rx.methodInvoked(#selector(viewWillAppear)).map { _ in }
     )
     lazy var output = viewModel.transform(input: input)
 
@@ -100,6 +100,7 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         addSubViews()
         makeConstraints()
+        bind()
         view.backgroundColor = .white
         calendarView.delegate = self
         calendarView.dataSource = self
@@ -110,7 +111,6 @@ class CalendarViewController: UIViewController {
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        bind()
     }
 }
 

@@ -11,7 +11,7 @@ class CalendarViewModel: ViewModelType {
         let getNextMonth: ControlEvent<Void>
         let getLastMonth: ControlEvent<Void>
         let inputTodayReview: Observable<String>
-        let viewDidLoad: Observable<Void>
+        let viewWillAppear: Observable<Void>
     }
 
     struct Output {
@@ -106,7 +106,7 @@ class CalendarViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
-        input.viewDidLoad
+        input.viewWillAppear
             .map { Date().toString(to: "yyyy-MM-dd") }
             .flatMap { service.getTodayReview(date: $0) }
             .bind(to: todayReviewRelay)
