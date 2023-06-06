@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		468F0A5F2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A5E2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift */; };
 		468F0A612A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A602A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift */; };
+		468F0A632A2F89FA003DB4E8 /* GetDetailRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A622A2F89FA003DB4E8 /* GetDetailRecordResponse.swift */; };
+		468F0A662A2F8AA9003DB4E8 /* RecordDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F0A652A2F8AA9003DB4E8 /* RecordDetailEntity.swift */; };
 		46E901CB2A2CB0710054AA9C /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */; };
 		46E901CE2A2CB17F0054AA9C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */; };
 		46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901CF2A2CB1A10054AA9C /* AddViewable.swift */; };
@@ -191,6 +193,8 @@
 /* Begin PBXFileReference section */
 		468F0A5E2A2F86E5003DB4E8 /* NotificationCenter+selectedTabbarIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+selectedTabbarIndex.swift"; sourceTree = "<group>"; };
 		468F0A602A2F885D003DB4E8 /* UINavigationController+popViewControllerWithCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+popViewControllerWithCompletion.swift"; sourceTree = "<group>"; };
+		468F0A622A2F89FA003DB4E8 /* GetDetailRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetailRecordResponse.swift; sourceTree = "<group>"; };
+		468F0A652A2F8AA9003DB4E8 /* RecordDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailEntity.swift; sourceTree = "<group>"; };
 		46E901CA2A2CB0710054AA9C /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
 		46E901CD2A2CB17F0054AA9C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		46E901CF2A2CB1A10054AA9C /* AddViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewable.swift; sourceTree = "<group>"; };
@@ -383,6 +387,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		468F0A642A2F8AA1003DB4E8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				468F0A652A2F8AA9003DB4E8 /* RecordDetailEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		46E901C82A2CB04F0054AA9C /* TextInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +431,7 @@
 		46E901F02A2E18210054AA9C /* RecordDetail */ = {
 			isa = PBXGroup;
 			children = (
+				468F0A642A2F8AA1003DB4E8 /* Entity */,
 				46E901F42A2E183E0054AA9C /* ViewModel */,
 				46E901F12A2E18290054AA9C /* ViewController */,
 			);
@@ -1255,6 +1268,7 @@
 				4B88B8192A10C27C00F36335 /* MonthOfRecordDayResponse.swift */,
 				4B88B8332A12616600F36335 /* CalendarTimeResponse.swift */,
 				46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */,
+				468F0A622A2F89FA003DB4E8 /* GetDetailRecordResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1595,6 +1609,7 @@
 				4B6E41AA29FF574200762174 /* AuthTermsViewModel.swift in Sources */,
 				46E901DB2A2CB9620054AA9C /* TextInputViewModel.swift in Sources */,
 				4BDA204729913E8D0032161C /* SceneDelegate.swift in Sources */,
+				468F0A632A2F89FA003DB4E8 /* GetDetailRecordResponse.swift in Sources */,
 				4B3DA2E529D6EE1F0041524E /* QuestionTableViewCell.swift in Sources */,
 				4B426C582A0FB666001BB36D /* DocumentResult.swift in Sources */,
 				4B426C492A0F7A0B001BB36D /* RecordEntity.swift in Sources */,
@@ -1662,6 +1677,7 @@
 				46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */,
 				4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */,
 				46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */,
+				468F0A662A2F8AA9003DB4E8 /* RecordDetailEntity.swift in Sources */,
 				4B426C6E2A0FBE93001BB36D /* NoticeViewModel.swift in Sources */,
 				4BE0294A299CDB0D00788B37 /* AuthTermsViewController.swift in Sources */,
 				46E901DD2A2CBC6C0054AA9C /* ViewModelTransformable.swift in Sources */,

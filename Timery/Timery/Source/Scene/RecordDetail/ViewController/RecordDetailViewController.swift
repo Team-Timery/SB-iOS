@@ -127,18 +127,22 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
             }
             .disposed(by: disposeBag)
 
-        output.recordEntity
-            .drive(with: self, onNext: { owner, recordEntity in
+        output.recordDetailEntity
+            .drive(with: self, onNext: { (owner, recordTuple) in
+                let (recordEntity, recordDetailEntity) = recordTuple
                 if owner.subjectStackView.subviews.isEmpty {
                     owner.subjectStackView.addArrangedSubViews(views: [
                         recordEntity.isRecord ? owner.subjectEmojiLabel : owner.restIconImageView,
                         owner.subjectLabel
                     ])
+                    if recordEntity.isRecord {
+                        owner.subjectEmojiLabel.text = recordEntity.subject.emoji
+                    }
                 }
-                owner.subjectLabel.text = recordEntity.subject.title
+                owner.subjectLabel.text = recordEntity.isRecord ? recordEntity.subject.title : "쉬는 시간"
                 owner.studyTimeLabel.text = recordEntity.total.toFullTimeString()
-                owner.memoContentLabel.text = recordEntity.memo ?? "메모를 남겨보세요"
-                owner.memoContentLabel.textColor = recordEntity.memo == nil ? .mainElevated : .whiteElevated4
+                owner.memoContentLabel.text = recordDetailEntity.memo ?? "메모를 남겨보세요"
+                owner.memoContentLabel.textColor = recordDetailEntity.memo == nil ? .mainElevated : .whiteElevated4
                 owner.recordTimeRangeContentLabel.text = "\(recordEntity.startedTime) ~ \(recordEntity.finishedTime)"
             })
             .disposed(by: disposeBag)

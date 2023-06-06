@@ -2,6 +2,7 @@ import Foundation
 import Moya
 
 enum RecordAPI {
+    case getDetailRecord(recordID: Int)
     case createRecord(subjectID: Int, startTime: Date, stopTime: Date, memo: String)
     case updateRecordMemo(recordID: Int, memo: String)
     case getDayOfRecord(date: String)
@@ -18,6 +19,8 @@ extension RecordAPI: TargetType {
 
     var path: String {
         switch self {
+        case let .getDetailRecord(recordID):
+            return "/\(recordID)"
         case .createRecord(let subjectID, _, _, _):
             return "/\(subjectID)"
         case let .updateRecordMemo(recordID, _):
@@ -39,7 +42,7 @@ extension RecordAPI: TargetType {
         switch self {
         case .createRecord:
             return .post
-        case .getDayOfRecord, .getMonthOfRecordDay, .getCalendarTime, .getTodayReview:
+        case .getDetailRecord, .getDayOfRecord, .getMonthOfRecordDay, .getCalendarTime, .getTodayReview:
             return .get
         case .updateRecordMemo, .updateTodayReview:
             return .patch
@@ -48,6 +51,8 @@ extension RecordAPI: TargetType {
 
     var task: Moya.Task {
         switch self {
+        case .getDetailRecord:
+            return .requestPlain
         case .createRecord(_, let startTime, let stopTime, let memo):
             var param: [String: Any] = [
                 "started_time": startTime.toString(to: "yyyy-MM-dd'T'HH:mm:ss"),
@@ -94,7 +99,8 @@ extension RecordAPI: TargetType {
                 parameters: [
                     "today_review": review
                 ],
-                encoding: JSONEncoding.default)
+                encoding: JSONEncoding.default
+            )
         }
     }
 

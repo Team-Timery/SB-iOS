@@ -7,7 +7,7 @@ final class RecordDetailViewModel: ViewModelType {
         let memoChanged: Observable<String>
     }
     struct Output {
-        let recordEntity: Driver<RecordEntity>
+        let recordDetailEntity: Driver<(RecordEntity, RecordDetailEntity)>
     }
 
     var disposeBag: DisposeBag = .init()
@@ -20,7 +20,24 @@ final class RecordDetailViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let recordService = RecordService()
 
-        let recordEntityRelay = BehaviorRelay(value: recordEntity)
+        let recordDetailEntityRelay = BehaviorRelay(
+            value: (
+                recordEntity,
+                RecordDetailEntity(
+                    recordID: recordEntity.recordID,
+                    startedTime: recordEntity.startedTime,
+                    finishedTime: recordEntity.finishedTime,
+                    total: recordEntity.total,
+                    memo: nil
+                )
+            )
+        )
+
+        Observable.just(())
+            .flatMap { [recordEntity] in recordService.getDetailRecord(recordID: recordEntity.recordID) }
+            .map { [recordEntity] in (recordEntity, $0) }
+            .bind(to: recordDetailEntityRelay)
+            .disposed(by: disposeBag)
 
         input.memoChanged
             .flatMap { [recordEntity] newMemo in
@@ -28,22 +45,23 @@ final class RecordDetailViewModel: ViewModelType {
                     .map { newMemo }
             }
             .map { [recordEntity] in
-                RecordEntity(
-                    recordID: recordEntity.recordID,
-                    startedTime: recordEntity.startedTime,
-                    finishedTime: recordEntity.finishedTime,
-                    total: recordEntity.total,
-                    memo: $0,
-                    isRecord: recordEntity.isRecord,
-                    subject: recordEntity.subject
+                (
+                    recordEntity,
+                    RecordDetailEntity(
+                        recordID: recordEntity.recordID,
+                        startedTime: recordEntity.startedTime,
+                        finishedTime: recordEntity.finishedTime,
+                        total: recordEntity.total,
+                        memo: $0
+                    )
                 )
             }
-            .catchAndReturn(recordEntity)
-            .bind(to: recordEntityRelay)
+            .catchAndReturn(recordDetailEntityRelay.value)
+            .bind(to: recordDetailEntityRelay)
             .disposed(by: disposeBag)
 
         return Output(
-            recordEntity: recordEntityRelay.asDriver()
+            recordDetailEntity: recordDetailEntityRelay.asDriver()
         )
     }
 }
