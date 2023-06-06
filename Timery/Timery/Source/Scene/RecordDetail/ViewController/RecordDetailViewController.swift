@@ -1,7 +1,11 @@
 import UIKit
 import Then
+import SnapKit
+import RxGesture
+import RxSwift
+import RxCocoa
 
-final class RecordDetailViewController: BaseViewController<RecordDetailViewModel> {
+final class RecordDetailViewController: BaseViewController<RecordDetailViewModel>, ViewModelTransformable {
     private let subjectLabel = UILabel().then {
         $0.textColor = .grayDarken4
         $0.font = .title2Medium
@@ -13,5 +17,103 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
     private let subjectStackView = UIStackView().then {
         $0.spacing = 16
         $0.axis = .vertical
+    }
+    private let memoTitleLabel = UILabel().then {
+        $0.text = "메모"
+        $0.textColor = .grayDarken4
+        $0.font = .mini1Bold
+    }
+    private let memoContentLabel = UILabel().then {
+        $0.font = .mini1Medium
+    }
+    private let chevronRightImageView = UIImageView().then {
+        $0.tintColor = .whiteElevated4
+        $0.image = UIImage(systemName: "chevron.right")
+    }
+    private let memoContentStackView = UIStackView().then {
+        $0.spacing = 12
+        $0.axis = .horizontal
+    }
+    private let memoStackView = UIStackView().then {
+        $0.axis = .horizontal
+    }
+    private let recordTimeRangeTitleLabel = UILabel().then {
+        $0.text = "측정 시간"
+        $0.textColor = .grayDarken4
+        $0.font = .mini1Bold
+    }
+    private let recordTimeRangeContentLabel = UILabel().then {
+        $0.textColor = .whiteElevated5
+        $0.font = .mini1Medium
+    }
+    private let recordStackView = UIStackView().then {
+        $0.axis = .horizontal
+    }
+    private let contentStackView = UIStackView().then {
+        $0.spacing = 32
+        $0.axis = .vertical
+    }
+    private let startRecordButton = UIButton().then {
+        $0.backgroundColor = .mainElevated
+        $0.setTitle("측정 시작하기", for: .normal)
+        $0.titleLabel?.font = .title3Medium
+        $0.layer.cornerRadius = 30
+        $0.clipsToBounds = true
+    }
+
+    private let memoChangedRelay = PublishRelay<String>()
+    lazy var input: RecordDetailViewModel.Input = .init(
+        memoChanged: memoChangedRelay.asObservable()
+    )
+    lazy var output: RecordDetailViewModel.Output = viewModel.transform(input: input)
+
+    override func addSubViews() {
+        subjectStackView.addArrangedSubViews(views: [subjectLabel, studyTimeLabel])
+        memoContentStackView.addArrangedSubViews(views: [memoContentLabel, chevronRightImageView])
+        memoStackView.addArrangedSubViews(views: [memoTitleLabel, memoContentStackView])
+        recordStackView.addArrangedSubViews(views: [recordTimeRangeTitleLabel, recordTimeRangeContentLabel])
+        contentStackView.addArrangedSubViews(views: [memoStackView, recordStackView])
+        view.addSubViews(views: [subjectStackView, contentStackView, startRecordButton])
+    }
+
+    override func makeConstraints() {
+        subjectStackView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+            $0.leading.equalToSuperview().inset(24)
+        }
+        contentStackView.snp.makeConstraints {
+            $0.top.equalTo(subjectStackView.snp.bottom).offset(40)
+            $0.leading.trailing.equalToSuperview().inset(24)
+        }
+        startRecordButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(60)
+        }
+    }
+
+    override func bind() {
+        memoContentStackView.rx.tapGesture()
+            .when(.recognized)
+            .bind(with: self) { owner, _ in
+                let textInputViewController = TextInputViewController(
+                    viewModel: TextInputViewModel(completeionHandler: { text in
+                        owner.memoChangedRelay.accept(text)
+                    })
+                )
+                textInputViewController.modalPresentationStyle = .overFullScreen
+                owner.present(textInputViewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        output.recordEntity
+            .drive(with: self, onNext: { owner, recordEntity in
+                owner.subjectLabel.text = "\(recordEntity.subject.emoji) \(recordEntity.subject.title)"
+                owner.studyTimeLabel.text = recordEntity.total.toFullTimeString()
+                owner.memoContentLabel.text = recordEntity.memo ?? "메모를 남겨보세요"
+                owner.memoContentLabel.textColor = recordEntity.memo == nil ? .mainElevated : .whiteElevated4
+                owner.recordTimeRangeContentLabel.text = "\(recordEntity.startedTime) ~ \(recordEntity.finishedTime)"
+            })
+            .disposed(by: disposeBag)
     }
 }

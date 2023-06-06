@@ -23,6 +23,12 @@ class RecordService {
             }
     }
 
+    func updateRecordMemo(recordID: Int, memo: String) -> Single<Void> {
+        return provider.rx.request(.updateRecordMemo(recordID: recordID, memo: memo))
+            .filterSuccessfulStatusCodes()
+            .map { _ in }
+    }
+
     func getTodayReview(date: String) -> Single<TodayReviewEntity> {
         return provider.rx.request(.getTodayReview(date: date))
             .filterSuccessfulStatusCodes()
