@@ -204,6 +204,9 @@ extension CalendarViewController {
 
                         return cellView
                     }
+                owner.timeLineStackView.subviews
+                    .forEach { $0.removeFromSuperview() }
+                owner.timeLineStackView.removeAll()
                 owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)
             })
             .disposed(by: dispoesBag)
