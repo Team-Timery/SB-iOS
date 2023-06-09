@@ -51,7 +51,7 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
     override func makeConstraints() {
         xmarkButton.snp.makeConstraints {
             $0.top.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.size.equalTo(20)
+            $0.size.equalTo(28)
         }
         inputTextCountLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)

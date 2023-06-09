@@ -106,11 +106,15 @@ class CalendarViewController: UIViewController {
         calendarView.dataSource = self
         calendarScrollView.delegate = self
         settingCalendar()
-        calendarView.select(Date())
-        selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
-        getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendarView.select(Date())
+        getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
+        selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
     }
 }
 
@@ -147,7 +151,6 @@ extension CalendarViewController {
     private func bind() {
         todayReviewView.rx.tapGesture()
             .when(.recognized)
-            .map { _ in }
             .bind(with: self) { owner, _ in
                 let textInputViewController = TextInputViewController(
                     viewModel: TextInputViewModel(completeionHandler: { text in
@@ -158,6 +161,24 @@ extension CalendarViewController {
                 owner.present(textInputViewController, animated: true)
             }
             .disposed(by: dispoesBag)
+
+        todayReviewView.rx.longPressGesture(configuration: { gesture, _ in
+            gesture.minimumPressDuration = 0.0
+        })
+        .compactMap {
+            switch $0.state {
+            case .began:
+                return UIColor.whiteElevated3
+
+            case .ended:
+                return UIColor.whiteElevated1
+
+            default:
+                return nil
+            }
+        }
+        .bind(to: todayReviewView.rx.backgroundColor)
+        .disposed(by: dispoesBag)
 
         output.timeLineDate.asObservable()
             .subscribe(with: self, onNext: { owner, data in
@@ -318,7 +339,7 @@ extension CalendarViewController {
             $0.top.equalTo(timeLineTitleMarkLabel.snp.bottom).offset(52)
         }
         timeLineStackView.snp.makeConstraints {
-            $0.top.equalTo(timeLineTitleMarkLabel.snp.bottom).offset(28)
+            $0.top.equalTo(timeLineTitleMarkLabel.snp.bottom).offset(40)
             $0.left.right.equalToSuperview().inset(15)
         }
         // 칸 나누는 회색 선
