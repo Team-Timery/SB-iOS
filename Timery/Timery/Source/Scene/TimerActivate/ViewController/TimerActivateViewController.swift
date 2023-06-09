@@ -19,11 +19,6 @@ class TimerActivateViewController: UIViewController {
         $0.layer.cornerRadius = 20
     }
 
-    private let gaugeBackgroundView = UIView().then {
-        $0.backgroundColor = .grayDarken4
-        $0.layer.cornerRadius = 20
-    }
-
     private let timerTotalTimeLabel = UILabel().then {
         $0.text = "00:00:00"
         $0.textColor = .white
@@ -54,39 +49,8 @@ class TimerActivateViewController: UIViewController {
         $0.font = .main2Bold
     }
 
-    private let gaugeTitleLabel = UILabel().then {
-        $0.text = "집중게이지"
-        $0.textColor = .white
-        $0.font = .title3Bold
-    }
-
-    private let gaugeProgressBarView = UIProgressView().then {
-        $0.progressViewStyle = .bar
-        $0.progressTintColor = .mainElevated
-        $0.trackTintColor = .white
-        $0.layer.cornerRadius = 4
-        $0.clipsToBounds = true
-    }
-
-    private let gaugeStartLabel = UILabel().then {
-        $0.text = "0분"
-        $0.textColor = .white
-        $0.font = .indicatorMedium
-    }
-
-    private let gaugeEndLabel = UILabel().then {
-        $0.text = "10분"
-        $0.textColor = .white
-        $0.font = .indicatorMedium
-    }
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
            return .lightContent
-    }
-
-    private let gaugeInfoButton = UIButton(type: .system).then {
-        $0.setImage(UIImage(named: "info_circle"), for: .normal)
-        $0.tintColor = .white
     }
 
     private let stopButton = UIButton(type: .system).then {
@@ -131,27 +95,6 @@ extension TimerActivateViewController {
             .bind(to: timerTodayTimeLabel.rx.text)
             .disposed(by: disposeBag)
 
-        output.progressBarValue.asObservable()
-            .bind { progressValue in
-                self.gaugeProgressBarView.setProgress(progressValue, animated: true)
-            }
-            .disposed(by: disposeBag)
-
-        output.overLimit.asObservable()
-            .bind { self.gaugeTitleLabel.text = "🔥"}
-            .disposed(by: disposeBag)
-
-        gaugeInfoButton.rx.tap
-            .bind {
-                let alertVC = SimpleAlertViewController(
-                    titleText: "집중 게이지란?",
-                    messageText: "집중 게이지는 10분을 넘기면 불타게 돼요. 처음부터 목표를 크게 잡기보다 단 10분만이라도 열심히 하다보면 더 오래 집중할 수 있을 거에요!",
-                    alertStyle: .dark
-                )
-                self.present(alertVC, animated: false)
-            }
-            .disposed(by: disposeBag)
-
         stopButton.rx.tap
             .bind { [unowned self] in
                 let stopAlert = StopTimerAlertViewController(
@@ -171,7 +114,6 @@ extension TimerActivateViewController {
     private func addSubViews() {
         [
             timerBackgroundView,
-            gaugeBackgroundView,
             stopButton
         ].forEach({ view.addSubview($0) })
 
@@ -182,14 +124,6 @@ extension TimerActivateViewController {
             todayTimerTitleLabel,
             subjectTimerTitleLabel
         ].forEach({ timerBackgroundView.addSubview($0) })
-
-        [
-            gaugeTitleLabel,
-            gaugeProgressBarView,
-            gaugeStartLabel,
-            gaugeEndLabel,
-            gaugeInfoButton
-        ].forEach({ gaugeBackgroundView.addSubview($0) })
     }
 
     private func makeConstraints() {
@@ -197,11 +131,6 @@ extension TimerActivateViewController {
             $0.top.equalToSuperview().inset((view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + 42)
             $0.height.equalTo(184)
             $0.left.right.equalToSuperview().inset(26)
-        }
-        gaugeBackgroundView.snp.makeConstraints {
-            $0.height.equalTo(117)
-            $0.left.right.equalToSuperview().inset(26)
-            $0.top.equalTo(timerBackgroundView.snp.bottom).offset(20)
         }
         timerTotalTimeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -222,27 +151,6 @@ extension TimerActivateViewController {
         subjectTimerTitleLabel.snp.makeConstraints {
             $0.centerX.equalTo(timerSubjectTimeLabel)
             $0.bottom.equalTo(timerSubjectTimeLabel.snp.top).offset(-1)
-        }
-        gaugeTitleLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(17)
-            $0.topMargin.equalTo(16)
-        }
-        gaugeProgressBarView.snp.makeConstraints {
-            $0.right.left.equalToSuperview().inset(25)
-            $0.height.equalTo(8)
-            $0.top.equalTo(gaugeTitleLabel.snp.bottom).offset(28)
-        }
-        gaugeStartLabel.snp.makeConstraints {
-            $0.centerX.equalTo(gaugeProgressBarView.snp.left)
-            $0.top.equalTo(gaugeProgressBarView.snp.bottom).offset(11)
-        }
-        gaugeEndLabel.snp.makeConstraints {
-            $0.centerX.equalTo(gaugeProgressBarView.snp.right)
-            $0.top.equalTo(gaugeProgressBarView.snp.bottom).offset(11)
-        }
-        gaugeInfoButton.snp.makeConstraints {
-            $0.rightMargin.equalTo(-16)
-            $0.topMargin.equalTo(18)
         }
         stopButton.snp.makeConstraints {
             $0.width.height.equalTo(22)

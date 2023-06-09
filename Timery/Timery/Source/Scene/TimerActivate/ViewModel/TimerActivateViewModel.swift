@@ -14,13 +14,10 @@ class TimerActivateViewModel: ViewModelType {
         let timerText: Signal<String>
         let subjectText: Signal<String>
         let todayText: Signal<String>
-        let progressBarValue: Signal<Float>
-        let overLimit: Signal<Void>
     }
 
     private var timer: Timer?
     private var timerStartTime: Date = Date()
-    private let progressBarValue = PublishRelay<Float>()
     private let timerText = PublishRelay<String>()
     private let subjectText = PublishRelay<String>()
     private let todayText = PublishRelay<String>()
@@ -46,9 +43,7 @@ class TimerActivateViewModel: ViewModelType {
                         self.timerText.accept(timeGap.toTimerString())
                         self.subjectText.accept((self.subjectTime + timeGap).toTimerString())
                         self.todayText.accept((self.todayTime + timeGap).toTimerString())
-                        self.progressBarValue.accept(Float(timeGap) / 600)
                     }
-                    if timeGap / 60 >= 10 { overLimit.accept(()) }
                 })
             })
             .disposed(by: disposeBag)
@@ -63,9 +58,7 @@ class TimerActivateViewModel: ViewModelType {
         return Output(
             timerText: timerText.asSignal(),
             subjectText: subjectText.asSignal(),
-            todayText: todayText.asSignal(),
-            progressBarValue: progressBarValue.asSignal(),
-            overLimit: overLimit.asSignal()
+            todayText: todayText.asSignal()
         )
     }
 }

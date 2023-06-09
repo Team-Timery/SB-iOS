@@ -41,7 +41,7 @@ class CreateAlertViewModel: ViewModelType {
 
         input.title.asObservable()
             .subscribe(onNext: { text in
-                isActivate.accept(text.isAbleRegex(regex: "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{1,5}$"))
+                isActivate.accept(text.isAbleRegex(regex: "^(?! )[\\s\\S]{1,10}$"))
             })
             .disposed(by: disposeBag)
 
