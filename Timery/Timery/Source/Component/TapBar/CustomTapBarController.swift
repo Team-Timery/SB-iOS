@@ -36,7 +36,7 @@ class CustomTapBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var tabFrame = self.tabBar.frame
-        let customHeight = 60 + self.view.safeAreaInsets.bottom
+        let customHeight = 51 + self.view.safeAreaInsets.bottom
         tabFrame.size.height = customHeight
         tabFrame.origin.y = self.view.frame.size.height - customHeight
         self.tabBar.frame = tabFrame
@@ -46,10 +46,10 @@ class CustomTapBarController: UITabBarController {
 private extension CustomTapBarController {
     func setUpTabBar() {
         UITabBarItem.appearance().setTitleTextAttributes(
-            [NSAttributedString.Key.font: UIFont(name: "Pretendard-Medium", size: 14)!],
+            [NSAttributedString.Key.font: UIFont(name: "Pretendard-Medium", size: 10)!],
             for: .normal
         )
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -3)
         UITabBar.appearance().backgroundColor = .white
         self.tabBar.tintColor = .black
         self.tabBar.unselectedItemTintColor = .whiteElevated3
