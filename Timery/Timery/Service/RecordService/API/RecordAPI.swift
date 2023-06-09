@@ -97,7 +97,7 @@ extension RecordAPI: TargetType {
         case let .updateTodayReview(_, review):
             return .requestParameters(
                 parameters: [
-                    "today_review": review
+                    "content": review
                 ],
                 encoding: JSONEncoding.default
             )
