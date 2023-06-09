@@ -120,6 +120,24 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
             }
             .disposed(by: disposeBag)
 
+        memoContentStackView.rx.longPressGesture(configuration: { gesture, _ in
+            gesture.minimumPressDuration = 0.0
+        })
+        .compactMap { (gesture: UILongPressGestureRecognizer) -> CGFloat? in
+            switch gesture.state {
+            case .began:
+                return 0.6
+
+            case .ended:
+                return 1
+
+            default:
+                return nil
+            }
+        }
+        .bind(to: memoContentStackView.rx.alpha)
+        .disposed(by: disposeBag)
+
         startRecordButton.rx.tapGesture()
             .when(.recognized)
             .bind(with: self) { owner, _ in
