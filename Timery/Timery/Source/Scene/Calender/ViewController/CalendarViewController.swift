@@ -115,14 +115,13 @@ class CalendarViewController: UIViewController {
         calendarView.select(Date())
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
         selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
+        timeLineStackView.removeAll()
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectCalendarRelay.accept(date.toString(to: "yyyy-MM-dd"))
-        timeLineStackView.subviews
-            .forEach { $0.removeFromSuperview() }
         timeLineStackView.removeAll()
     }
     // 최대 날짜
@@ -204,8 +203,6 @@ extension CalendarViewController {
 
                         return cellView
                     }
-                owner.timeLineStackView.subviews
-                    .forEach { $0.removeFromSuperview() }
                 owner.timeLineStackView.removeAll()
                 owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)
             })
