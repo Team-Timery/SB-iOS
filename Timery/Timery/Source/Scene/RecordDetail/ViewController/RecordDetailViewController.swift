@@ -105,6 +105,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
         }
     }
 
+    // swiftlint: disable function_body_length
     override func bind() {
         memoContentStackView.rx.tapGesture()
             .when(.recognized)
@@ -119,13 +120,32 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
             }
             .disposed(by: disposeBag)
 
-        startRecordButton.rx.tap
+        startRecordButton.rx.tapGesture()
+            .when(.recognized)
             .bind(with: self) { owner, _ in
                 owner.navigationController?.popViewControllerWithCompletion(animated: true) {
                     NotificationCenter.default.post(name: .selectedTabbarIndex, object: 0)
                 }
             }
             .disposed(by: disposeBag)
+
+        startRecordButton.rx.longPressGesture(configuration: { gesture, _ in
+            gesture.minimumPressDuration = 0.0
+        })
+        .compactMap {
+            switch $0.state {
+            case .began:
+                return UIColor.mainDarken
+
+            case .ended:
+                return UIColor.mainElevated
+
+            default:
+                return nil
+            }
+        }
+        .bind(to: startRecordButton.rx.backgroundColor)
+        .disposed(by: disposeBag)
 
         output.recordDetailEntity
             .drive(with: self, onNext: { (owner, recordTuple) in
@@ -147,4 +167,5 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
             })
             .disposed(by: disposeBag)
     }
+    // swiftlint: enable function_body_length
 }
