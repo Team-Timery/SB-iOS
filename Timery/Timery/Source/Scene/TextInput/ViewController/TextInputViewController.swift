@@ -15,7 +15,7 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
     private let completeButton = UIButton().then {
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.whiteElevated5, for: .normal)
-        $0.titleLabel?.font = .title2Medium
+        $0.titleLabel?.font = .main1Medium
     }
     private let contentTextView = UITextView().then {
         $0.textColor = .whiteElevated5
@@ -76,6 +76,18 @@ final class TextInputViewController: BaseViewController<TextInputViewModel>, Vie
 
         output.contentText
             .drive(contentTextView.rx.text)
+            .disposed(by: disposeBag)
+
+        output.contentText
+            .map { !$0.isEmpty }
+            .drive(completeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        output.contentText
+            .map { $0.isEmpty ? UIColor.whiteElevated3 : .whiteElevated5 }
+            .drive(with: self) { owner, color in
+                owner.completeButton.setTitleColor(color, for: .normal)
+            }
             .disposed(by: disposeBag)
 
         output.completionHandled

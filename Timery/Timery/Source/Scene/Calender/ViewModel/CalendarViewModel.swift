@@ -71,6 +71,12 @@ class CalendarViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
+        input.selectDate.asObservable()
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .flatMap { service.getTodayReview(date: $0) }
+            .bind(to: todayReviewRelay)
+            .disposed(by: disposeBag)
+
         input.getMonthOfRecordDay.asObservable()
             .flatMap { yearMonth in
                 service.getMonthOfRecordDay(yearMonth: yearMonth)
@@ -104,12 +110,6 @@ class CalendarViewModel: ViewModelType {
                 let lastMonthResult = Calendar.current.date(byAdding: dayComponent, to: Date()) ?? Date()
                 resultMonth.accept(lastMonthResult)
             })
-            .disposed(by: disposeBag)
-
-        input.viewWillAppear
-            .map { Date().toString(to: "yyyy-MM-dd") }
-            .flatMap { service.getTodayReview(date: $0) }
-            .bind(to: todayReviewRelay)
             .disposed(by: disposeBag)
 
         Observable.zip(todayReviewRelay, input.inputTodayReview)
