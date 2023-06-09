@@ -16,8 +16,8 @@ class TimerViewController: UIViewController {
 
     private let timerTitleLabel = UILabel().then {
         $0.text = "타이머"
-        $0.textColor = .black
-        $0.font = .title2Bold
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitle2Bold
     }
 
     private let subjectTableView = UITableView().then {
@@ -25,8 +25,8 @@ class TimerViewController: UIViewController {
     }
 
     private let addSubjetcButton = UIButton(type: .system).then {
-        $0.layer.shadowColor = UIColor.gray.cgColor
-        $0.layer.shadowOpacity = 1
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.25
         $0.layer.shadowRadius = 4
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.setImage(UIImage(named: "orange_plus"), for: .normal)
@@ -67,7 +67,7 @@ class TimerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.getSubjectListRelay.accept(())
         self.subjectTableView.contentOffset.y = 0
-        timerHeaderView.frame.size.height = view.frame.height / 4.5
+//        timerHeaderView.frame.size.height = view.frame.height / 5.5
         subjectTableView.tableHeaderView = timerHeaderView
     }
 }
@@ -182,7 +182,7 @@ extension TimerViewController {
             $0.bottom.equalToSuperview()
         }
         addSubjetcButton.snp.makeConstraints {
-            $0.right.equalToSuperview().inset(22)
+            $0.right.equalToSuperview().inset(11)
             $0.bottom.equalToSuperview().inset(view.safeAreaInsets.bottom + 22)
             $0.width.height.equalTo(70)
         }

@@ -9,8 +9,8 @@ class SubjectsTableViewCell: UITableViewCell {
     weak var delegate: SubjectCellTapButtonDelegate?
 
     private let cellBackgroundView = UIView().then {
-        $0.layer.shadowColor = UIColor.gray.cgColor
-        $0.layer.shadowOpacity = 0.8
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.05
         $0.layer.shadowRadius = 4
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.backgroundColor = .white
@@ -24,19 +24,19 @@ class SubjectsTableViewCell: UITableViewCell {
 
     let emojiLabel = UILabel().then {
         $0.text = "🔥"
-        $0.font = UIFont(name: "Pretendard-Medium", size: 40)
+        $0.font = .miniTypograph
     }
 
     let subjectLabel = UILabel().then {
         $0.minimumScaleFactor = 5
         $0.textColor = .black
-        $0.font = .title2Medium
+        $0.font = .miniTitle2Medium
     }
 
     let timerLabel = UILabel().then {
         $0.text = "00:00:00"
         $0.textColor = .black
-        $0.font = .title2Medium
+        $0.font = .miniTitle2Medium
     }
 
     let deleteButton = UIButton(type: .system).then {
@@ -99,7 +99,7 @@ extension SubjectsTableViewCell {
             $0.bottom.equalToSuperview()
         }
         emojiLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(24)
+            $0.leftMargin.equalTo(26)
             $0.centerY.equalToSuperview()
         }
         subjectLabel.setContentCompressionResistancePriority(.init(0), for: .horizontal)

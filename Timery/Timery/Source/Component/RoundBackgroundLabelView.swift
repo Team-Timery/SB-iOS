@@ -6,7 +6,7 @@ class RoundBackgroundLabelView: UIView {
 
     private let textLabel = UILabel().then {
         $0.textColor = .whiteElevated4
-        $0.font = .main2Medium
+        $0.font = .mini1Medium
     }
 
     init(title: String) {

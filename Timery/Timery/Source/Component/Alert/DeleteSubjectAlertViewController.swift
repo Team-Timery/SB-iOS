@@ -14,8 +14,8 @@ class DeleteSubjectAlertViewController: UIViewController {
     }
 
     private let titleLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = .title3Bold
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitle3Bold
         $0.numberOfLines = .max
         $0.lineBreakStrategy = .pushOut
     }
@@ -23,7 +23,7 @@ class DeleteSubjectAlertViewController: UIViewController {
     private let messageLabel = UILabel().then {
         $0.text = "측정 기록은 지워지지 않아요"
         $0.textColor = .whiteElevated4
-        $0.font = .main1Medium
+        $0.font = .mini1Medium
         $0.textAlignment = .left
         $0.numberOfLines = .max
         $0.lineBreakStrategy = .pushOut
@@ -32,7 +32,7 @@ class DeleteSubjectAlertViewController: UIViewController {
     private let alertCancelButton = UIButton(type: .system).then {
         $0.setTitle("취소", for: .normal)
         $0.setTitleColor(UIColor.mainElevated, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
+        $0.titleLabel?.font = UIFont.miniTitle3Bold
         $0.backgroundColor = .main
         $0.layer.cornerRadius = 30
     }
@@ -40,7 +40,7 @@ class DeleteSubjectAlertViewController: UIViewController {
     private let alertDeleteButton = UIButton(type: .system).then {
         $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
+        $0.titleLabel?.font = UIFont.miniTitle3Bold
         $0.backgroundColor = .mainElevated
         $0.layer.cornerRadius = 30
     }
