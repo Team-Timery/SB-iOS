@@ -24,7 +24,6 @@
 		46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E12A2D74970054AA9C /* TodayReviewView.swift */; };
 		46E901E42A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */; };
 		46E901E72A2D7BBC0054AA9C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 46E901E62A2D7BBC0054AA9C /* RxGesture */; };
-		46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */; };
 		46E901ED2A2DE5DC0054AA9C /* TodayReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */; };
 		46E901EF2A2DE6A60054AA9C /* GetTodayReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */; };
 		46E901F32A2E18320054AA9C /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */; };
@@ -34,9 +33,9 @@
 		4B17E46E29DBE30F00460145 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 4B17E46D29DBE30F00460145 /* FSCalendar */; };
 		4B17E47129DC67BE00460145 /* CalendarTimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */; };
 		4B17E47329DD23DD00460145 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E47229DD23DD00460145 /* Date+toString.swift */; };
-		4B17E47629DE4B2A00460145 /* BreakTimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B17E47529DE4B2A00460145 /* BreakTimeLineCellView.swift */; };
 		4B24F6002A23A00400E5000E /* MultiProgressView+setProgressWithAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24F5FF2A23A00400E5000E /* MultiProgressView+setProgressWithAnimate.swift */; };
 		4B24F6022A23A57D00E5000E /* ProgressViewSection+addProgressBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24F6012A23A57D00E5000E /* ProgressViewSection+addProgressBorder.swift */; };
+		4B24F60C2A334F4800E5000E /* TimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24F60B2A334F4800E5000E /* TimeLineCellView.swift */; };
 		4B2EB46D2A1652D000B9D055 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4B2EB46C2A1652D000B9D055 /* FirebaseAnalytics */; };
 		4B2EB46F2A1652D000B9D055 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B2EB46E2A1652D000B9D055 /* FirebaseAnalyticsSwift */; };
 		4B2EB4712A1654DB00B9D055 /* Int+toFullTimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EB4702A1654DB00B9D055 /* Int+toFullTimeString.swift */; };
@@ -83,7 +82,6 @@
 		4B43E52329E130F900FEFD68 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B43E52229E130F900FEFD68 /* .swiftlint.yml */; };
 		4B4777F52A0A216600BAE131 /* AnalysisAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4777F42A0A216600BAE131 /* AnalysisAPI.swift */; };
 		4B4777F82A0D1E2400BAE131 /* LogoutAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4777F72A0D1E2400BAE131 /* LogoutAlert.swift */; };
-		4B5E971029DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */; };
 		4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62C84829B95C3000B7A10C /* NoticeViewController.swift */; };
 		4B62C84F29B988B000B7A10C /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */; };
 		4B6E419629FD12CC00762174 /* AuthPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E419529FD12CC00762174 /* AuthPasswordViewModel.swift */; };
@@ -207,7 +205,6 @@
 		46E901DF2A2CC7FB0054AA9C /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
 		46E901E12A2D74970054AA9C /* TodayReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewView.swift; sourceTree = "<group>"; };
 		46E901E32A2D75D70054AA9C /* UIStackView+addArragedSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArragedSubViews.swift"; sourceTree = "<group>"; };
-		46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCellView.swift; sourceTree = "<group>"; };
 		46E901EC2A2DE5DC0054AA9C /* TodayReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayReviewEntity.swift; sourceTree = "<group>"; };
 		46E901EE2A2DE6A60054AA9C /* GetTodayReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayReviewResponse.swift; sourceTree = "<group>"; };
 		46E901F22A2E18320054AA9C /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
@@ -216,9 +213,9 @@
 		4B17E46A29DBE26100460145 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTimeCellView.swift; sourceTree = "<group>"; };
 		4B17E47229DD23DD00460145 /* Date+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
-		4B17E47529DE4B2A00460145 /* BreakTimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakTimeLineCellView.swift; sourceTree = "<group>"; };
 		4B24F5FF2A23A00400E5000E /* MultiProgressView+setProgressWithAnimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultiProgressView+setProgressWithAnimate.swift"; sourceTree = "<group>"; };
 		4B24F6012A23A57D00E5000E /* ProgressViewSection+addProgressBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressViewSection+addProgressBorder.swift"; sourceTree = "<group>"; };
+		4B24F60B2A334F4800E5000E /* TimeLineCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCellView.swift; sourceTree = "<group>"; };
 		4B2EB4702A1654DB00B9D055 /* Int+toFullTimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+toFullTimeString.swift"; sourceTree = "<group>"; };
 		4B2EB4722A18783F00B9D055 /* UIViewController+keyboardDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+keyboardDetection.swift"; sourceTree = "<group>"; };
 		4B2EB4742A18F38A00B9D055 /* AutoLoginWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginWaitViewController.swift; sourceTree = "<group>"; };
@@ -263,7 +260,6 @@
 		4B43E52229E130F900FEFD68 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4B4777F42A0A216600BAE131 /* AnalysisAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisAPI.swift; sourceTree = "<group>"; };
 		4B4777F72A0D1E2400BAE131 /* LogoutAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAlert.swift; sourceTree = "<group>"; };
-		4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTimeLineCellView.swift; sourceTree = "<group>"; };
 		4B62C84829B95C3000B7A10C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		4B62C84E29B988B000B7A10C /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		4B6E419529FD12CC00762174 /* AuthPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -494,9 +490,7 @@
 			children = (
 				46E901E12A2D74970054AA9C /* TodayReviewView.swift */,
 				4B17E47029DC67BE00460145 /* CalendarTimeCellView.swift */,
-				4B17E47529DE4B2A00460145 /* BreakTimeLineCellView.swift */,
-				4B5E970F29DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift */,
-				46E901E82A2DAC9B0054AA9C /* TimeLineCellView.swift */,
+				4B24F60B2A334F4800E5000E /* TimeLineCellView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1620,6 +1614,7 @@
 				4BFB657229A665FF00FE9118 /* SubjectsTableViewCell.swift in Sources */,
 				4BE595322A052B6300BEB1A1 /* SubjectCellTapButtonDelegate.swift in Sources */,
 				4B97B7872A08DFC700242130 /* MoreViewModel.swift in Sources */,
+				4B24F60C2A334F4800E5000E /* TimeLineCellView.swift in Sources */,
 				4BE0297029A372D300788B37 /* RoundBackgroundLabelView.swift in Sources */,
 				4BE5950B2A00068C00BEB1A1 /* AuthService.swift in Sources */,
 				4BDA20852994EC2A0032161C /* AuthTextField.swift in Sources */,
@@ -1650,7 +1645,6 @@
 				4B96116129B355E400019C50 /* MoreListTableViewCell.swift in Sources */,
 				4B88B8242A10CB6000F36335 /* AnalysisResult.swift in Sources */,
 				4BB4B48F29B83AC60088D5C9 /* QuitAlertViewController.swift in Sources */,
-				4B5E971029DEDA3F00BFE4CD /* SubjectTimeLineCellView.swift in Sources */,
 				4BE595472A06A4F400BEB1A1 /* StopTimerAlertViewModel.swift in Sources */,
 				4BFB658829AB5CE800FE9118 /* AddSubjectAlertViewController.swift in Sources */,
 				4BFB658429AB14E500FE9118 /* DeleteSubjectAlertViewController.swift in Sources */,
@@ -1674,7 +1668,6 @@
 				4BFB658A29ACBE7500FE9118 /* StopTimerAlertViewController.swift in Sources */,
 				46E901CB2A2CB0710054AA9C /* TextInputViewController.swift in Sources */,
 				4BE595122A0080F900BEB1A1 /* NetworkingResult.swift in Sources */,
-				46E901E92A2DAC9B0054AA9C /* TimeLineCellView.swift in Sources */,
 				4B62C84929B95C3000B7A10C /* NoticeViewController.swift in Sources */,
 				46E901D02A2CB1A10054AA9C /* AddViewable.swift in Sources */,
 				468F0A662A2F8AA9003DB4E8 /* RecordDetailEntity.swift in Sources */,
@@ -1718,7 +1711,6 @@
 				46E901E22A2D74970054AA9C /* TodayReviewView.swift in Sources */,
 				4B2EB4732A18783F00B9D055 /* UIViewController+keyboardDetection.swift in Sources */,
 				4B426C5D2A0FB7C5001BB36D /* TipsListResponse.swift in Sources */,
-				4B17E47629DE4B2A00460145 /* BreakTimeLineCellView.swift in Sources */,
 				4B3DA2F329D98DB10041524E /* SubjectsResponse.swift in Sources */,
 				4BE5953E2A06A1D300BEB1A1 /* RecordResult.swift in Sources */,
 			);
