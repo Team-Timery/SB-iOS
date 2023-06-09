@@ -89,7 +89,7 @@ extension AuthStartViewController {
         output.isError.asObservable()
             .bind { res in
                 switch res {
-                case .FORBIDDEN:
+                case .WRONGPASSWORD:
                     Token.removeToken()
                     self.autoLoginRelay.accept(())
                 default:
