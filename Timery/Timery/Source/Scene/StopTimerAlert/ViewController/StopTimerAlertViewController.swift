@@ -20,13 +20,13 @@ class StopTimerAlertViewController: UIViewController {
     private let titleLabel = UILabel().then {
         $0.text = "타이머 측정을 멈추시겠어요?"
         $0.textColor = .white
-        $0.font = .title3Bold
+        $0.font = .miniTitle3Bold
     }
 
     private let messageLabel = UILabel().then {
         $0.text = "과거의 나를 이겨야 해요"
         $0.textColor = .whiteElevated4
-        $0.font = .main1Medium
+        $0.font = .mini1Medium
         $0.textAlignment = .left
         $0.numberOfLines = .max
         $0.lineBreakStrategy = .pushOut
@@ -35,7 +35,7 @@ class StopTimerAlertViewController: UIViewController {
     private let memoLabel = UILabel().then {
         $0.text = "공부한 내용 메모하기"
         $0.textColor = .white
-        $0.font = .main1Medium
+        $0.font = .mini1Medium
     }
 
     private let memoPopupButton = UIButton(type: .system).then {
@@ -59,7 +59,7 @@ class StopTimerAlertViewController: UIViewController {
     private let alertCancelButton = UIButton(type: .system).then {
         $0.setTitle("아니요", for: .normal)
         $0.setTitleColor(UIColor.mainElevated, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
+        $0.titleLabel?.font = UIFont.miniTitle3Bold
         $0.backgroundColor = .main
         $0.layer.cornerRadius = 30
     }
@@ -67,7 +67,7 @@ class StopTimerAlertViewController: UIViewController {
     private let alertStopButton = UIButton(type: .system).then {
         $0.setTitle("예", for: .normal)
         $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
+        $0.titleLabel?.font = UIFont.miniTitle3Bold
         $0.backgroundColor = .mainElevated
         $0.layer.cornerRadius = 30
     }
@@ -212,7 +212,7 @@ extension StopTimerAlertViewController {
         }
         memoLabel.snp.makeConstraints {
             $0.leftMargin.equalTo(31)
-            $0.top.equalTo(messageLabel.snp.bottom).offset(35)
+            $0.top.equalTo(messageLabel.snp.bottom).offset(30)
         }
         memoPopupButton.snp.makeConstraints {
             $0.width.height.equalTo(29)

@@ -14,17 +14,17 @@ class SubjectAnalyzeCell: UIView {
 
     private let subjectNameLabel = UILabel().then {
         $0.textColor = .grayDarken2
-        $0.font = .title3Bold
+        $0.font = .miniTitle3Bold
     }
 
     private let percentLabel = UILabel().then {
         $0.textColor = .whiteElevated4
-        $0.font = .title3Medium
+        $0.font = .miniTitle3Medium
     }
 
     private let timeLabel = UILabel().then {
         $0.textColor = .whiteElevated5
-        $0.font = .title2Medium
+        $0.font = .miniTitle2Medium
     }
 
     override var intrinsicContentSize: CGSize {

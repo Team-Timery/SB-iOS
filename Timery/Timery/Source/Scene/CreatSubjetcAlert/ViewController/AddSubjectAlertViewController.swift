@@ -19,7 +19,7 @@ class AddSubjectAlertViewController: UIViewController {
     private let titleLabel = UILabel().then {
         $0.text = "과목 추가하기"
         $0.textColor = .white
-        $0.font = .title3Bold
+        $0.font = .miniTitle3Bold
         $0.textAlignment = .center
     }
 
@@ -46,7 +46,7 @@ class AddSubjectAlertViewController: UIViewController {
     private let alertCancelButton = UIButton(type: .system).then {
         $0.setTitle("취소", for: .normal)
         $0.setTitleColor(UIColor.mainElevated, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
+        $0.titleLabel?.font = UIFont.miniTitle3Bold
         $0.backgroundColor = .main
         $0.layer.cornerRadius = 30
     }
@@ -54,7 +54,7 @@ class AddSubjectAlertViewController: UIViewController {
     private let alertAddButton = UIButton(type: .system).then {
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(UIColor.white, for: .normal)
-        $0.titleLabel?.font = UIFont.title3Bold
+        $0.titleLabel?.font = UIFont.miniTitle3Bold
         $0.backgroundColor = .mainElevated
         $0.layer.cornerRadius = 30
     }

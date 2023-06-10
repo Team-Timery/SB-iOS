@@ -14,8 +14,8 @@ class AnalyzeViewController: UIViewController {
 
     private let mainTitleLable = UILabel().then {
         $0.text = "분석"
-        $0.textColor = .black
-        $0.font = .title2Bold
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitle2Bold
     }
 
     private let scrollerView = UIScrollView().then {
@@ -42,14 +42,14 @@ class AnalyzeViewController: UIViewController {
     }
 
     private let dateControllerLabel = UILabel().then {
-        $0.textColor = .black
-        $0.font = .title2Bold
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitle2Bold
     }
 
     private let displayTimeLabel = UILabel().then {
         $0.text = "0분"
-        $0.textColor = .black
-        $0.font = .typograpy
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitleXLBold
     }
 
     private let timeProgressBar = MultiProgressView().then {
@@ -65,8 +65,8 @@ class AnalyzeViewController: UIViewController {
     }
     private let notingLable = UILabel().then {
         $0.text = "아직 집중한 기록이 없어요"
-        $0.textColor = .black
-        $0.font = .title3Bold
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitle3Bold
         $0.isHidden = true
     }
     // 집중력 분석 뷰
@@ -126,25 +126,25 @@ class AnalyzeViewController: UIViewController {
     }
 
     private let graphTitleLabel = UILabel().then {
-        $0.textColor = .black
-        $0.font = .title2Bold
+        $0.textColor = .grayDarken4
+        $0.font = .miniTitle2Bold
     }
 
     private let graphSubtitleLabel = UILabel().then {
         $0.textColor = .whiteElevated4
-        $0.font = .main1Medium
+        $0.font = .mini1Medium
     }
 
     private let graphImageView = UIImageView()
 
     private let graphStartMonthLabel = UILabel().then {
-        $0.textColor = .black
-        $0.font = .main1Medium
+        $0.textColor = .grayDarken4
+        $0.font = .mini1Medium
     }
 
     private let graphEndMonthLabel = UILabel().then {
-        $0.textColor = .black
-        $0.font = .main1Medium
+        $0.textColor = .grayDarken4
+        $0.font = .mini1Medium
     }
 
     private let viewModel = AnalyzeViewModel()
@@ -378,7 +378,7 @@ extension AnalyzeViewController {
             $0.left.right.equalToSuperview().inset(23)
         }
         subjectsTimeStackView.snp.makeConstraints {
-            $0.top.equalTo(timeProgressBar.snp.bottom).offset(45)
+            $0.top.equalTo(timeProgressBar.snp.bottom).offset(30)
             $0.width.equalToSuperview()
         }
         // 집중력

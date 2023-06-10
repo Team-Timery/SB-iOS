@@ -13,17 +13,17 @@ class TimerHeaderView: UIView {
     private let timerSubtitleLabel = UILabel().then {
         $0.text = "시간측정"
         $0.textColor = .whiteElevated4
-        $0.font = .title3Bold
+        $0.font = .miniTitle3Bold
     }
 
     private let dateLabel = RoundBackgroundLabelView(title: "오늘").then {
-        $0.layer.cornerRadius = 18
+        $0.layer.cornerRadius = 16
     }
 
     private let timerTimeLabel = UILabel().then {
         $0.text = "00:00:00"
-        $0.textColor = .black
-        $0.font = UIFont(name: "Pretendard-Medium", size: 64)
+        $0.textColor = .grayDarken4
+        $0.font = UIFont(name: "Pretendard-Medium", size: 60)
     }
 
     init(timerText: String? = "00:00:00") {
@@ -57,14 +57,18 @@ extension TimerHeaderView {
             $0.topMargin.equalTo(8)
         }
         dateLabel.snp.makeConstraints {
-            $0.height.equalTo(36)
-            $0.width.equalTo(60)
+            $0.height.equalTo(32)
+            $0.width.equalTo(53)
             $0.left.equalTo(timerSubtitleLabel.snp.right).offset(10)
             $0.centerY.equalTo(timerSubtitleLabel)
         }
         timerTimeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(timerSubtitleLabel.snp.bottom).offset(self.frame.height / 10.5)
+            $0.top.equalTo(timerSubtitleLabel.snp.bottom).offset(27)
+        }
+        self.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.bottom.equalTo(timerTimeLabel).offset(51)
         }
     }
 }

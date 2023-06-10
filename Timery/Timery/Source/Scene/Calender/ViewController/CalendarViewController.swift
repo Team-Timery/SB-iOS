@@ -36,8 +36,8 @@ class CalendarViewController: UIViewController {
 
     private let monthTitleLabel = UILabel().then {
         $0.text = Date().toString(to: "M월")
-        $0.font = .title2Bold
-        $0.textColor = .black
+        $0.font = .miniTitle3Bold
+        $0.textColor = .grayDarken4
     }
 
     private let calendarLeftButton = UIButton().then {
@@ -58,8 +58,8 @@ class CalendarViewController: UIViewController {
 
     private let calendarStudyTimeMarkLabel = UILabel().then {
         $0.text = "전체 내역"
-        $0.font = .title2Bold
-        $0.textColor = .black
+        $0.font = .miniTitle2Bold
+        $0.textColor = .grayDarken4
     }
 
     private let studyTimeView = CalendarTimeCellView(title: "공부시간")
@@ -115,14 +115,13 @@ class CalendarViewController: UIViewController {
         calendarView.select(Date())
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
         selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
+        timeLineStackView.removeAll()
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectCalendarRelay.accept(date.toString(to: "yyyy-MM-dd"))
-        timeLineStackView.subviews
-            .forEach { $0.removeFromSuperview() }
         timeLineStackView.removeAll()
     }
     // 최대 날짜
@@ -168,7 +167,7 @@ extension CalendarViewController {
         .compactMap {
             switch $0.state {
             case .began:
-                return UIColor.whiteElevated3
+                return UIColor.whiteElevated2
 
             case .ended:
                 return UIColor.whiteElevated1
@@ -204,8 +203,6 @@ extension CalendarViewController {
 
                         return cellView
                     }
-                owner.timeLineStackView.subviews
-                    .forEach { $0.removeFromSuperview() }
                 owner.timeLineStackView.removeAll()
                 owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)
             })
@@ -306,7 +303,7 @@ extension CalendarViewController {
             $0.centerY.equalTo(monthTitleLabel)
         }
         calendarView.snp.makeConstraints {
-            $0.height.equalTo(650)
+            $0.height.equalTo(600)
             $0.left.right.equalToSuperview().inset(20)
             $0.top.equalToSuperview().offset(70)
         }
@@ -317,13 +314,13 @@ extension CalendarViewController {
         studyTimeView.snp.makeConstraints {
             $0.height.equalTo(80)
             $0.width.equalTo(152)
-            $0.top.equalTo(calendarStudyTimeMarkLabel.snp.bottom).offset(35)
+            $0.top.equalTo(calendarStudyTimeMarkLabel.snp.bottom).offset(24)
             $0.right.equalTo(calendarView.snp.centerX).offset(-4)
         }
         maxStudyTimeView.snp.makeConstraints {
             $0.height.equalTo(80)
             $0.width.equalTo(152)
-            $0.top.equalTo(calendarStudyTimeMarkLabel.snp.bottom).offset(35)
+            $0.top.equalTo(calendarStudyTimeMarkLabel.snp.bottom).offset(24)
             $0.left.equalTo(studyTimeView.snp.right).offset(8)
         }
         // 타임라인
@@ -355,7 +352,7 @@ extension CalendarViewController {
 
     private func settingCalendar() {
         calendarView.appearance.titleDefaultColor = .grayDarken1
-        calendarView.appearance.titleFont = .title3Medium
+        calendarView.appearance.titleFont = .miniTitle3Medium
         calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
         calendarView.placeholderType = .none
         calendarView.backgroundColor = .white
@@ -369,7 +366,7 @@ extension CalendarViewController {
         calendarView.appearance.selectionColor = .mainElevated
 
         // 토~일 날짜 설정
-        calendarView.appearance.weekdayFont = .main2Medium
+        calendarView.appearance.weekdayFont = .mini2Medium
         calendarView.appearance.weekdayTextColor = .whiteElevated4
 
         // 헤더 설정
