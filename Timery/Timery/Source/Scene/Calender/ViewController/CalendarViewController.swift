@@ -116,14 +116,12 @@ class CalendarViewController: UIViewController {
         guard let selectDate = calendarView.selectedDate else { return }
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
         selectCalendarRelay.accept(selectDate.toString(to: "yyyy-MM-dd"))
-        timeLineStackView.removeAll()
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectCalendarRelay.accept(date.toString(to: "yyyy-MM-dd"))
-        timeLineStackView.removeAll()
     }
     // 최대 날짜
     func maximumDate(for calendar: FSCalendar) -> Date {
@@ -215,8 +213,11 @@ extension CalendarViewController {
             })
             .disposed(by: dispoesBag)
 
-        output.isHiddenEmptyLable.asObservable()
-            .bind(to: emptyDataLable.rx.isHidden)
+        output.isHiddenEmptyLable
+            .drive(with: self, onNext: { owner, status in
+                owner.timeLineStackView.removeAll()
+                owner.emptyDataLable.isHidden = status
+            })
             .disposed(by: dispoesBag)
 
         output.calendarTimeData.asObservable()
