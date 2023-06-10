@@ -34,7 +34,9 @@ class AnalyzeViewModel: ViewModelType {
                 switch res {
                 case .SUCCEED:
                     guard var resultData = data else { return }
-                    resultData.focusResponses.sort(by: { $0.title != "기타" && $0.sum > $1.sum })
+                    resultData.focusResponses.sort(by: {
+                        return $0.title != "기타" && $1.title != "기타" ? $0.sum > $1.sum : $0.title != "기타"
+                    })
                     analysisData.accept(resultData)
                 default:
                     print(res.errorMessage)

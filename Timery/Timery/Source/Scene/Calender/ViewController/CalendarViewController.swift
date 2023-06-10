@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController {
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {
         $0.layer.opacity = 0
     }
+
     private let topShadowView = UIView().then {
         $0.backgroundColor = .whiteElevated3
         $0.layer.opacity = 0
@@ -112,9 +113,9 @@ class CalendarViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        calendarView.select(Date())
+        guard let selectDate = calendarView.selectedDate else { return }
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
-        selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
+        selectCalendarRelay.accept(selectDate.toString(to: "yyyy-MM-dd"))
         timeLineStackView.removeAll()
     }
 }
@@ -303,7 +304,7 @@ extension CalendarViewController {
             $0.centerY.equalTo(monthTitleLabel)
         }
         calendarView.snp.makeConstraints {
-            $0.height.equalTo(600)
+            $0.height.equalTo(580)
             $0.left.right.equalToSuperview().inset(20)
             $0.top.equalToSuperview().offset(70)
         }
@@ -351,6 +352,7 @@ extension CalendarViewController {
     }
 
     private func settingCalendar() {
+        calendarView.select(Date())
         calendarView.appearance.titleDefaultColor = .grayDarken1
         calendarView.appearance.titleFont = .miniTitle3Medium
         calendarView.appearance.headerMinimumDissolvedAlpha = 0.0

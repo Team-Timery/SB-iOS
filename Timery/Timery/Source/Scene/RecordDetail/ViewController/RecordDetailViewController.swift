@@ -141,7 +141,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
         startRecordButton.rx.tapGesture()
             .when(.recognized)
             .bind(with: self) { owner, _ in
-                owner.navigationController?.popViewControllerWithCompletion(animated: true) {
+                owner.navigationController?.popViewControllerWithCompletion(animated: false) {
                     NotificationCenter.default.post(name: .selectedTabbarIndex, object: 0)
                 }
             }
