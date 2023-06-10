@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController {
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {
         $0.layer.opacity = 0
     }
+
     private let topShadowView = UIView().then {
         $0.backgroundColor = .whiteElevated3
         $0.layer.opacity = 0
@@ -112,17 +113,15 @@ class CalendarViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        calendarView.select(Date())
+        guard let selectDate = calendarView.selectedDate else { return }
         getCalendarRecordRelay.accept(Date().toString(to: "yyyy-MM"))
-        selectCalendarRelay.accept(Date().toString(to: "yyyy-MM-dd"))
-        timeLineStackView.removeAll()
+        selectCalendarRelay.accept(selectDate.toString(to: "yyyy-MM-dd"))
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectCalendarRelay.accept(date.toString(to: "yyyy-MM-dd"))
-        timeLineStackView.removeAll()
     }
     // 최대 날짜
     func maximumDate(for calendar: FSCalendar) -> Date {
@@ -214,8 +213,11 @@ extension CalendarViewController {
             })
             .disposed(by: dispoesBag)
 
-        output.isHiddenEmptyLable.asObservable()
-            .bind(to: emptyDataLable.rx.isHidden)
+        output.isHiddenEmptyLable
+            .drive(with: self, onNext: { owner, status in
+                owner.timeLineStackView.removeAll()
+                owner.emptyDataLable.isHidden = status
+            })
             .disposed(by: dispoesBag)
 
         output.calendarTimeData.asObservable()
@@ -303,7 +305,7 @@ extension CalendarViewController {
             $0.centerY.equalTo(monthTitleLabel)
         }
         calendarView.snp.makeConstraints {
-            $0.height.equalTo(600)
+            $0.height.equalTo(580)
             $0.left.right.equalToSuperview().inset(20)
             $0.top.equalToSuperview().offset(70)
         }
@@ -351,6 +353,7 @@ extension CalendarViewController {
     }
 
     private func settingCalendar() {
+        calendarView.select(Date())
         calendarView.appearance.titleDefaultColor = .grayDarken1
         calendarView.appearance.titleFont = .miniTitle3Medium
         calendarView.appearance.headerMinimumDissolvedAlpha = 0.0

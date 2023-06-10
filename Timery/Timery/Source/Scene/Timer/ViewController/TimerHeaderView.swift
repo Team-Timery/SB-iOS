@@ -68,7 +68,7 @@ extension TimerHeaderView {
         }
         self.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.bottom.equalTo(timerTimeLabel).offset(51)
+            $0.bottom.equalTo(timerTimeLabel).offset(48)
         }
     }
 }
