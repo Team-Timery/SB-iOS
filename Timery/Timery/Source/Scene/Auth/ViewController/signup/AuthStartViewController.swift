@@ -77,32 +77,27 @@ extension AuthStartViewController {
             .disposed(by: disposeBag)
 
         output.isSucceed.asObservable()
-            .subscribe { [unowned self] _ in
+            .subscribe(with: self, onNext: { owner, _  in
                 let mainView = CustomTapBarController()
-                navigationController?.pushViewController(mainView, animated: true)
+                owner.navigationController?.pushViewController(mainView, animated: true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.autoLoginWaitView.dismissView()
+                    owner.autoLoginWaitView.dismissView()
                 }
-            }
+            })
             .disposed(by: disposeBag)
 
         output.isError.asObservable()
-            .bind { res in
-                switch res {
-                case .WRONGPASSWORD:
-                    Token.removeToken()
-                    self.autoLoginRelay.accept(())
-                default:
-                    let errorAlert = UIAlertController(
-                        title: "네트워크 오류",
-                        message: "네트워크 연결을 확인해주세요.",
-                        preferredStyle: .alert
-                    )
-                    errorAlert.addAction(UIAlertAction(title: "확인", style: .cancel))
-                    self.present(errorAlert, animated: true)
-                }
-//                self.autoLoginWaitView.dismissView()
-            }
+            .bind(with: autoLoginWaitView, onNext: { owner, res in
+                let errorAlert = UIAlertController(
+                    title: "오류",
+                    message: "\(res.errorMessage)\ncode: \(res.rawValue)",
+                    preferredStyle: .alert
+                )
+                errorAlert.addAction(UIAlertAction(title: "확인", style: .cancel) { _ in
+                    exit(0)
+                })
+                owner.present(errorAlert, animated: true)
+            })
             .disposed(by: disposeBag)
     }
 

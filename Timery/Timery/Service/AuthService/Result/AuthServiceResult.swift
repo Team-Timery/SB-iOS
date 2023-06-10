@@ -18,7 +18,7 @@ enum AuthServiceResult: Int {
         case .NOTFOUND: return "유저를 찾을 수 없습니다."
         case .DUPLICATED: return "이미 존재하는 이메일 입니다!"
         case .SERVERERROR: return "관리자에게 문의해주세요!"
-        case .FAILE: return "알수 없는 오류입니다."
+        case .FAILE: return "네트워크 연결을 확인해주세요!"
         default: return "알수 없는 오류입니다."
         }
     }

@@ -61,7 +61,6 @@ final class AuthService {
 
     func anonymousLogin() -> Single<AuthServiceResult> {
         return provider.rx.request(.anonymousLogin)
-            .filterSuccessfulStatusCodes()
             .map(TokenResponse.self)
             .map { res -> AuthServiceResult in
                 Token.accessToken = res.accessToken
