@@ -454,10 +454,10 @@
 			isa = PBXGroup;
 			children = (
 				4B88B8392A1381E900F36335 /* AutoLogin */,
-				4B426C522A0FB45A001BB36D /* DocumentService */,
 				4B4777F02A0A212800BAE131 /* AnalysisService */,
 				4BE595332A068C6600BEB1A1 /* RecordService */,
 				4BD0145329EE76E500960C3C /* AuthService */,
+				4B426C522A0FB45A001BB36D /* DocumentService */,
 				4BE595152A013ADB00BEB1A1 /* SubjectService */,
 				4BE595102A0080D100BEB1A1 /* Network */,
 				4B6E41AE29FFFA3C00762174 /* Plugin */,
@@ -1852,7 +1852,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 235C2RVZ7L;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1889,7 +1889,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 235C2RVZ7L;
 				GENERATE_INFOPLIST_FILE = YES;

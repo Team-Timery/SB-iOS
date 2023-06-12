@@ -34,7 +34,7 @@ extension ListHeaderView {
 
     private func makeConstraints() {
         titleLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(30)
+            $0.leftMargin.equalTo(25)
             $0.topMargin.equalTo(5)
         }
     }

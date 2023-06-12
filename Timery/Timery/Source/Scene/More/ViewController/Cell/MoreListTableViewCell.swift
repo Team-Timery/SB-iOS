@@ -15,7 +15,7 @@ class MoreListTableViewCell: UITableViewCell {
 
     let leftSubLabel = UILabel().then {
         $0.textColor = .whiteElevated4
-        $0.font = .main1Medium
+        $0.font = .mini1Medium
     }
 
     override func layoutSubviews() {
@@ -40,7 +40,7 @@ extension MoreListTableViewCell {
 
     private func makeConstraints() {
         emojiLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(30)
+            $0.left.equalToSuperview().offset(25)
             $0.centerY.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
@@ -48,7 +48,7 @@ extension MoreListTableViewCell {
             $0.centerY.equalToSuperview()
         }
         leftSubLabel.snp.makeConstraints {
-            $0.rightMargin.equalTo(-8)
+            $0.rightMargin.equalTo(-10)
             $0.centerY.equalToSuperview()
         }
     }
