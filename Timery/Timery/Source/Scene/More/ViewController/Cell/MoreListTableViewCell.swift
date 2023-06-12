@@ -5,11 +5,13 @@ import Then
 class MoreListTableViewCell: UITableViewCell {
 
     let titleLabel = UILabel().then {
-        $0.textColor = .black
-        $0.font = .title3Medium
+        $0.textColor = .grayDarken4
+        $0.font = .mini1Medium
     }
 
-    let arrowImage = UIImageView(image: UIImage(named: "round_right_arrow"))
+    let emojiLabel = UILabel().then {
+        $0.font = .mini1Medium
+    }
 
     let leftSubLabel = UILabel().then {
         $0.textColor = .whiteElevated4
@@ -21,14 +23,8 @@ class MoreListTableViewCell: UITableViewCell {
         makeConstraints()
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 }
@@ -36,21 +32,20 @@ class MoreListTableViewCell: UITableViewCell {
 extension MoreListTableViewCell {
     private func addSubViews() {
         [
+            emojiLabel,
             titleLabel,
-            arrowImage,
             leftSubLabel
         ].forEach({ addSubview($0) })
     }
 
     private func makeConstraints() {
-        titleLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(10)
+        emojiLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(30)
             $0.centerY.equalToSuperview()
         }
-        arrowImage.snp.makeConstraints {
-            $0.rightMargin.equalTo(-8)
+        titleLabel.snp.makeConstraints {
+            $0.left.equalTo(emojiLabel.snp.right).offset(14)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(18)
         }
         leftSubLabel.snp.makeConstraints {
             $0.rightMargin.equalTo(-8)

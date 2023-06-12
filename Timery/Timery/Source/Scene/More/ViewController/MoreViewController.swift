@@ -11,25 +11,21 @@ class MoreViewController: UIViewController {
     private let logoutRelay = PublishRelay<Void>()
     private let quitUserRelay = PublishRelay<Void>()
 
-    private let sections = [
-        "",
+    private let sectionTitle = [
         "공지",
         "도움말",
-        "약관 및 정책",
         "앱 정보",
+        "약관 및 정책",
         "피드백"
-//        "계정 관리",
-//        "회원탈퇴"
+//        "계정 관리"
     ]
-    private let sectionElements: [[String]] = [
-        ["회원정보"],
-        ["공지사항", "타이머리 이야기"],
-        ["자주 묻는 질문", "타이머리로 갓생살기"],
-        ["이용약관", "개인정보 처리방침"],
-        ["버전정보"],
-        ["이메일 보내기"]
-//        ["로그아웃"],
-//        ["탈퇴하기"]
+    private let listElement = [
+        [("📢", "공지사항"), ("📔", "타이머리 이야기")],
+        [("💬", "자주 묻는 질문"), ("✅", "타이머리로 갓생살기")],
+        [("ℹ️", "버전정보")],
+        [("📄", "이용약관"), ("📄", "개인정보 처리방침")],
+        [("📧", "이메일 보내기")]
+//        [("", "로그아웃"), ("", "회원탈퇴")]
     ]
 
     private let topView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)).then {
@@ -46,6 +42,7 @@ class MoreViewController: UIViewController {
         $0.backgroundColor = .white
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
+        $0.sectionHeaderTopPadding = 5
     }
 
     private let viewModel = MoreViewModel()
@@ -61,8 +58,7 @@ class MoreViewController: UIViewController {
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.register(MoreListTableViewCell.self, forCellReuseIdentifier: "listCell")
-        listTableView.sectionHeaderTopPadding = 35
-        let headerView = ListHeaderView(title: "더보기")
+        let headerView = ListHeaderView(title: "더보기", font: .miniTitle2Bold)
         headerView.frame.size.height = 60
         listTableView.tableHeaderView = headerView
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -156,7 +152,7 @@ extension MoreViewController {
                 alertStyle: .light
             )
             present(logoutAlert, animated: false)
-        case "탈퇴하기":
+        case "회원탈퇴":
             let quitAlert = QuitAlertViewController(
                 completion: {
                     self.quitUserRelay.accept(())
@@ -196,22 +192,21 @@ extension MoreViewController: MFMailComposeViewControllerDelegate {
 
 extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return sectionTitle.count
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return ListHeaderView(title: sectionTitle[section], font: .miniTitle3Bold)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionElements[section].count
+        return listElement[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = listTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? MoreListTableViewCell
         else { return UITableViewCell() }
-        if indexPath.section == 4 {
-            cell.arrowImage.layer.opacity = 0
+        if indexPath.section == 2 {
             var version: String? {
                 guard let dictionary = Bundle.main.infoDictionary,
                       let version = dictionary["CFBundleShortVersionString"] as? String else {return nil}
@@ -221,32 +216,45 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.leftSubLabel.text = version
         }
+        cell.emojiLabel.text = listElement[indexPath.section][indexPath.row].0
+        cell.titleLabel.text = listElement[indexPath.section][indexPath.row].1
 
-        cell.titleLabel.text = sectionElements[indexPath.section][indexPath.row]
+        cell.rx.longPressGesture(configuration: { gesture, _ in
+            gesture.minimumPressDuration = 0.0
+        })
+        .filter { _ in indexPath.section != 2}
+        .compactMap {
+            switch $0.state {
+            case .began:
+                return UIColor.whiteElevated2
+
+            case .ended:
+                return UIColor.white
+
+            default:
+                return nil
+            }
+        }
+        .bind(to: cell.rx.backgroundColor)
+        .disposed(by: disposeBag)
+        cell.rx.tapGesture()
+            .throttle(.milliseconds(100), latest: false, scheduler: MainScheduler.instance)
+            .filter { _ in indexPath.section != 2}
+            .when(.recognized)
+            .bind(with: self) { owner, _ in
+                owner.selectPath(selectName: cell.titleLabel.text!)
+            }
+            .disposed(by: disposeBag)
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 45
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectPath(selectName: sectionElements[indexPath.section][indexPath.row])
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = .whiteElevated3
-
-        return section < 7 ? footerView : nil
-    }
-
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return indexPath.section != 4 ? indexPath : nil
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

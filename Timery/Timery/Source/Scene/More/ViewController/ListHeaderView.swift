@@ -5,13 +5,16 @@ import Then
 
 class ListHeaderView: UIView {
     private let titleLabel = UILabel().then {
-        $0.textColor = .black
-        $0.font = .title2Bold
+        $0.textColor = .grayDarken4
     }
 
-    init(title: String?) {
+    init(
+        title: String?,
+        font: UIFont?
+    ) {
         super.init(frame: .zero)
         titleLabel.text = title
+        titleLabel.font = font
     }
 
     required init?(coder: NSCoder) {
@@ -31,7 +34,7 @@ extension ListHeaderView {
 
     private func makeConstraints() {
         titleLabel.snp.makeConstraints {
-            $0.leftMargin.equalTo(20)
+            $0.leftMargin.equalTo(30)
             $0.topMargin.equalTo(5)
         }
     }

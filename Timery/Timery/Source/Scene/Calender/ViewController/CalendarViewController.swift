@@ -8,7 +8,7 @@ import RxGesture
 
 // swiftlint:disable function_body_length
 class CalendarViewController: UIViewController {
-    private let dispoesBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     private let selectCalendarRelay = PublishRelay<String>()
     private let getCalendarRecordRelay = BehaviorRelay<String>(value: Date().toString(to: "yyyy-MM"))
@@ -158,7 +158,7 @@ extension CalendarViewController {
                 textInputViewController.modalPresentationStyle = .overFullScreen
                 owner.present(textInputViewController, animated: true)
             }
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
 
         todayReviewView.rx.longPressGesture(configuration: { gesture, _ in
             gesture.minimumPressDuration = 0.0
@@ -176,7 +176,7 @@ extension CalendarViewController {
             }
         }
         .bind(to: todayReviewView.rx.backgroundColor)
-        .disposed(by: dispoesBag)
+        .disposed(by: disposeBag)
 
         output.timeLineDate.asObservable()
             .subscribe(with: self, onNext: { owner, data in
@@ -198,45 +198,45 @@ extension CalendarViewController {
                                     animated: true
                                 )
                             }
-                            .disposed(by: owner.dispoesBag)
+                            .disposed(by: owner.disposeBag)
 
                         return cellView
                     }
                 owner.timeLineStackView.removeAll()
                 owner.timeLineStackView.addArrangedSubViews(views: timeLineViews)
             })
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
 
         output.monthRecordDay.asObservable()
             .subscribe(onNext: { data in
                 self.eventDays = data.recordedDays.map { "\($0)" }
             })
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
 
         output.isHiddenEmptyLable
             .drive(with: self, onNext: { owner, status in
                 owner.timeLineStackView.removeAll()
                 owner.emptyDataLable.isHidden = status
             })
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
 
         output.calendarTimeData.asObservable()
             .subscribe(onNext: { data in
                 self.studyTimeView.content = data.totalFocusedTime.toFullTimeString()
                 self.maxStudyTimeView.content = data.maxFocusedTime.toFullTimeString()
             })
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
 
         output.calendarPage.asObservable()
             .subscribe(onNext: { date in
                 self.calendarView.setCurrentPage(date, animated: false)
             })
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
 
         output.todayReview
             .map(\.content)
             .emit(to: todayReviewView.rx.review)
-            .disposed(by: dispoesBag)
+            .disposed(by: disposeBag)
     }
 
     private func addSubViews() {
