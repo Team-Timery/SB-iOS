@@ -34,6 +34,7 @@ class CalendarViewModel: ViewModelType {
         let isHiddenEmptyLable = PublishRelay<Bool>()
         let resultMonth = PublishRelay<Date>()
         let todayReviewRelay = PublishRelay<TodayReviewEntity>()
+        let reviewDatas = Observable.combineLatest(todayReviewRelay, input.inputTodayReview)
 
         input.selectDate.asObservable()
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
@@ -77,6 +78,12 @@ class CalendarViewModel: ViewModelType {
             .bind(to: todayReviewRelay)
             .disposed(by: disposeBag)
 
+        todayReviewRelay.values.asObservable()
+            .subscribe(onNext: { data in
+                print(data)
+            })
+            .disposed(by: self.disposeBag)
+
         input.getMonthOfRecordDay.asObservable()
             .flatMap { yearMonth in
                 service.getMonthOfRecordDay(yearMonth: yearMonth)
@@ -112,7 +119,7 @@ class CalendarViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
-        Observable.zip(todayReviewRelay, input.inputTodayReview)
+        input.inputTodayReview.withLatestFrom(reviewDatas)
             .flatMap { todayReview, review in
                 service.updateTodayReview(reviewID: todayReview.reviewID, review: review)
                     .map { _ in (todayReview, review) }
