@@ -153,7 +153,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailViewModel
         .compactMap {
             switch $0.state {
             case .began:
-                return UIColor.mainDarken
+                return UIColor.main
 
             case .ended:
                 return UIColor.mainElevated
